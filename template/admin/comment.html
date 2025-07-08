@@ -24,7 +24,6 @@
   }
 </style>
 
-
     <meta charset="utf-8" />
     <title>Dashboard | Velzon - Admin & Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,6 +111,11 @@
                     </div>
 
                     <div class="d-flex align-items-center">
+
+
+
+
+
 
                         <div class="dropdown topbar-head-dropdown ms-1 header-item">
                             <button type="button"
@@ -532,7 +536,7 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!-- ========== App Menu ========== -->
-          <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif;">
+      <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif;">
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <!-- Dark Logo-->
@@ -658,8 +662,7 @@
                                 <div class="row mb-3 pb-1">
                                     <div class="col-12">
                                         <div class="d-flex align-items-lg-center flex-lg-row flex-column">
-                                            
-
+                                           
                                         </div><!-- end card header -->
                                     </div>
                                     <!--end col-->
@@ -669,8 +672,8 @@
                                 <div class="row">
                                     <div class="col-xl-12">
                                         <div class="card">
-                                            <div class="card-header align-items-center d-flex">
-                                                <li class="card-title mb-0 flex-grow-1">Quản lí bài viết </li>
+                                            <div class="card-header d-flex align-items-center justify-content-between">
+                                                <li class="card-title mb-0 flex-grow-1"> Quản lí bình luận </li>
                                                 <div class="flex-shrink-0">
 
                                                     <!DOCTYPE html>
@@ -695,7 +698,7 @@
                                                             <button type="button" class="btn btn-primary"
                                                                 data-toggle="modal" data-target="#dataModal">
                                                                 <i class="ri-add-fill me-1 align-bottom"></i>
-                                                                Tạo Post
+                                                                Tạo Comment
                                                             </button>
                                                         </div>
 
@@ -713,9 +716,23 @@
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
-                                                                    <div class="modal-body"
-                                                                        style="overflow-y: auto; max-height: 70vh;">
+                                                                    <div class="modal-body">
                                                                         <form>
+                                                                            <div class="form-group">
+                                                                                <label for="role">Bài viết</label>
+                                                                                <select class="form-control" id="role">
+                                                                                    <option value="">-- Chọn Bài viết --
+                                                                                    </option>
+                                                                                    <option value="admin">Chiến tranh ở
+                                                                                        Paris</option>
+                                                                                    <option value="editor">Vô địch WC
+                                                                                    </option>
+                                                                                    <option value="user">Phạt vượt đèn
+                                                                                        đỏ</option>
+                                                                                    <option value="user">Thi vào cấp 3
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
                                                                             <div class="form-group">
                                                                                 <label for="author">Người Đăng
                                                                                     bài</label>
@@ -725,73 +742,13 @@
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
-
-                                                                            <div class="form-group">
-                                                                                <label for="categorie">Danh Mục</label>
-                                                                                <select class="form-control"
-                                                                                    id="categorie">
-                                                                                    <option value="">-- Chọn Danh mục --
-                                                                                    </option>
-                                                                                    <option value="admin">Thể Thao
-                                                                                    </option>
-                                                                                    <option value="editor">Thế Giới
-                                                                                    </option>
-                                                                                    <option value="user">Đời sống
-                                                                                    </option>
-                                                                                    <option value="user">Giao thông
-                                                                                    </option>
-                                                                                </select>
-                                                                            </div>
-
-                                                                            <div class="form-group">
-                                                                                <label for="language">Ngôn ngữ</label>
-                                                                                <select class="form-control"
-                                                                                    id="language">
-                                                                                    <option value="">-- Chọn Ngôn ngữ --
-                                                                                    </option>
-                                                                                    <option value="admin">Tiếng Việt
-                                                                                    </option>
-                                                                                    <option value="editor">Tiếng Anh
-                                                                                    </option>
-                                                                                    <option value="user">Tiếng Nhật
-                                                                                    </option>
-                                                                                    <option value="user">Tiếng Hàn
-                                                                                    </option>
-                                                                                </select>
-                                                                            </div>
-
-                                                                            <div class="form-group">
-                                                                                <label for="title">Tiêu Đề</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="title"
-                                                                                    placeholder="Nhập tiêu đề">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="description">Mô tả</label>
-                                                                                <input type="text" class="form-control"
-                                                                                    id="description"
-                                                                                    placeholder="Nhập mô tả">
-                                                                            </div>
-                                                                            <div class="form-group">
-                                                                                <label for="status">Trạng thái</label>
-                                                                                <select class="form-control" id="1">
-                                                                                    <option value="">-- Chọn Trạng thái
-                                                                                        --</option>
-                                                                                    <option value="1">Hoạt động</option>
-                                                                                    <option value="0">Không Hoạt động
-                                                                                    </option>
-
-                                                                                </select>
-                                                                            </div>
-
-
                                                                             <!-- Load CKEditor -->
                                                                             <script
                                                                                 src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
                                                                             <!-- Editor field -->
                                                                             <div class="form-group">
-                                                                                <label for="content">Nội dung</label>
+                                                                                <label for="content">Bình luận</label>
                                                                                 <textarea id="ckeditor"></textarea>
                                                                             </div>
 
@@ -803,6 +760,8 @@
                                                                                         console.error(error);
                                                                                     });
                                                                             </script>
+
+
 
 
 
@@ -844,7 +803,6 @@
                                                     </body>
 
                                                     </html>
-
                                                 </div>
 
                                             </div><!-- end card header -->
@@ -857,11 +815,9 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th scope="col">ID</th>
-                                                                    <th scope="col">User ID</th>
-                                                                    <th scope="col">Tên Category</th>
-                                                                    <th scope="col">Tiêu đề</th>
-                                                                    <th scope="col">Tên Language</th>
-
+                                                                    <th scope="col">Bài viết</th>
+                                                                    <th scope="col">Người dùng</th>
+                                                                    <th scope="col">Bình luận</th>
                                                                     <th scope="col">Trạng thái</th>
                                                                     <th scope="col">Hành động</th>
                                                                 </tr>
@@ -870,17 +826,11 @@
                                                                 <tr>
                                                                     <th scope="row"><a href="#" class="fw-medium">1</a>
                                                                     </th>
+                                                                    <td>Chiến tranh ở Paris</td>
                                                                     <td>Vũ Hải Đăng</td>
-                                                                    <td>Thế giới </td>
-                                                                    <td>
-  <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#postDetailModal">
-    Chiến tranh ở Paris
-  </a>
-</td>
-
-                                                                    <td>vi </td>
+                                                                    <td>chán</td>
                                                                     <td>Hoạt động</td>
-                                                                   <td>
+                                                                    <td>
                                                                         <div class="dropdown">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
@@ -908,16 +858,11 @@
                                                                 <tr>
                                                                     <th scope="row"><a href="#" class="fw-medium">2</a>
                                                                     </th>
-                                                                    <td>Vũ Văn Thanh</td>
-                                                                    <td>Thể Thao </td>
-                                                                             <td>
-  <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#postDetailModal">
-    Vô địch Wc
-  </a>
-</td>
-                                                                    <td>vi </td>
+                                                                    <td>Vô địch WC</td>
+                                                                    <td>Vũ Hải Đăng</td>
+                                                                    <td>chán</td>
                                                                     <td>Hoạt động</td>
-                                                                   <td>
+                                                                    <td>
                                                                         <div class="dropdown">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
@@ -944,16 +889,11 @@
                                                                 <tr>
                                                                     <th scope="row"><a href="#" class="fw-medium">3</a>
                                                                     </th>
-                                                                    <td>Vũ Văn Tuấn</td>
-                                                                    <td>Giao thông</td>
-                                                                             <td>
-  <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#postDetailModal">
-    Phạt vượt đèn đỏ
-  </a>
-</td>
-                                                                    <td>vi </td>
+                                                                    <td> Phạt vượt đèn đỏ</td>
+                                                                    <td>Vũ Hải Đăng</td>
+                                                                    <td>chán</td>
                                                                     <td>Hoạt động</td>
-                                                                   <td>
+                                                                    <td>
                                                                         <div class="dropdown">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
@@ -980,16 +920,11 @@
                                                                 <tr>
                                                                     <th scope="row"><a href="#" class="fw-medium">4</a>
                                                                     </th>
-                                                                    <td>Vũ Văn Toàn</td>
-                                                                    <td>Giáo dục </td>
-                                                                               <td>
-  <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#postDetailModal">
-    Thi vào cấp 3
-  </a>
-</td>
-                                                                    <td>vi </td>
+                                                                    <td>Thi vào cấp 3</td>
+                                                                    <td>Vũ Hải Đăng</td>
+                                                                    <td>chán</td>
                                                                     <td>Hoạt động</td>
-                                                               <td>
+                                                                    <td>
                                                                         <div class="dropdown">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
@@ -1013,31 +948,12 @@
                                                                         </div>
                                                                     </td>
                                                                 </tr>
+
+
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
-                                                <!-- Modal chi tiết bài viết -->
-<div class="modal fade" id="postDetailModal" tabindex="-1" aria-labelledby="postDetailModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="postDetailModalLabel">Chi tiết bài viết</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
-      </div>
-      <div class="modal-body">
-        <p><strong>Tiêu đề:</strong> Chiến tranh ở Pakistan</p>
-        <p><strong>Mô tả:</strong> Cẩn thận</p>
-        <p><strong>Nội dung:</strong></p>
-        <p>Phá vỡ điều cấm kỵ lâu đời</p>
-        <p>Ở tuổi 69, Giáo hoàng Leo XIV đã vượt qua điều cấm kỵ ngầm trong nội bộ Vatican...</p>
-        <img src="data:image/jpeg;base64,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" alt="Giáo hoàng" class="img-fluid mt-2">
-        <p class="fst-italic">Giáo hoàng Leo XIV (Ảnh: Reuters)</p>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 
 
@@ -1066,5 +982,8 @@
                                                 <!-- App js -->
                                                 <script src="assets/js/app.js"></script>
 </body>
+
+
+<!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:45:33 GMT -->
 
 </html>
