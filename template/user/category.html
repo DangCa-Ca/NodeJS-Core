@@ -28,6 +28,69 @@
 
 	<!-- # Main Style Sheet -->
 	<link rel="stylesheet" href="css/style.css">
+  <style>
+.category-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  max-width: 100%;
+}
+
+.category-scroll-inner-mask {
+  overflow: hidden;
+  width: 600px; /* Chiều rộng giới hạn hiển thị đúng 5 mục */
+}
+
+.category-scroll-inner {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.category-scroll-inner ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  flex: 0 0 auto;
+  width: 120px;
+  text-align: center;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  font-size: 20px;
+  padding: 4px 8px;
+  color: #666;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.scroll-btn:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.scroll-left {
+  left: 0;
+}
+
+.scroll-right {
+  right: 0;
+}
+
+
+
+</style>
 </head>
 
 <body>
@@ -39,32 +102,67 @@
         <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
       </a>
       <div class="navbar-actions order-3 ml-0 ml-md-4">
-        <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
-          data-target="#navigation"> <span class="navbar-toggler-icon"></span>
-        </button>
+  <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
+    data-target="#navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="nav-item dropdown">
+    <a class=" dropdown-toggle d-flex align-items-center" href="#" role="button"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="40" height="40">
+      <span class="d-none d-md-inline">Vũ Hải Đăng</span>
+    </a>
+
+    <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
+      <div class="d-flex align-items-center mb-2">
+        <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="50" height="50">
+        <div>
+          <strong>Vũ Hải Đăng</strong><br>
+          <small class="text-muted">Founder</small>
+        </div>
       </div>
-      <form action="#!" class="search order-lg-3 order-md-2 order-3 ml-auto">
-        <input id="search-query" name="s" type="search" placeholder="Search..." autocomplete="off">
-      </form>
-       <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
-        <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
-          <li class="nav-item"> <a class="nav-link" href="about.html"> Thể thao</a>
-          </li>
-          <li class="nav-item"> <a class="nav-link" href="about.html"> Đời sống</a>
-          </li>
-          <li class="nav-item"> <a class="nav-link" href="about.html"> Giáo dục</a>
-          </li>
-          
-          <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Profile
-            </a>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="">Profile</a>
-                <a class="dropdown-item text-danger" href="login.html">Logout</a>
-            </div>
-          </li>
+      <div class="dropdown-divider"></div>
+    
+      <a class="dropdown-item" href="#">
+        <i class="fas fa-user mr-2"></i> Profile
+      </a>
+      <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+        <span><i class="fas fa-cog mr-2"></i> Settings</span>
+        <span class="badge badge-success">New</span>
+      </a>
+      <a class="dropdown-item text-danger" href="login.html">
+        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+      </a>
+    </div>
+  </div>
+</div>
+
+
+      
+
+
+   <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
+  <div class="category-scroll-wrapper">
+    <button class="scroll-btn scroll-left" onclick="scrollCategories(-1)" id="btnScrollLeft" style="display: none;">‹</button>
+
+    <div class="category-scroll-inner-mask">
+      <div class="category-scroll-inner" id="categoryScroll">
+        <ul class="navbar-nav d-flex flex-row flex-nowrap">
+          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Thể thao</a></li>
+          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Đời sống</a></li>
+          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Giáo dục</a></li>
+          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Công nghệ</a></li>
+          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Thời trang</a></li>
+          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Kinh tế</a></li>
+          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Giải trí</a></li>
         </ul>
       </div>
+    </div>
+
+    <button class="scroll-btn scroll-right" onclick="scrollCategories(1)" id="btnScrollRight">›</button>
+  </div>
+</div>
     </nav>
   </div>
 </header>
@@ -75,7 +173,7 @@
 			<div class="row">
 				<div class="col-lg-8 ">
 					<div class="breadcrumbs mb-4"> <a href="index.html">Trang chủ</a>
-						<span class="mx-1">/</span>  <a href="about.html">Báo Thể thao</a>
+						<span class="mx-1">/</span>  <a href="category.html">Báo Thể thao</a>
 					</div>
 				</div>
         
@@ -120,7 +218,7 @@
           <div class="widget-body">
             <img loading="lazy" decoding="async" src="images/author.jpg" alt="About Me" class="w-100 author-thumb-sm d-block">
             <h2 class="widget-title my-3">Hootan Safiyari</h2>
-            <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter, Developer and Story teller. Working as a Content writter at CoolTech Agency. Quam nihil …</p> <a href="about.html" class="btn btn-sm btn-outline-primary">Know
+            <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter, Developer and Story teller. Working as a Content writter at CoolTech Agency. Quam nihil …</p> <a href="category.html" class="btn btn-sm btn-outline-primary">Know
               More</a>
           </div>
         </div>
@@ -226,7 +324,7 @@
           <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo-white.png" alt="Reporter Hugo">
         </a>
         <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
-          <li class="nav-item my-0"> <a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item my-0"> <a class="nav-link" href="category.html">About</a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="article.html">Elements</a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
@@ -245,6 +343,34 @@
 
 <!-- Main Script -->
 <script src="js/script.js"></script>
+<script>
+  const scrollContainer = document.getElementById("categoryScroll");
+  const btnScrollLeft = document.getElementById("btnScrollLeft");
+  const btnScrollRight = document.getElementById("btnScrollRight");
+
+  let currentIndex = 0;
+  const itemWidth = 120 + 16; // width + margin-right
+  const visibleCount = 5;
+  const totalItems = scrollContainer.querySelectorAll(".nav-item").length;
+
+  function scrollCategories(direction) {
+    const maxIndex = totalItems - visibleCount;
+    currentIndex += direction;
+    currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+
+    const offset = -currentIndex * itemWidth;
+    scrollContainer.style.transform = `translateX(${offset}px)`;
+
+    updateButtons();
+  }
+
+  function updateButtons() {
+    btnScrollLeft.style.display = currentIndex === 0 ? "none" : "block";
+    btnScrollRight.style.display = currentIndex >= totalItems - visibleCount ? "none" : "block";
+  }
+
+  window.addEventListener("load", updateButtons);
+</script>
 
 </body>
 </html>

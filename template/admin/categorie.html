@@ -7,22 +7,22 @@
 
 <head>
     <style>
-  /* Thu nhỏ chữ cho link trong sidebar */
-  .app-menu .nav-link {
-    font-size: 13px !important;
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
+        /* Thu nhỏ chữ cho link trong sidebar */
+        .app-menu .nav-link {
+            font-size: 13px !important;
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
 
-  /* Thu nhỏ chữ tiêu đề menu */
-  .app-menu .menu-title {
-    font-size: 11px !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #9aa4b2;
-  }
-</style>
+        /* Thu nhỏ chữ tiêu đề menu */
+        .app-menu .menu-title {
+            font-size: 11px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9aa4b2;
+        }
+    </style>
 
     <meta charset="utf-8" />
     <title>Dashboard | Velzon - Admin & Dashboard Template</title>
@@ -490,9 +490,7 @@
                                         class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                                         class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Settings</span></a>
-                                <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
-                                        class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Lock screen</span></a>
+                                
                                 <a class="dropdown-item" href="login.html"><i
                                         class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle" data-key="t-logout">Logout</span></a>
@@ -657,7 +655,7 @@
                                 <div class="row mb-3 pb-1">
                                     <div class="col-12">
                                         <div class="d-flex align-items-lg-center flex-lg-row flex-column">
-                                            
+
 
                                         </div><!-- end card header -->
                                     </div>
@@ -713,20 +711,20 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <form>
+                                                                        <form id="categoryForm">
                                                                             <div class="form-group">
-                                                                                <label for="fullName">Tên Danh
+                                                                                <label for="categoryName">Tên Danh
                                                                                     mục</label>
                                                                                 <input type="text" class="form-control"
-                                                                                    id="fullName"
+                                                                                    id="categoryName"
                                                                                     placeholder="Nhập tên danh mục">
                                                                             </div>
 
                                                                             <div class="form-group">
                                                                                 <label
-                                                                                    for="fullName">Description</label>
+                                                                                    for="categoryDesc">Description</label>
                                                                                 <input type="text" class="form-control"
-                                                                                    id="fullName"
+                                                                                    id="categoryDesc"
                                                                                     placeholder="Nhập mô tả">
                                                                             </div>
 
@@ -790,7 +788,7 @@
 
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
+                                                            <tbody id="categoryTableBody">
                                                                 <tr>
                                                                     <th scope="row"><a href="#" class="fw-medium">1</a>
                                                                     </th>
@@ -903,16 +901,42 @@
                                                                                         href="#">View</a></li>
                                                                                 <li><a class="dropdown-item"
                                                                                         href="#">Edit</a></li>
-                                                                                <li><a class="dropdown-item text-danger"
+                                                                                <li>
+                                                                                    <a class="dropdown-item text-danger"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#deleteUser">Delete</a>
+                                                                                        data-bs-target="#deleteUser"
+                                                                                        onclick="prepareDelete(this)">Xóa</a>
                                                                                 </li>
+
+
                                                                             </ul>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal xác nhận xóa -->
+                                                <div class="modal fade" id="deleteUser" tabindex="-1"
+                                                    aria-labelledby="deleteUserLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Xác nhận xóa</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Đóng"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Bạn có chắc chắn muốn xóa danh mục này không?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Hủy</button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                    id="confirmDeleteBtn">Xóa</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -926,6 +950,114 @@
                                                 <script src="assets/libs/feather-icons/feather.min.js"></script>
                                                 <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
                                                 <script src="assets/js/plugins.js"></script>
+                                                <script>
+                                                    let rowToDelete = null;
+                                                    let nameToDelete = "";
+
+                                                    // Chuẩn bị khi nhấn "Xóa"
+                                                    function prepareDelete(element) {
+                                                        rowToDelete = element.closest("tr");
+                                                        nameToDelete = rowToDelete.querySelector("td:nth-child(2)").textContent.trim();
+                                                    }
+
+                                                    document.addEventListener("DOMContentLoaded", function () {
+                                                        const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+
+                                                        confirmDeleteBtn.addEventListener("click", function () {
+                                                            if (rowToDelete && nameToDelete) {
+                                                                // 1. Xóa khỏi DOM
+                                                                rowToDelete.remove();
+
+                                                                // 2. Xóa khỏi localStorage theo name
+                                                                let categories = JSON.parse(localStorage.getItem("categories")) || [];
+                                                                categories = categories.filter(item => item.name !== nameToDelete);
+                                                                localStorage.setItem("categories", JSON.stringify(categories));
+
+                                                                // 3. Đóng modal
+                                                                const modal = bootstrap.Modal.getInstance(document.getElementById("deleteUser"));
+                                                                modal.hide();
+
+                                                                // Reset tạm
+                                                                rowToDelete = null;
+                                                                nameToDelete = "";
+                                                            }
+                                                        });
+                                                    });
+                                                </script>
+
+
+                                                <script>
+                                                    let idCounter = 5;
+
+                                                   
+
+                                                    function submitForm() {
+                                                        const name = document.getElementById("categoryName").value.trim();
+                                                        const desc = document.getElementById("categoryDesc").value.trim();
+
+                                                        if (!name) {
+                                                            alert("Tên danh mục không được để trống!");
+                                                            return;
+                                                        }
+
+                                                        // Lưu vào localStorage
+                                                        const categories = JSON.parse(localStorage.getItem('categories')) || [];
+                                                        categories.push({ name, desc });
+                                                        localStorage.setItem('categories', JSON.stringify(categories));
+
+                                                        // Thêm dòng vào bảng
+                                                        addRow(name, desc, idCounter);
+                                                        idCounter++;
+
+                                                        // Reset form
+                                                        document.getElementById("categoryForm").reset();
+
+                                                        // Đóng modal
+                                                        const modalEl = document.getElementById('dataModal');
+                                                        const modal = bootstrap.Modal.getInstance(modalEl);
+                                                        modal.hide();
+                                                    }
+
+                                                    function addRow(name, desc, id) {
+                                                        const tableBody = document.getElementById("categoryTableBody");
+                                                        const row = document.createElement("tr");
+
+                                                        row.innerHTML = `
+                                                            <td><a href="#" class="text-primary fw-medium">${id}</a></td>
+                                                            <td>${name}</td>
+                                                            <td>${desc}</td>
+                                                            <td>Hoạt động</td>
+                                                            <td>
+                                                            <div class="dropdown">
+                                                                            <button
+                                                                                class="btn btn-link p-0 m-0 border-0 text-muted"
+                                                                                type="button" id="dropdownMenuDots"
+                                                                                data-bs-toggle="dropdown"
+                                                                                aria-expanded="false"
+                                                                                style="font-size: 20px; line-height: 1;">
+                                                                                &#8942;
+                                                                            </button>
+                                                                            <ul class="dropdown-menu dropdown-menu-end"
+                                                                                aria-labelledby="dropdownMenuDots">
+                                                                                <li><a class="dropdown-item"
+                                                                                        href="#">View</a></li>
+                                                                                <li><a class="dropdown-item"
+                                                                                        href="#">Edit</a></li>
+                                                                                <li><a class="dropdown-item text-danger"
+                                                                                        data-bs-toggle="modal"
+                                                                                        data-bs-target="#deleteUser">Delete</a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+      </td>
+    `;
+
+                                                        tableBody.appendChild(row);
+                                                    }
+                                                </script>
+                                                </script>
+
+
 
                                                 <!-- apexcharts -->
                                                 <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
