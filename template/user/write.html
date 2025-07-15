@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>Reporter - HTML Blog Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+	<meta name="description" content="This is meta description">
+	<meta name="author" content="Themefisher">
+	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+	<!-- # Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+	<!-- # CSS Plugins -->
+	<link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+
+	<!-- # Main Style Sheet -->
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+.category-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  max-width: 100%;
+}
+
+.category-scroll-inner-mask {
+  overflow: hidden;
+  width: 600px; /* Chiều rộng giới hạn hiển thị đúng 5 mục */
+}
+
+.category-scroll-inner {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.category-scroll-inner ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  flex: 0 0 auto;
+  width: 120px;
+  text-align: center;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  font-size: 20px;
+  padding: 4px 8px;
+  color: #666;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.scroll-btn:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.scroll-left {
+  left: 0;
+}
+
+.scroll-right {
+  right: 0;
+}
+  #editor {
+    font-size: 16px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 400px;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #bbb;
+    font-style: italic;
+  }
+/* Tiêu đề khi focus */
+  #post-title:focus {
+    outline: none;
+    border-color:#8cb3ff;
+    box-shadow:0 0 0 0.15rem rgba(0,123,255,.25);
+  }
+  .navbar-actions {
+  gap: 10px;
+}
+.tox-edit-area img,
+#post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 15px auto; /* căn giữa và tạo khoảng cách */
+}
+.tox-edit-area figcaption,
+#post-content figcaption,
+#post-content em,
+#post-content small {
+  font-size: 14px !important;
+  color: #555;
+  text-align: center;
+  display: block;
+  margin-top: 5px;
+}
+#post-content img[style] {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<header class="navigation">
+  <div class="container">
+ <nav class="navbar navbar-expand-lg navbar-light px-0 d-flex justify-content-between">
+
+      <a class="navbar-brand order-1 py-0" href="index.html">
+        <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
+      </a>
+      <div class="navbar-actions order-3 ml-0 ml-md-4">
+  <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
+    data-target="#navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+ <!-- Navbar Actions: Write + Publish + User Avatar -->
+<div class="navbar-actions d-flex align-items-center ml-auto">
+
+ 
+ <!-- Nút Publish -->
+<button id="publishBtn" class="btn btn-success rounded-pill px-4 py-2" disabled>
+  Publish
+</button>
+
+
+
+
+  <!-- Nút Write -->
+  <a href="write.html" class="d-flex align-items-center mr-3 text-dark" style="text-decoration: none;">
+    <!-- SVG Write Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" aria-label="Write">
+      <path fill="currentColor" d="M14 4a.5.5 0 0 0 0-1zm7 6a.5.5 0 0 0-1 0zm-7-7H4v1h10zM3 4v16h1V4zm1 17h16v-1H4zm17-1V10h-1v10zm-1 1a1 1 0 0 0 1-1h-1zM3 20a1 1 0 0 0 1 1v-1zM4 3a1 1 0 0 0-1 1h1z"></path>
+      <path stroke="currentColor" d="m17.5 4.5-8.458 8.458a.25.25 0 0 0-.06.098l-.824 2.47a.25.25 0 0 0 .316.316l2.47-.823a.25.25 0 0 0 .098-.06L19.5 6.5m-2-2 2.323-2.323a.25.25 0 0 1 .354 0l1.646 1.646a.25.25 0 0 1 0 .354L19.5 6.5m-2-2 2 2"></path>
+    </svg>
+    <span class="ml-1">Write</span>
+  </a>
+
+  <!-- Dropdown Avatar -->
+  <div class="nav-item dropdown">
+    <a class="dropdown-toggle d-flex align-items-center" href="#" role="button"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="40" height="40">
+      <span class="d-none d-md-inline">Vũ Hải Đăng</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
+      <div class="d-flex align-items-center mb-2">
+        <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="50" height="50">
+        <div>
+          <strong>Vũ Hải Đăng</strong><br>
+          <small class="text-muted">Founder</small>
+        </div>
+      </div>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">
+        <i class="fas fa-user mr-2"></i> Profile
+      </a>
+       <a class="dropdown-item" href="drafts.html">
+        <i class="fas fa-user mr-2"></i> Stories
+      </a>
+      <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+        <span><i class="fas fa-cog mr-2"></i> Settings</span>
+        <span class="badge badge-success">New</span>
+      </a>
+      <a class="dropdown-item text-danger" href="login.html">
+        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+      </a>
+    </div>
+  </div>
+</div>
+
+  </div>
+  </div>
+</div>
+ 
+</header>
+
+<!-- Thay (hoặc thêm) vào bên trong <body> sau <header> -->
+<main class="container my-5" style="max-width:900px;">
+  <!-- Tiêu đề -->
+  <input id="post-title"
+         class="form-control mb-4"
+         placeholder="Title"
+         style="font-size:2.5rem;font-weight:700;border:2px solid #d0d7de;" />
+
+  <!-- Editor -->
+  <textarea id="post-content"></textarea>
+
+ 
+</main>
+
+
+
+
+
+
+<!-- # JS Plugins -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<!-- Editor.js Core -->
+
+
+  
+</script>
+<!-- TinyMCE CDN -->
+<!-- CDN có key -->
+ <!-- kênh stable -->
+<script src="https://cdn.tiny.cloud/1/70dme6jtaubbdgcdg2eeiiz87tt8wq4nkgvtvuobarzj0vkx/tinymce/6/tinymce.min.js" 
+referrerpolicy="origin"></script>
+
+
+
+<script>
+  const titleInput = document.getElementById('post-title');
+  const publishBtn = document.getElementById('publishBtn');
+
+  function checkInput() {
+    const title = titleInput.value.trim();
+    const editor = tinymce.get('post-content');
+    const content = editor ? editor.getContent({ format: 'text' }).trim() : '';
+    publishBtn.disabled = !(title.length > 0 && content.length > 0);
+  }
+
+  titleInput.addEventListener('input', checkInput);
+
+  tinymce.init({
+    selector: '#post-content',
+    plugins: 'lists link image code',
+    toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | image link | code',
+    menubar: false,
+    height: 480,
+    automatic_uploads: true,
+
+    // ✅ Cho phép chọn ảnh từ máy
+    file_picker_types: 'image',
+    file_picker_callback: function (callback, value, meta) {
+      if (meta.filetype === 'image') {
+        const input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+
+        input.onchange = function () {
+          const file = this.files[0];
+          const reader = new FileReader();
+
+          reader.onload = function () {
+            callback(reader.result, {
+              alt: file.name
+            });
+          };
+
+          reader.readAsDataURL(file);
+        };
+
+        input.click();
+      }
+    },
+
+    // ✅ Handler xử lý ảnh base64 (nếu có drag/drop hoặc paste)
+    images_upload_handler: function (blobInfo, success, failure) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        success(reader.result);
+      };
+      reader.onerror = function () {
+        failure("Không thể đọc ảnh");
+      };
+      reader.readAsDataURL(blobInfo.blob());
+    },
+
+    // ✅ Clean khi paste HTML từ ngoài
+    paste_filter_drop: true,
+    paste_preprocess: function (plugin, args) {
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = args.content;
+
+      wrapper.querySelectorAll('noscript, script, style, iframe, link, svg').forEach(el => el.remove());
+      wrapper.querySelectorAll('picture').forEach(pic => {
+        const img = pic.querySelector('img');
+        if (img) pic.replaceWith(img.cloneNode(true));
+        else pic.remove();
+      });
+      wrapper.querySelectorAll('img').forEach(img => {
+        if (img.dataset?.src) img.src = img.dataset.src;
+        ['data-src', 'data-srcset', 'srcset', 'loading', 'style', 'width', 'height']
+          .forEach(attr => img.removeAttribute(attr));
+      });
+
+      const seen = new Set();
+      wrapper.querySelectorAll('img').forEach(img => {
+        const key = img.src.split('?')[0];
+        if (seen.has(key)) img.remove();
+        else seen.add(key);
+      });
+
+      args.content = wrapper.innerHTML;
+    },
+
+    // ✅ Theo dõi thay đổi nội dung
+    setup: function (editor) {
+      editor.on('input change undo redo paste', () => checkInput());
+    },
+
+    // ✅ Style nội dung
+    content_style: `
+      img{max-width:100%;height:auto;display:block;margin:15px auto;}
+      figcaption,em,small{font-size:14px;color:#555;text-align:center;display:block;margin-top:5px;}
+    `
+  });
+
+  publishBtn.addEventListener('click', () => {
+    window.location.href = 'stories.html';
+  });
+</script>
+
+
+
+
+
+</body>
+</html>

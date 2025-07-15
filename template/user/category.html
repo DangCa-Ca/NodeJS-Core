@@ -107,7 +107,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
+ <div class="navbar-actions order-3 ml-0 ml-md-4 d-flex align-items-center">
+   <a href="write.html" class="d-flex align-items-center mr-3 text-dark" style="text-decoration: none;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" aria-label="Write">
+      <path fill="currentColor" d="M14 4a.5.5 0 0 0 0-1zm7 6a.5.5 0 0 0-1 0zm-7-7H4v1h10zM3 4v16h1V4zm1 17h16v-1H4zm17-1V10h-1v10zm-1 1a1 1 0 0 0 1-1h-1zM3 20a1 1 0 0 0 1 1v-1zM4 3a1 1 0 0 0-1 1h1z"></path>
+      <path stroke="currentColor" d="m17.5 4.5-8.458 8.458a.25.25 0 0 0-.06.098l-.824 2.47a.25.25 0 0 0 .316.316l2.47-.823a.25.25 0 0 0 .098-.06L19.5 6.5m-2-2 2.323-2.323a.25.25 0 0 1 .354 0l1.646 1.646a.25.25 0 0 1 0 .354L19.5 6.5m-2-2 2 2"></path>
+    </svg>
+    <span class="ml-1">Write</span>
+  </a>
   <div class="nav-item dropdown">
+   
+    
     <a class=" dropdown-toggle d-flex align-items-center" href="#" role="button"
       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="40" height="40">
@@ -115,7 +125,9 @@
     </a>
 
     <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
+      
       <div class="d-flex align-items-center mb-2">
+        
         <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="50" height="50">
         <div>
           <strong>Vũ Hải Đăng</strong><br>
@@ -127,14 +139,18 @@
       <a class="dropdown-item" href="#">
         <i class="fas fa-user mr-2"></i> Profile
       </a>
-      <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+       <a class="dropdown-item" href="drafts.html">
+        <i class="fas fa-user mr-2"></i> Stories
+      </a>
+        <a class="dropdown-item d-flex justify-content-between align-items-center" href="setting.html">
         <span><i class="fas fa-cog mr-2"></i> Settings</span>
-        <span class="badge badge-success">New</span>
+       
       </a>
       <a class="dropdown-item text-danger" href="login.html">
         <i class="fas fa-sign-out-alt mr-2"></i> Logout
       </a>
     </div>
+  </div>
   </div>
 </div>
 
@@ -343,33 +359,38 @@
 
 <!-- Main Script -->
 <script src="js/script.js"></script>
+
 <script>
-  const scrollContainer = document.getElementById("categoryScroll");
+  const scrollContainer = document.querySelector("#categoryScroll");
   const btnScrollLeft = document.getElementById("btnScrollLeft");
   const btnScrollRight = document.getElementById("btnScrollRight");
 
-  let currentIndex = 0;
-  const itemWidth = 120 + 16; // width + margin-right
-  const visibleCount = 5;
-  const totalItems = scrollContainer.querySelectorAll(".nav-item").length;
+  let currentOffset = 0;
+  const visibleWidth = 600; // khớp với .category-scroll-inner-mask width
 
   function scrollCategories(direction) {
-    const maxIndex = totalItems - visibleCount;
-    currentIndex += direction;
-    currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
+    const scrollAmount = 136 * direction; // item width + margin (120 + 16)
+    const maxOffset = scrollContainer.scrollWidth - visibleWidth;
 
-    const offset = -currentIndex * itemWidth;
-    scrollContainer.style.transform = `translateX(${offset}px)`;
+    currentOffset += scrollAmount;
+    currentOffset = Math.max(0, Math.min(currentOffset, maxOffset));
 
-    updateButtons();
+    scrollContainer.style.transform = `translateX(${-currentOffset}px)`;
+    updateButtons(maxOffset);
   }
 
-  function updateButtons() {
-    btnScrollLeft.style.display = currentIndex === 0 ? "none" : "block";
-    btnScrollRight.style.display = currentIndex >= totalItems - visibleCount ? "none" : "block";
+  function updateButtons(maxOffset) {
+    btnScrollLeft.style.display = currentOffset <= 0 ? "none" : "block";
+    btnScrollRight.style.display = currentOffset >= maxOffset ? "none" : "block";
   }
 
-  window.addEventListener("load", updateButtons);
+  window.addEventListener("load", () => {
+    updateButtons(scrollContainer.scrollWidth - visibleWidth);
+  });
+
+  window.addEventListener("resize", () => {
+    updateButtons(scrollContainer.scrollWidth - visibleWidth);
+  });
 </script>
 
 </body>
