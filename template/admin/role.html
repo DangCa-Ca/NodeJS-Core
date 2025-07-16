@@ -7,22 +7,30 @@
 
 <head>
     <style>
-  /* Thu nhỏ chữ cho link trong sidebar */
-  .app-menu .nav-link {
-    font-size: 13px !important;
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
+        /* Thu nhỏ chữ cho link trong sidebar */
+        .app-menu .nav-link {
+            font-size: 13px !important;
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
 
-  /* Thu nhỏ chữ tiêu đề menu */
-  .app-menu .menu-title {
-    font-size: 11px !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #9aa4b2;
-  }
-</style>
+        /* Thu nhỏ chữ tiêu đề menu */
+        .app-menu .menu-title {
+            font-size: 11px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9aa4b2;
+        }
+
+        .dropdown-toggle-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%;
+            height: 100%;
+        }
+    </style>
 
     <meta charset="utf-8" />
     <title>Dashboard | Velzon - Admin & Dashboard Template</title>
@@ -472,18 +480,18 @@
                                     </span>
                                 </span>
                             </button>
-                             <div class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
                                 <h6 class="dropdown-header">Welcome Anna!</h6>
                                 <a class="dropdown-item" href="pages-profile.html"><i
                                         class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Profile</span></a>
- 
+
                                 <a class="dropdown-item" href="pages-profile-settings.html"><span
                                         class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                                         class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Settings</span></a>
-                                
+
                                 <a class="dropdown-item" href="login.html"><i
                                         class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle" data-key="t-logout">Logout</span></a>
@@ -522,7 +530,7 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
         <!-- ========== App Menu ========== -->
-          <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif;">
+        <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif;">
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <!-- Dark Logo-->
@@ -617,9 +625,7 @@
                         <li class="nav-item">
                             <a href="language.html" class="nav-link" data-key="t-projects">Language </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="comment.html" class="nav-link" data-key="t-projects">Comment </a>
-                        </li>
+
 
 
                     </ul>
@@ -648,7 +654,7 @@
                                 <div class="row mb-3 pb-1">
                                     <div class="col-12">
                                         <div class="d-flex align-items-lg-center flex-lg-row flex-column">
-                                          
+
                                         </div><!-- end card header -->
                                     </div>
                                     <!--end col-->
@@ -763,11 +769,11 @@
                                                         <table class="table align-middle table-nowrap mb-0">
                                                             <thead>
                                                                 <tr>
-                                                                    <th scope="col">ID</th>
-                                                                    <th scope="col">Name</th>
-
-                                                                    <th scope="col">Trạng thái</th>
-                                                                    <th scope="col">Hành động</th>
+                                                                    <th scope="col" style="width: 5%;">ID</th>
+                                                                    <th scope="col" style="width: 50%;">Name</th>
+                                                                    <th scope="col" style="width: 25%;">Trạng thái</th>
+                                                                    <th scope="col" class="text-center align-middle">
+                                                                        Hành động</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -776,18 +782,16 @@
                                                                     </th>
                                                                     <td>Admin</td>
                                                                     <td>Hoạt động</td>
-                                                                    <td>
-                                                                        <div class="dropdown">
+                                                                    <td class="align-middle text-end pe-3">
+                                                                        <div class="dropdown dropdown-toggle-center">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
-                                                                                type="button" id="dropdownMenuDots"
-                                                                                data-bs-toggle="dropdown"
+                                                                                type="button" data-bs-toggle="dropdown"
                                                                                 aria-expanded="false"
                                                                                 style="font-size: 20px; line-height: 1;">
                                                                                 &#8942;
                                                                             </button>
-                                                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                                                aria-labelledby="dropdownMenuDots">
+                                                                            <ul class="dropdown-menu dropdown-menu-end">
                                                                                 <li><a class="dropdown-item"
                                                                                         href="#">View</a></li>
                                                                                 <li><a class="dropdown-item"
@@ -799,13 +803,16 @@
                                                                             </ul>
                                                                         </div>
                                                                     </td>
+
+
+
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row"><a href="#" class="fw-medium">2</a>
                                                                     </th>
                                                                     <td>Supperadmin</td>
                                                                     <td>Hoạt động</td>
-                                                                    <td>
+                                                                    <td class="text-center align-middle">
                                                                         <div class="dropdown">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
@@ -834,7 +841,7 @@
                                                                     </th>
                                                                     <td>User</td>
                                                                     <td>Hoạt động</td>
-                                                                    <td>
+                                                                    <td class="text-center align-middle">
                                                                         <div class="dropdown">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
@@ -859,11 +866,12 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
+
                                                                     <th scope="row"><a href="#" class="fw-medium">4</a>
                                                                     </th>
                                                                     <td>Adtech</td>
                                                                     <td>Hoạt động</td>
-                                                                    <td>
+                                                                    <td class="text-center align-middle">
                                                                         <div class="dropdown">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
@@ -920,6 +928,15 @@
 
                                                 <!-- App js -->
                                                 <script src="assets/js/app.js"></script>
+                                                <script>
+                                                    function countRoles() {
+                                                        const table = document.querySelector("table");
+                                                        const count = table.querySelectorAll("tbody tr").length;
+                                                        localStorage.setItem("roleCount", count);
+                                                    }
+                                                    window.onload = countRoles;
+                                                </script>
+
 </body>
 
 

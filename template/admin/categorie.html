@@ -22,6 +22,14 @@
             letter-spacing: 1px;
             color: #9aa4b2;
         }
+
+        .dropdown-toggle-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100%;
+            height: 100%;
+        }
     </style>
 
     <meta charset="utf-8" />
@@ -490,7 +498,7 @@
                                         class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                                         class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Settings</span></a>
-                                
+
                                 <a class="dropdown-item" href="login.html"><i
                                         class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle" data-key="t-logout">Logout</span></a>
@@ -624,9 +632,7 @@
                         <li class="nav-item">
                             <a href="language.html" class="nav-link" data-key="t-projects">Language </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="comment.html" class="nav-link" data-key="t-projects">Comment </a>
-                        </li>
+                       
 
 
                     </ul>
@@ -779,34 +785,32 @@
                                                         <table class="table align-middle table-nowrap mb-0">
                                                             <thead>
                                                                 <tr>
-                                                                    <th scope="col">ID</th>
-                                                                    <th scope="col">Tên</th>
-                                                                    <th scope="col">Mô tả</th>
-
-                                                                    <th scope="col">Trạng thái</th>
-                                                                    <th scope="col">Hành động</th>
+                                                                    <th scope="col" style="width: 5%;">ID</th>
+                                                                    <th scope="col" style="width: 30%;">Tên</th>
+                                                                    <th scope="col" style="width: 35%;">Mô tả</th>
+                                                                    <th scope="col" style="width: 15%;">Trạng thái</th>
+                                                                    <th scope="col" class="text-center align-middle">
+                                                                        Hành động</th>
 
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="categoryTableBody">
                                                                 <tr>
-                                                                    <th scope="row"><a href="#" class="fw-medium">1</a>
+                                                                   <th scope="row"><a href="#" class="fw-medium">1</a>
                                                                     </th>
-                                                                    <td>Thế giới </td>
-                                                                    <td>1123</td>
-                                                                    <td>Hoạt động</td>
-                                                                    <td>
-                                                                        <div class="dropdown">
+                                                                    <td class="align-middle">Thế giới</td>
+                                                                    <td class="align-middle">1123</td>
+                                                                    <td class="align-middle">Hoạt động</td>
+                                                                    <td class="align-middle text-end pe-3">
+                                                                        <div class="dropdown dropdown-toggle-center">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
-                                                                                type="button" id="dropdownMenuDots"
-                                                                                data-bs-toggle="dropdown"
+                                                                                type="button" data-bs-toggle="dropdown"
                                                                                 aria-expanded="false"
                                                                                 style="font-size: 20px; line-height: 1;">
                                                                                 &#8942;
                                                                             </button>
-                                                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                                                aria-labelledby="dropdownMenuDots">
+                                                                            <ul class="dropdown-menu dropdown-menu-end">
                                                                                 <li><a class="dropdown-item"
                                                                                         href="#">View</a></li>
                                                                                 <li><a class="dropdown-item"
@@ -818,6 +822,8 @@
                                                                             </ul>
                                                                         </div>
                                                                     </td>
+
+
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row"><a href="#" class="fw-medium">2</a>
@@ -825,18 +831,16 @@
                                                                     <td>Thể Thao </td>
                                                                     <td>123</td>
                                                                     <td>Hoạt động</td>
-                                                                    <td>
-                                                                        <div class="dropdown">
+                                                                      <td class="align-middle text-end pe-3">
+                                                                        <div class="dropdown dropdown-toggle-center">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
-                                                                                type="button" id="dropdownMenuDots"
-                                                                                data-bs-toggle="dropdown"
+                                                                                type="button" data-bs-toggle="dropdown"
                                                                                 aria-expanded="false"
                                                                                 style="font-size: 20px; line-height: 1;">
                                                                                 &#8942;
                                                                             </button>
-                                                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                                                aria-labelledby="dropdownMenuDots">
+                                                                            <ul class="dropdown-menu dropdown-menu-end">
                                                                                 <li><a class="dropdown-item"
                                                                                         href="#">View</a></li>
                                                                                 <li><a class="dropdown-item"
@@ -855,18 +859,16 @@
                                                                     <td>Giao thông</td>
                                                                     <td>123</td>
                                                                     <td>Hoạt động</td>
-                                                                    <td>
-                                                                        <div class="dropdown">
+                                                                      <td class="align-middle text-end pe-3">
+                                                                        <div class="dropdown dropdown-toggle-center">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
-                                                                                type="button" id="dropdownMenuDots"
-                                                                                data-bs-toggle="dropdown"
+                                                                                type="button" data-bs-toggle="dropdown"
                                                                                 aria-expanded="false"
                                                                                 style="font-size: 20px; line-height: 1;">
                                                                                 &#8942;
                                                                             </button>
-                                                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                                                aria-labelledby="dropdownMenuDots">
+                                                                            <ul class="dropdown-menu dropdown-menu-end">
                                                                                 <li><a class="dropdown-item"
                                                                                         href="#">View</a></li>
                                                                                 <li><a class="dropdown-item"
@@ -878,6 +880,7 @@
                                                                             </ul>
                                                                         </div>
                                                                     </td>
+
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row"><a href="#" class="fw-medium">4</a>
@@ -885,30 +888,24 @@
                                                                     <td>Giáo Dục</td>
                                                                     <td>123</td>
                                                                     <td>Hoạt động</td>
-                                                                    <td>
-                                                                        <div class="dropdown">
+                                                                      <td class="align-middle text-end pe-3">
+                                                                        <div class="dropdown dropdown-toggle-center">
                                                                             <button
                                                                                 class="btn btn-link p-0 m-0 border-0 text-muted"
-                                                                                type="button" id="dropdownMenuDots"
-                                                                                data-bs-toggle="dropdown"
+                                                                                type="button" data-bs-toggle="dropdown"
                                                                                 aria-expanded="false"
                                                                                 style="font-size: 20px; line-height: 1;">
                                                                                 &#8942;
                                                                             </button>
-                                                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                                                aria-labelledby="dropdownMenuDots">
+                                                                            <ul class="dropdown-menu dropdown-menu-end">
                                                                                 <li><a class="dropdown-item"
                                                                                         href="#">View</a></li>
                                                                                 <li><a class="dropdown-item"
                                                                                         href="#">Edit</a></li>
-                                                                                <li>
-                                                                                    <a class="dropdown-item text-danger"
+                                                                                <li><a class="dropdown-item text-danger"
                                                                                         data-bs-toggle="modal"
-                                                                                        data-bs-target="#deleteUser"
-                                                                                        onclick="prepareDelete(this)">Xóa</a>
+                                                                                        data-bs-target="#deleteUser">Delete</a>
                                                                                 </li>
-
-
                                                                             </ul>
                                                                         </div>
                                                                     </td>
@@ -989,7 +986,7 @@
                                                 <script>
                                                     let idCounter = 5;
 
-                                                   
+
 
                                                     function submitForm() {
                                                         const name = document.getElementById("categoryName").value.trim();
@@ -1074,6 +1071,19 @@
 
                                                 <!-- App js -->
                                                 <script src="assets/js/app.js"></script>
+                                                <script>
+                                                    // Đếm số hàng trong bảng danh mục
+                                                    function countCategories() {
+                                                        const table = document.querySelector("table");
+                                                        const rowCount = table.querySelectorAll("tbody tr").length;
+
+                                                        // Lưu số lượng vào localStorage
+                                                        localStorage.setItem("categoryCount", rowCount);
+                                                    }
+
+                                                    window.onload = countCategories;
+                                                </script>
+
 </body>
 
 </html>

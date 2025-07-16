@@ -22,6 +22,17 @@
     letter-spacing: 1px;
     color: #9aa4b2;
   }
+  .bg-pink {
+  background-color: #eca2c7 !important;
+}
+ #postDetailModal img {
+    max-width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 1rem;
+  }
+
 </style>
 
     <meta charset="utf-8" />
@@ -494,6 +505,132 @@
             </div>
         </header>
 
+    <main class="container py-5 ">
+
+
+  <div class="row g-3">
+   <div class="container py-5">
+<div class="row g-4 justify-content-start" style="padding-left: 220px;">
+
+    <!-- Category -->
+    <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
+
+      <div class="card text-white bg-pink h-100">
+        <div class="card-body text-center">
+          <h6 class="fw-bold">Danh mục</h6>
+       <div id="count-category">0</div>
+
+        </div>
+        <div class="card-footer bg-transparent text-center">
+          <a href="categorie.html" class="text-white text-decoration-underline small">Xem danh sách</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- User -->
+    <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
+
+      <div class="card text-white bg-success h-100">
+        <div class="card-body text-center">
+          <h6 class="fw-bold">Người dùng</h6>
+         <div id="count-user">0</div>
+
+        </div>
+        <div class="card-footer bg-transparent text-center">
+          <a href="user.html" class="text-white text-decoration-underline small">Xem danh sách</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post -->
+    <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
+
+      <div class="card text-white bg-warning h-100">
+        <div class="card-body text-center">
+          <h6 class="fw-bold">Bài viết</h6>
+        <div id="count-post">0</div>
+
+        </div>
+        <div class="card-footer bg-transparent text-center">
+          <a href="post.html" class="text-white text-decoration-underline small">Xem danh sách</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Language -->
+   <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
+
+      <div class="card text-white bg-danger h-100">
+        <div class="card-body text-center">
+          <h6 class="fw-bold">Ngôn ngữ</h6>
+         <div id="count-language">0</div>
+
+        </div>
+        <div class="card-footer bg-transparent text-center">
+          <a href="language.html" class="text-white text-decoration-underline small">Xem danh sách</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Role -->
+   <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
+
+      <div class="card text-white bg-info h-100">
+        <div class="card-body text-center">
+          <h6 class="fw-bold">Vai trò</h6>
+         <div id="count-role">0</div>
+
+        </div>
+        <div class="card-footer bg-transparent text-center">
+          <a href="role.html" class="text-white text-decoration-underline small">Xem danh sách</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bài viết mới nhất -->
+<div class="row mt-4 justify-content-center" style="padding-left: 255px;">
+  <div class="col-md-50">
+    <div class="card shadow border-0 p-4">
+      <div class="card-body">
+        <!-- Ảnh bài viết -->
+        <img id="latest-post-image" class="img-fluid rounded mb-3 d-none" alt="Ảnh bài viết"
+             style="max-height: 180px; object-fit: cover;" />
+
+        <h5 class="card-title fw-bold" id="latest-post-title">Tiêu đề bài viết</h5>
+        <p class="card-text" id="latest-post-preview">Nội dung ngắn gọn bài viết...</p>
+        <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#postDetailModal">
+          Xem chi tiết
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+<div class="modal fade" id="postDetailModal" tabindex="-1" aria-labelledby="postDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postDetailModalLabel">Chi tiết bài viết</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Tiêu đề:</strong> <span id="modal-post-title"></span></p>
+        <p><strong>Nội dung:</strong></p>
+        <div id="modal-post-content" class="mb-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
         <!-- removeNotificationModal -->
         <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -619,9 +756,7 @@
                         <li class="nav-item">
                             <a href="language.html" class="nav-link" data-key="t-projects">Language </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="comment.html" class="nav-link" data-key="t-projects">Comment </a>
-                        </li>
+                      
 
 
                     </ul>
@@ -677,6 +812,72 @@
 
 <!-- App js -->
 <script src="assets/js/app.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const endpoints = {
+      category: '/api/v1/admin/category',
+      user: '/api/v1/admin/user',
+      post: '/api/v1/admin/post',
+      language: '/api/v1/admin/language',
+      role: '/api/v1/admin/role'
+    };
+
+    for (const [key, url] of Object.entries(endpoints)) {
+      try {
+        const res = await fetch(url);
+        const json = await res.json();
+        document.getElementById(`count-${key}`).textContent = json.data?.length || 0;
+      } catch (err) {
+        console.error(`Error loading ${key}:`, err);
+      }
+    }
+  });
+</script>
+<script>
+  window.onload = function () {
+    document.getElementById("count-category").innerText = localStorage.getItem("categoryCount") || 0;
+    document.getElementById("count-post").innerText = localStorage.getItem("postCount") || 0;
+    document.getElementById("count-language").innerText = localStorage.getItem("languageCount") || 0;
+    document.getElementById("count-role").innerText = localStorage.getItem("roleCount") || 0;
+    document.getElementById("count-user").innerText = localStorage.getItem("userCount") || 0;
+  };
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const posts = JSON.parse(localStorage.getItem("myPosts") || "[]");
+    if (posts.length === 0) return;
+
+    // Lấy bài viết có id lớn nhất
+    const latestPost = posts.reduce((maxPost, post) => post.id > maxPost.id ? post : maxPost, posts[0]);
+
+    // Gán tiêu đề
+    document.getElementById("latest-post-title").textContent = latestPost.title;
+
+    // Tạo nội dung ngắn (loại bỏ HTML thô)
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = latestPost.content;
+    const previewText = tempDiv.textContent || tempDiv.innerText || "";
+    document.getElementById("latest-post-preview").textContent = previewText.slice(0, 150) + "...";
+
+    // Nếu có ảnh, hiển thị ảnh đầu tiên
+    const imgTag = tempDiv.querySelector("img");
+    if (imgTag) {
+      const previewImg = document.getElementById("latest-post-image");
+      previewImg.src = imgTag.src;
+      previewImg.classList.remove("d-none");
+    }
+
+    // Gán nội dung vào modal
+    document.getElementById("modal-post-title").textContent = latestPost.title;
+    document.getElementById("modal-post-content").innerHTML = latestPost.content;
+  });
+</script>
+
+
+
+
 </body>
 
 

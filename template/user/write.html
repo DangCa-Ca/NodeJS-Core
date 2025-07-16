@@ -130,6 +130,13 @@
   height: auto !important;
   max-width: 100% !important;
 }
+#draftSavedMsg {
+  color: green;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: none;
+  white-space: nowrap;
+}
 
 
 
@@ -141,19 +148,29 @@
 <header class="navigation">
   <div class="container">
  <nav class="navbar navbar-expand-lg navbar-light px-0 d-flex justify-content-between">
-
+   <div class="d-flex align-items-center">
       <a class="navbar-brand order-1 py-0" href="index.html">
         <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
+                
       </a>
+    
+</div>
+
       <div class="navbar-actions order-3 ml-0 ml-md-4">
   <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
     data-target="#navigation">
+    
     <span class="navbar-toggler-icon"></span>
+    
   </button>
 
- <!-- Navbar Actions: Write + Publish + User Avatar -->
-<div class="navbar-actions d-flex align-items-center ml-auto">
+     <!-- RIGHT GROUP -->
+      <div class="navbar-actions order-3 ml-0 ml-md-4 d-flex align-items-center">
 
+   <!-- ✅ Draft Saved nằm bên phải logo -->
+        <span id="draftSavedMsg" style="color: green; font-weight: 500; font-size: 0.95rem; margin-right: 16px; display: none;">
+          Draft Saved
+        </span>
  
  <!-- Nút Publish -->
 <button id="publishBtn" class="btn btn-success rounded-pill px-4 py-2" disabled>
@@ -189,15 +206,14 @@
         </div>
       </div>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">
+      <a class="dropdown-item" href="profile.html">
         <i class="fas fa-user mr-2"></i> Profile
       </a>
-       <a class="dropdown-item" href="drafts.html">
+       <a class="dropdown-item" href="stories.html">
         <i class="fas fa-user mr-2"></i> Stories
       </a>
-      <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+      <a class="dropdown-item d-flex justify-content-between align-items-center" href="setting.html">
         <span><i class="fas fa-cog mr-2"></i> Settings</span>
-        <span class="badge badge-success">New</span>
       </a>
       <a class="dropdown-item text-danger" href="login.html">
         <i class="fas fa-sign-out-alt mr-2"></i> Logout
@@ -215,13 +231,11 @@
 <!-- Thay (hoặc thêm) vào bên trong <body> sau <header> -->
 <main class="container my-5" style="max-width:900px;">
   <!-- Tiêu đề -->
-  <input id="post-title"
-         class="form-control mb-4"
-         placeholder="Title"
-         style="font-size:2.5rem;font-weight:700;border:2px solid #d0d7de;" />
+  <input id="post-title" class="form-control mb-4" placeholder="Title" 
+  style="font-size:2.5rem;font-weight:700;border:2px solid #d0d7de;" />
 
   <!-- Editor -->
-  <textarea id="post-content"></textarea>
+   <textarea id="post-content"></textarea>
 
  
 </main>
@@ -248,106 +262,106 @@ referrerpolicy="origin"></script>
 
 
 <script>
-  const titleInput = document.getElementById('post-title');
-  const publishBtn = document.getElementById('publishBtn');
+const titleInput      = document.getElementById('post-title');
+const publishBtn      = document.getElementById('publishBtn');
+const draftSavedMsg   = document.getElementById('draftSavedMsg');
 
-  function checkInput() {
-    const title = titleInput.value.trim();
-    const editor = tinymce.get('post-content');
-    const content = editor ? editor.getContent({ format: 'text' }).trim() : '';
-    publishBtn.disabled = !(title.length > 0 && content.length > 0);
-  }
+// Lấy ID từ query nếu có (sửa nháp), còn không tạo mới
+let draftId = new URLSearchParams(location.search).get('id') || Date.now().toString();
+let saveTimer = null;
 
-  titleInput.addEventListener('input', checkInput);
+/* ✅ Check xem có được phép Publish chưa */
+function checkInput() {
+  const title = titleInput.value.trim();
+  const editor = tinymce.get('post-content');
+  const content = editor ? editor.getContent({ format: 'text' }).trim() : '';
+  publishBtn.disabled = !(title && content);
+}
 
-  tinymce.init({
-    selector: '#post-content',
-    plugins: 'lists link image code',
-    toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | image link | code',
-    menubar: false,
-    height: 480,
-    automatic_uploads: true,
+/* ✅ Lưu nháp */
+function saveDraft() {
+  const title = titleInput.value.trim();
+  const content = tinymce.get('post-content')?.getContent() || '';
+  if (!title || !content) return;
 
-    // ✅ Cho phép chọn ảnh từ máy
-    file_picker_types: 'image',
-    file_picker_callback: function (callback, value, meta) {
-      if (meta.filetype === 'image') {
-        const input = document.createElement('input');
-        input.setAttribute('type', 'file');
-        input.setAttribute('accept', 'image/*');
+  const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
+  const idx = drafts.findIndex(d => d.id === draftId);
+  const now = new Date().toISOString();
 
-        input.onchange = function () {
-          const file = this.files[0];
-          const reader = new FileReader();
+  const draft = { id: draftId, title, content, savedAt: now };
 
-          reader.onload = function () {
-            callback(reader.result, {
-              alt: file.name
-            });
-          };
+  if (idx > -1) drafts[idx] = draft;
+  else drafts.push(draft);
 
-          reader.readAsDataURL(file);
+  localStorage.setItem('drafts', JSON.stringify(drafts));
+  draftSavedMsg.style.display = 'inline';
+  console.log('✅ Auto-saved draft');
+}
+
+/* ✅ Tự động lưu sau 1s không gõ */
+function debounceSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveDraft, 1000);
+}
+
+/* ✅ Khởi tạo TinyMCE */
+tinymce.init({
+  selector: '#post-content',
+  plugins: 'lists link image code',
+  toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | image link | code',
+  menubar: false,
+  height: 480,
+  automatic_uploads: true,
+
+  file_picker_types: 'image',
+  file_picker_callback: function (callback, value, meta) {
+    if (meta.filetype === 'image') {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = function () {
+        const file = this.files[0];
+        const reader = new FileReader();
+        reader.onload = function () {
+          callback(reader.result, { alt: file.name });
         };
-
-        input.click();
-      }
-    },
-
-    // ✅ Handler xử lý ảnh base64 (nếu có drag/drop hoặc paste)
-    images_upload_handler: function (blobInfo, success, failure) {
-      const reader = new FileReader();
-      reader.onload = function () {
-        success(reader.result);
+        reader.readAsDataURL(file);
       };
-      reader.onerror = function () {
-        failure("Không thể đọc ảnh");
-      };
-      reader.readAsDataURL(blobInfo.blob());
-    },
+      input.click();
+    }
+  },
 
-    // ✅ Clean khi paste HTML từ ngoài
-    paste_filter_drop: true,
-    paste_preprocess: function (plugin, args) {
-      const wrapper = document.createElement('div');
-      wrapper.innerHTML = args.content;
+  images_upload_handler: function (blobInfo, success, failure) {
+    const reader = new FileReader();
+    reader.onload = () => success(reader.result);
+    reader.onerror = () => failure("Không thể đọc ảnh");
+    reader.readAsDataURL(blobInfo.blob());
+  },
 
-      wrapper.querySelectorAll('noscript, script, style, iframe, link, svg').forEach(el => el.remove());
-      wrapper.querySelectorAll('picture').forEach(pic => {
-        const img = pic.querySelector('img');
-        if (img) pic.replaceWith(img.cloneNode(true));
-        else pic.remove();
-      });
-      wrapper.querySelectorAll('img').forEach(img => {
-        if (img.dataset?.src) img.src = img.dataset.src;
-        ['data-src', 'data-srcset', 'srcset', 'loading', 'style', 'width', 'height']
-          .forEach(attr => img.removeAttribute(attr));
-      });
+  setup: function (editor) {
+    editor.on('input change undo redo paste', () => {
+      debounceSave();
+      checkInput();
+    });
+  },
 
-      const seen = new Set();
-      wrapper.querySelectorAll('img').forEach(img => {
-        const key = img.src.split('?')[0];
-        if (seen.has(key)) img.remove();
-        else seen.add(key);
-      });
+  content_style: `
+    img{max-width:100%;height:auto;display:block;margin:15px auto;}
+    figcaption,em,small{font-size:14px;color:#555;text-align:center;display:block;margin-top:5px;}
+  `
+});
 
-      args.content = wrapper.innerHTML;
-    },
+/* ✅ Lắng nghe title input */
+titleInput.addEventListener('input', () => {
+  debounceSave();
+  checkInput();
+});
 
-    // ✅ Theo dõi thay đổi nội dung
-    setup: function (editor) {
-      editor.on('input change undo redo paste', () => checkInput());
-    },
-
-    // ✅ Style nội dung
-    content_style: `
-      img{max-width:100%;height:auto;display:block;margin:15px auto;}
-      figcaption,em,small{font-size:14px;color:#555;text-align:center;display:block;margin-top:5px;}
-    `
-  });
-
-  publishBtn.addEventListener('click', () => {
-    window.location.href = 'stories.html';
-  });
+/* ✅ Khi bấm Publish */
+publishBtn.addEventListener('click', () => {
+  saveDraft();  // đảm bảo lưu draft cuối cùng
+  window.location.href = `create-post.html?id=${draftId}`;
+});
 </script>
 
 
