@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<!--
+ // WEBSITE: https://themefisher.com
+ // TWITTER: https://twitter.com/themefisher
+ // FACEBOOK: https://www.facebook.com/themefisher
+ // GITHUB: https://github.com/themefisher/
+-->
+
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Reporter - HTML Blog Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="This is meta description">
+    <meta name="author" content="Themefisher">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+
+    <!-- # Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- # CSS Plugins -->
+    <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+
+    <!-- # Main Style Sheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .gap-2>*+* {
+            margin-left: 0.5rem;
+        }
+
+        .nav-tabs {
+            border-bottom: none;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            border-radius: 0;
+            color: #495057;
+            padding: 0.5rem 1rem;
+            background: none;
+            font-weight: normal;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .nav-tabs .nav-link.active {
+            background: none !important;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .nav-tabs .nav-link:hover {
+            background: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .nav-tabs .nav-link .badge {
+            margin-left: 0.25rem;
+            vertical-align: middle;
+            font-size: 0.75rem;
+            padding: 0.25em 0.5em;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid #dee2e6 !important;
+        }
+   
+    .modal-content {
+    border-radius: 16px;
+  }
+  .btn {
+    font-weight: 500;
+  }
+    </style>
+</head>
+
+<body>
+
+    <header class="navigation">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light px-0 d-flex justify-content-between">
+
+                <a class="navbar-brand order-1 py-0" href="index.html">
+                    <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
+                </a>
+                <div class="navbar-actions order-3 ml-0 ml-md-4">
+                    <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button"
+                        data-toggle="collapse" data-target="#navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Navbar Actions: Write + Publish + User Avatar -->
+                    <div class="navbar-actions d-flex align-items-center ml-auto">
+
+
+
+                        <!-- Nút Write -->
+                        <a href="write.html" class="d-flex align-items-center mr-3 text-dark"
+                            style="text-decoration: none;">
+                            <!-- SVG Write Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                viewBox="0 0 24 24" aria-label="Write">
+                                <path fill="currentColor"
+                                    d="M14 4a.5.5 0 0 0 0-1zm7 6a.5.5 0 0 0-1 0zm-7-7H4v1h10zM3 4v16h1V4zm1 17h16v-1H4zm17-1V10h-1v10zm-1 1a1 1 0 0 0 1-1h-1zM3 20a1 1 0 0 0 1 1v-1zM4 3a1 1 0 0 0-1 1h1z">
+                                </path>
+                                <path stroke="currentColor"
+                                    d="m17.5 4.5-8.458 8.458a.25.25 0 0 0-.06.098l-.824 2.47a.25.25 0 0 0 .316.316l2.47-.823a.25.25 0 0 0 .098-.06L19.5 6.5m-2-2 2.323-2.323a.25.25 0 0 1 .354 0l1.646 1.646a.25.25 0 0 1 0 .354L19.5 6.5m-2-2 2 2">
+                                </path>
+                            </svg>
+                            <span class="ml-1">Write</span>
+                        </a>
+
+                        <!-- Dropdown Avatar -->
+                        <div class="nav-item dropdown">
+                            <a class="dropdown-toggle d-flex align-items-center" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar"
+                                    class="rounded-circle mr-2" width="40" height="40">
+                                <span class="d-none d-md-inline">Vũ Hải Đăng</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
+                                <div class="d-flex align-items-center mb-2">
+                                    <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar"
+                                        class="rounded-circle mr-2" width="50" height="50">
+                                    <div>
+                                        <strong>Vũ Hải Đăng</strong><br>
+                                        <small class="text-muted">Founder</small>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user mr-2"></i> Profile
+                                </a>
+                                <a class="dropdown-item" href="stories.html">
+                                    <i class="fas fa-user mr-2"></i> Stories
+                                </a>
+                                <a class="dropdown-item d-flex justify-content-between align-items-center"
+                                    href="setting.html">
+                                    <span><i class="fas fa-cog mr-2"></i> Settings</span>
+
+                                </a>
+                                <a class="dropdown-item text-danger" href="login.html">
+                                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+        </div>
+
+    </header>
+
+   <main class="container my-5" style="max-width: 900px;">
+ <div class="row">
+  <!-- LEFT: Thông tin người dùng + kẻ dọc -->
+  <div class="col-md-8 border-end pe-md-4">
+    <div class="p-4 bg-light border rounded shadow-sm mb-4">
+      <h3 class="mb-4">Thông tin người dùng</h3>
+      <div class="row mb-3">
+        <div class="col-4 fw-bold">ID:</div>
+        <div class="col-8">41</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4 fw-bold">Tên người dùng:</div>
+        <div class="col-8">Vũ Hải Đăng</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-4 fw-bold">Email:</div>
+        <div class="col-8">dangdepzai918@gmail.com</div>
+      </div>
+     <div class="row mb-3">
+  <div class="col-4 fw-bold">Pronouns:</div>
+  <div class="col-8" id="pronounsDisplay">N/A</div>
+</div>
+<div class="row mb-3">
+  <div class="col-4 fw-bold">Short bio:</div>
+  <div class="col-8" id="bioDisplay">N/A</div> <!-- FIX: id đổi thành bioDisplay -->
+</div>
+
+
+      <a class="btn btn-danger mt-3" href="my-blog.html">Danh sách bài viết</a>
+    </div>
+  </div>
+
+  <!-- RIGHT: Avatar + Tên + Edit -->
+  <div class="col-md-4 ps-md-4 d-flex flex-column align-items-center">
+  <img id="avatarDisplay" src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mb-3" width="150" height="150" />
+    <h5>Vũ Hải Đăng</h5>
+    <a href="#" class="text-primary text-decoration-underline mt-2" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+      Edit Profile
+    </a>
+
+
+</main>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <h5 class="fw-bold text-center mb-4">Profile information</h5>
+
+      <!-- Photo + Upload -->
+      <div class="d-flex align-items-start mb-4">
+        <!-- Avatar -->
+        <div class="me-3">
+          <img
+            id="avatarPreview"
+            src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif"
+            alt="Avatar"
+            class="rounded-circle border"
+            width="80"
+            height="80"
+          />
+        </div>
+
+        <!-- Upload/Remove -->
+        <div class="flex-grow-1">
+          <div class="mb-1">
+            <a href="#" class="text-success me-2" onclick="document.getElementById('avatarInput').click()">Update</a>
+            <a href="#" class="text-danger" onclick="removeAvatar()">Remove</a>
+          </div>
+          <small class="text-muted">
+            Recommended: Square JPG, PNG, or GIF, at least 1,000 pixels per side.
+          </small>
+          <input type="file" id="avatarInput" accept="image/*" class="d-none" onchange="previewAvatar(event)">
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Name*</label>
+          <input type="text" class="form-control" maxlength="50" id="nameInput" value="Hải Đăng" oninput="updateCharCount(this, 'nameCount', 50)">
+          <div class="text-end small text-muted"><span id="nameCount">8</span>/50</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Pronouns</label>
+          <input type="text" class="form-control" maxlength="4" id="pronounsInput" placeholder="Add..." oninput="updateCharCount(this, 'pronounsCount', 4)">
+          <div class="text-end small text-muted"><span id="pronounsCount">0</span>/4</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Short bio</label>
+          <textarea class="form-control" rows="3" maxlength="160" id="bioInput" placeholder="Write a short bio..." oninput="updateCharCount(this, 'bioCount', 160)"></textarea>
+          <div class="text-end small text-muted"><span id="bioCount">0</span>/160</div>
+        </div>
+
+        <hr />
+
+        <p class="text-muted small">
+          <strong>About Page</strong><br />
+          Personalize with images and more to paint more of a vivid portrait of yourself than your ‘Short bio.’
+        </p>
+
+        <!-- Buttons -->
+        <div class="text-end mt-4">
+          <button type="button" class="btn btn-outline-success rounded-pill px-4 me-2" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-success rounded-pill px-4" disabled id="saveBtn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <!-- # JS Plugins -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/bootstrap.min.js"></script>
+    <!-- Editor.js Core -->
+
+
+
+    </script>
+    <!-- TinyMCE CDN -->
+    <!-- CDN có key -->
+    <script src="https://cdn.tiny.cloud/1/70dme6jtaubbdgcdg2eeiiz87tt8wq4nkgvtvuobarzj0vkx/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/editorjs-paste-parser@latest"></script>
+<script>
+  function previewAvatar(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        document.getElementById("avatarPreview").src = e.target.result;
+        document.getElementById("saveBtn").disabled = false;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function removeAvatar() {
+    document.getElementById("avatarPreview").src = "https://via.placeholder.com/80?text=Avatar";
+    document.getElementById("avatarInput").value = "";
+    document.getElementById("saveBtn").disabled = false;
+  }
+
+  function updateCharCount(input, targetId, max) {
+    document.getElementById(targetId).innerText = input.value.length;
+    document.getElementById("saveBtn").disabled = false;
+  }
+</script>
+
+<script>
+  const avatarInput = document.getElementById("avatarInput");
+  const avatarPreview = document.getElementById("avatarPreview");
+  const avatarDisplay = document.getElementById("avatarDisplay");
+  const saveBtn = document.getElementById("saveBtn");
+
+  const pronounsInput = document.getElementById("pronounsInput");
+  const bioInput = document.getElementById("bioInput");
+
+  const pronounsDisplay = document.getElementById("pronounsDisplay");
+  const bioDisplay = document.getElementById("bioDisplay");
+
+  // Đếm ký tự nhập
+  function updateCharCount(input, counterId, max) {
+    document.getElementById(counterId).innerText = input.value.length;
+    checkChanges();
+  }
+
+  // Hiển thị ảnh đã chọn
+  function previewAvatar(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        avatarPreview.src = e.target.result;
+        checkChanges();
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // Xóa ảnh về mặc định
+  function removeAvatar() {
+    avatarPreview.src = "https://via.placeholder.com/80";
+    avatarInput.value = null;
+    checkChanges();
+  }
+
+  // Kiểm tra nếu có thay đổi để enable nút Save
+  function checkChanges() {
+    const originalAvatar = avatarDisplay.src;
+  const previewChanged = avatarPreview.src !== originalAvatar;
+
+  const currentPronouns = pronounsDisplay.textContent === "N/A" ? "" : pronounsDisplay.textContent;
+  const currentBio = bioDisplay.textContent === "N/A" ? "" : bioDisplay.textContent;
+
+  const pronounsChanged = pronounsInput.value !== currentPronouns;
+  const bioChanged = bioInput.value !== currentBio;
+
+  saveBtn.disabled = !(previewChanged || pronounsChanged || bioChanged);
+  }
+
+  // Khi ấn Save
+  document.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Cập nhật avatar
+    avatarDisplay.src = avatarPreview.src;
+
+    // Cập nhật pronouns và bio
+    pronounsDisplay.textContent = pronounsInput.value || "N/A";
+    bioDisplay.textContent = bioInput.value || "N/A";
+
+    // Đóng modal (nếu dùng Bootstrap 5)
+    const modal = bootstrap.Modal.getInstance(document.getElementById("editProfileModal"));
+    modal.hide();
+
+    saveBtn.disabled = true; // Tắt lại nút Save
+  });
+</script>
+
+
+
+</body>
+
+</html>
