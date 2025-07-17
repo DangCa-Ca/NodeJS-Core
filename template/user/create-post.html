@@ -53,8 +53,17 @@
 
         /* Căn đều chiều rộng các select */
         #category,
-        #language,
+        #language {
+            width: 100%;
+            max-width: 400px;
+         margin-right: 30px;
+        }
         #status {
+            width: 100%;
+            max-width: 400px;
+            margin-left: 30px;
+        }
+        #is_origin {
             width: 100%;
             max-width: 400px;
         }
@@ -265,10 +274,18 @@
                 <input id="description" type="text" class="form-control" placeholder="Nhập mô tả ngắn" required>
             </div>
 
+ <div class="mb-3">
+  <label for="is_origin" class="form-label">Nguồn bài viết</label>
+  <select id="is_origin" class="form-select">
+    <option value="">-- Chọn nguồn --</option>
+    <option value="true">Bài viết gốc</option>
+    <option value="false">Bài viết dịch lại / chia sẻ</option>
+  </select>
+</div>
 
 
             <!-- Trạng thái -->
-            <div class="mb-4">
+            <div class="mb-4" >
                 <label for="status" class="form-label">Trạng thái</label>
                 <select id="status" class="form-select" required>
                     <option value="" selected disabled>-- Chọn trạng thái --</option>
@@ -379,17 +396,23 @@
   }
   
 });
+
         
 
         document.getElementById('postForm').addEventListener('submit', e => {
             e.preventDefault();
+
+            const is_origin = document.getElementById('is_origin');
+
 
             const post = {
                 id: Date.now(),
                 author: 'Vũ Hải Đăng',
                 category: category.value,
                 language: language.value,
+               
                 title: title.value.trim(),
+                is_origin: is_origin.value,
                 desc: description.value.trim(),
                 status: document.getElementById('status').value,
 
@@ -404,6 +427,7 @@ if (
   !post.language ||
   !post.status ||
   !post.title ||
+  !post.is_origin ||
   !post.desc ||
   !post.content.trim()
 ) {

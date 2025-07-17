@@ -8,31 +8,47 @@
 <head>
     <style>
   /* Thu nhỏ chữ cho link trong sidebar */
-  .app-menu .nav-link {
-    font-size: 13px !important;
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
 
-  /* Thu nhỏ chữ tiêu đề menu */
-  .app-menu .menu-title {
-    font-size: 11px !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #9aa4b2;
-  }
-  .bg-pink {
-  background-color: #eca2c7 !important;
+   .navbar .dropdown-toggle {
+            text-decoration: none;
+        }
+
+        .tab-buttons .nav-link {
+            border: none;
+            background: none;
+            padding: .5rem 1rem;
+            color: #555;
+            transition: color .2s;
+        }
+
+        .tab-buttons .nav-link.active {
+            font-weight: bold;
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+
+        .setting-item {
+            cursor: pointer;
+        }
+
+        .setting-edit {
+            display: none;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: .5rem;
+            margin-top: .5rem;
+        }
+
+        .modal-content {
+            border-radius: 6px;
+        }
+
+        .modal-header .close {
+            font-size: 1.25rem;
+        }
+ body {
+  padding-top: 100px; /* bằng chiều cao header */
 }
- #postDetailModal img {
-    max-width: 100%;
-    max-height: 350px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 1rem;
-  }
-
 </style>
 
     <meta charset="utf-8" />
@@ -60,6 +76,7 @@
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
+  
 </head>
 
 <body>
@@ -67,7 +84,7 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
 
-        <header id="page-topbar">
+       <header id="page-topbar">
             <div class="layout-width">
                 <div class="navbar-header">
                     <div class="d-flex">
@@ -130,160 +147,125 @@
             </div>
         </header>
 
-    <main class="container py-5 ">
 
-
-  <div class="row g-3">
-   <div class="container py-5">
-<div class="row g-4 justify-content-start" style="padding-left: 220px;">
-
-    <!-- Category -->
-    <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
-
-      <div class="card text-white bg-pink h-100">
-        <div class="card-body text-center">
-          <h6 class="fw-bold">Danh mục</h6>
-       <div id="count-category">0</div>
+        <main class="container my-5" style="max-width: 900px; margin-right: 100px;">
+        <div class="d-flex align-items-center mb-4">
+            <h1 class="h2 flex-grow-1">Settings</h1>
 
         </div>
-        <div class="card-footer bg-transparent text-center">
-          <a href="categorie.html" class="text-white text-decoration-underline small">Xem danh sách</a>
-        </div>
-      </div>
-    </div>
 
-    <!-- User -->
-    <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
+        <ul class="nav tab-buttons mb-3" id="settingsTabs" role="tablist">
+             <a class="nav-link" href="setting.html" data-tab="account">Account</a>
+</li>
+  <a class="nav-link " href="publishing.html" data-tab="publishing">Publishing</a>
+</li>
 
-      <div class="card text-white bg-success h-100">
-        <div class="card-body text-center">
-          <h6 class="fw-bold">Người dùng</h6>
-         <div id="count-user">0</div>
+             <li class="nav-item">
+  <a class="nav-link active" href="notification.html" data-tab="notification">Notifications</a>
+</li>
+        </ul>
+        <!-- Bảng “Account” đơn giản -->
+     
 
-        </div>
-        <div class="card-footer bg-transparent text-center">
-          <a href="user.html" class="text-white text-decoration-underline small">Xem danh sách</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Post -->
-    <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
-
-      <div class="card text-white bg-warning h-100">
-        <div class="card-body text-center">
-          <h6 class="fw-bold">Bài viết</h6>
-        <div id="count-post">0</div>
-
-        </div>
-        <div class="card-footer bg-transparent text-center">
-          <a href="post.html" class="text-white text-decoration-underline small">Xem danh sách</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Language -->
-   <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
-
-      <div class="card text-white bg-danger h-100">
-        <div class="card-body text-center">
-          <h6 class="fw-bold">Ngôn ngữ</h6>
-         <div id="count-language">0</div>
-
-        </div>
-        <div class="card-footer bg-transparent text-center">
-          <a href="language.html" class="text-white text-decoration-underline small">Xem danh sách</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Role -->
-   <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
-
-      <div class="card text-white bg-info h-100">
-        <div class="card-body text-center">
-          <h6 class="fw-bold">Vai trò</h6>
-         <div id="count-role">0</div>
-
-        </div>
-        <div class="card-footer bg-transparent text-center">
-          <a href="role.html" class="text-white text-decoration-underline small">Xem danh sách</a>
-        </div>
-      </div>
-    </div>
+<div class="mb-3 d-flex justify-content-between align-items-start">
+  <div>
+    <h3>Thông báo qua email</h3>
+   <span class="text-dark" style="cursor: pointer;" > Đề xuất câu chuyện </span>
   </div>
 </div>
 
-<!-- Bài viết mới nhất -->
-<div class="row mt-4 justify-content-center" style="padding-left: 255px;">
-  <div class="col-md-50">
-    <div class="card shadow border-0 p-4">
-      <div class="card-body">
-        <!-- Ảnh bài viết -->
-        <img id="latest-post-image" class="img-fluid rounded mb-3 d-none" alt="Ảnh bài viết"
-             style="max-height: 180px; object-fit: cover;" />
-
-        <h5 class="card-title fw-bold" id="latest-post-title">Tiêu đề bài viết</h5>
-        <p class="card-text" id="latest-post-preview">Nội dung ngắn gọn bài viết...</p>
-        <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#postDetailModal">
-          Xem chi tiết
-        </button>
-      </div>
+<!-- Bản tóm tắt trung bình mới -->
+<div class="mb-3 d-flex justify-content-between align-items-start">
+  <div>
+    <strong>Bản tóm tắt trung bình mới</strong>
+    <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
+      Những câu chuyện hay nhất trên Medium được cá nhân hóa dựa trên sở thích của bạn, cũng như những câu chuyện nổi bật được biên tập viên của chúng tôi lựa chọn.
     </div>
+  </div>
+  <div>
+    <input class="form-check-input mt-1" type="checkbox" id="summaryToggle">
+  </div>
+</div>
+
+<!-- Đọc sách được đề xuất -->
+<div class="mb-3 d-flex justify-content-between align-items-start">
+  <div>
+    <strong>Đọc sách được đề xuất</strong>
+    <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
+      Những câu chuyện, chuyên mục và bộ sưu tập nổi bật mà chúng tôi nghĩ bạn sẽ thích dựa trên lịch sử đọc của bạn.
+    </div>
+  </div>
+  <div>
+    <input class="form-check-input mt-1" type="checkbox" id="recommendToggle">
   </div>
 </div>
 
 
+   <div class="border-bottom my-3"></div>
 
-</main>
-<div class="modal fade" id="postDetailModal" tabindex="-1" aria-labelledby="postDetailModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+   <strong>Từ các nhà văn và ấn phẩm</strong>
+  
+   <div class="mb-3 d-flex justify-content-between align-items-start">
+  <div>
+    <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
+     Những câu chuyện mới được thêm vào danh sách bạn đã lưu
+    </div>
+  </div>
+  <div>
+    <input class="form-check-input mt-1" type="checkbox" id="themToggle">
+  </div>
+
+  
+</div>
+  <div class="border-bottom my-3"></div>
+
+   <strong>Hoạt động xã hội</strong>
+
+     <div class="mb-3 d-flex justify-content-between align-items-start">
+  <div>
+    <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
+    Khi ai đó theo dõi bạn hoặc đánh dấu cùng một đoạn trong một câu chuyện
+    </div>
+  </div>
+  <div>
+    <input class="form-check-input mt-1" type="checkbox" id="hoatdongToggle">
+  </div>
+</div>
+</div>
+
+
+
+<h1 style="margin-top: 100px; margin-left: 390px;"> Thông báo đẩy
+</h1>
+
+ <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px; margin-left: 390px; " >
+    Mở ứng dụng Medium từ thiết bị di động của bạn để thực hiện thay đổi cho thông báo đẩy.
+    </div>
+
+    </main>
+
+    
+  <div class="modal fade" id="emailEditModal" tabindex="-1" aria-labelledby="emailEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="postDetailModalLabel">Chi tiết bài viết</h5>
+        <h5 class="modal-title" id="emailEditModalLabel">Chỉnh sửa địa chỉ email 'Trả lời tới'</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
       </div>
       <div class="modal-body">
-        <p><strong>Tiêu đề:</strong> <span id="modal-post-title"></span></p>
-        <p><strong>Nội dung:</strong></p>
-        <div id="modal-post-content" class="mb-3"></div>
+        <input type="email" class="form-control" id="editReplyEmailInput">
+        <small class="text-muted">Email này sẽ được hiển thị cho người đăng ký khi họ trả lời.</small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button type="button" class="btn btn-success" onclick="saveReplyEmail()">Cưu</button>
       </div>
     </div>
   </div>
 </div>
 
 
-
-
-
-        <!-- removeNotificationModal -->
-        <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            id="NotificationModalbtn-close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mt-2 text-center">
-                            <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                            <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                                <h4>Are you sure ?</h4>
-                                <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete
-                                It!</button>
-                        </div>
-                    </div>
-
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <!-- ========== App Menu ========== -->
+           <!-- ========== App Menu ========== -->
         <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif; ">
 
             <!-- LOGO -->
@@ -348,37 +330,7 @@
                             data-key="t-logout">Logout</span></a>
                 </div>
             </div>
-            <div id="scrollbar">
-                <div class="container-fluid ">
-
-
-                    <div id="two-column-menu">
-                    </div>
-                   <ul class="navbar-nav" id="navbar-nav" style="font-size: 12px;">
-
-                        <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-                        <li class="nav-item">
-                            <a href="categorie.html" class="nav-link " data-key="t-ecommerce"> Categorie </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="user.html" class="nav-link" data-key="t-crypto"> User </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="post.html" class="nav-link" data-key="t-projects">Post </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="role.html" class="nav-link" data-key="t-projects">Role </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="language.html" class="nav-link" data-key="t-projects">Language </a>
-                        </li>
-                      
-
-
-                    </ul>
-                </div>
-                <!-- Sidebar -->
-            </div>
+          
 
             <div class="sidebar-background"></div>
         </div>
@@ -406,7 +358,8 @@
 
 
 <!-- JAVASCRIPT -->
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="assets/libs/simplebar/simplebar.min.js"></script>
 <script src="assets/libs/node-waves/waves.min.js"></script>
 <script src="assets/libs/feather-icons/feather.min.js"></script>
@@ -430,67 +383,39 @@
 <script src="assets/js/app.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    const endpoints = {
-      category: '/api/v1/admin/category',
-      user: '/api/v1/admin/user',
-      post: '/api/v1/admin/post',
-      language: '/api/v1/admin/language',
-      role: '/api/v1/admin/role'
-    };
+  // Load trạng thái từ localStorage khi trang mở lại
+  document.addEventListener('DOMContentLoaded', function () {
+    const summaryToggle = document.getElementById('summaryToggle');
+    const recommendToggle = document.getElementById('recommendToggle');
+    const themToggle = document.getElementById('themToggle');
+     const hoatdongToggle = document.getElementById('hoatdongToggle');
 
-    for (const [key, url] of Object.entries(endpoints)) {
-      try {
-        const res = await fetch(url);
-        const json = await res.json();
-        document.getElementById(`count-${key}`).textContent = json.data?.length || 0;
-      } catch (err) {
-        console.error(`Error loading ${key}:`, err);
-      }
-    }
+    summaryToggle.checked = localStorage.getItem('summaryToggle') === 'true';
+    recommendToggle.checked = localStorage.getItem('recommendToggle') === 'true';
+    themToggle.checked = localStorage.getItem('themToggle') === 'true';
+    hoatdongToggle.checked = localStorage.getItem('hoatdongToggle') === 'true';
+
+    summaryToggle.addEventListener('change', function () {
+      localStorage.setItem('summaryToggle', this.checked);
+      alert(this.checked ? '✅ Đã bật Bản tóm tắt trung bình mới' : '❌ Đã tắt Bản tóm tắt trung bình mới');
+    });
+
+    recommendToggle.addEventListener('change', function () {
+      localStorage.setItem('recommendToggle', this.checked);
+      alert(this.checked ? '✅ Đã bật Đọc sách được đề xuất' : '❌ Đã tắt Đọc sách được đề xuất');
+    });
+
+     themToggle.addEventListener('change', function () {
+      localStorage.setItem('themToggle', this.checked);
+      alert(this.checked ? '✅ Đã bật Những câu chuyện mới được thêm vào danh sách bạn đã lưu' : '❌ Đã tắt Những câu chuyện mới được thêm vào danh sách bạn đã lưu');
+    });
+
+    hoatdongToggle.addEventListener('change', function () {
+      localStorage.setItem('hoatdongToggle', this.checked);
+      alert(this.checked ? '✅ Đã bật Khi ai đó theo dõi bạn hoặc đánh dấu cùng một đoạn trong một câu chuyện' : '❌ Đã tắt Khi ai đó theo dõi bạn hoặc đánh dấu cùng một đoạn trong một câu chuyện');
+    });
   });
 </script>
-<script>
-  window.onload = function () {
-    document.getElementById("count-category").innerText = localStorage.getItem("categoryCount") || 0;
-    document.getElementById("count-post").innerText = localStorage.getItem("postCount") || 0;
-    document.getElementById("count-language").innerText = localStorage.getItem("languageCount") || 0;
-    document.getElementById("count-role").innerText = localStorage.getItem("roleCount") || 0;
-    document.getElementById("count-user").innerText = localStorage.getItem("userCount") || 0;
-  };
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const posts = JSON.parse(localStorage.getItem("myPosts") || "[]");
-    if (posts.length === 0) return;
-
-    // Lấy bài viết có id lớn nhất
-    const latestPost = posts.reduce((maxPost, post) => post.id > maxPost.id ? post : maxPost, posts[0]);
-
-    // Gán tiêu đề
-    document.getElementById("latest-post-title").textContent = latestPost.title;
-
-    // Tạo nội dung ngắn (loại bỏ HTML thô)
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = latestPost.content;
-    const previewText = tempDiv.textContent || tempDiv.innerText || "";
-    document.getElementById("latest-post-preview").textContent = previewText.slice(0, 150) + "...";
-
-    // Nếu có ảnh, hiển thị ảnh đầu tiên
-    const imgTag = tempDiv.querySelector("img");
-    if (imgTag) {
-      const previewImg = document.getElementById("latest-post-image");
-      previewImg.src = imgTag.src;
-      previewImg.classList.remove("d-none");
-    }
-
-    // Gán nội dung vào modal
-    document.getElementById("modal-post-title").textContent = latestPost.title;
-    document.getElementById("modal-post-content").innerHTML = latestPost.content;
-  });
-</script>
-
 
 
 
