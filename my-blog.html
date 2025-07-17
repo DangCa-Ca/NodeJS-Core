@@ -181,6 +181,7 @@
               <th>Category</th>
               <th>Tiêu đề</th>
               <th>Language</th>
+              <th>Nguồn gốc </th>
               <th>Trạng thái</th>
               <th>Hành động</th>
             </tr>
@@ -254,6 +255,8 @@ function renderPosts() {
         </a>
       </td>
       <td>${p.language}</td>
+      <td>${p.is_origin === 'true' || p.is_origin === true ? 'Gốc' : 'Dịch'}</td>
+
       <td>${p.status == 1 ? 'Hoạt động' : 'Không hoạt động'}</td>
       <td>
         <div class="dropdown">
@@ -289,13 +292,21 @@ function preview(id){
 
 function deletePost(id) {
   if (!confirm('Bạn có chắc chắn muốn xoá bài viết này?')) return;
-  let list = JSON.parse(localStorage.getItem('myPosts') || '[]');
-  list = list.filter(p => p.id !== id);
-  localStorage.setItem('myPosts', JSON.stringify(list));
-  renderPosts();
-}
 
+  // Xoá khỏi myPosts
+  let myPosts = JSON.parse(localStorage.getItem('myPosts') || '[]');
+  myPosts = myPosts.filter(p => p.id !== id);
+  localStorage.setItem('myPosts', JSON.stringify(myPosts));
+
+  // Xoá khỏi published
+  let published = JSON.parse(localStorage.getItem('published') || '[]');
+  published = published.filter(p => p.id !== id);
+  localStorage.setItem('published', JSON.stringify(published));
+
+  renderPosts(); // Vẽ lại bảng sau khi xoá
+}
 renderPosts();
+
 </script>
 
 
