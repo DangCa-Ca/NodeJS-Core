@@ -10,253 +10,387 @@
 <html lang="en-us">
 
 <head>
-	<meta charset="utf-8">
-	<title>Reporter - HTML Blog Template</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-	<meta name="description" content="This is meta description">
-	<meta name="author" content="Themefisher">
-	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <meta charset="utf-8">
+  <title>Reporter - HTML Blog Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="description" content="This is meta description">
+  <meta name="author" content="Themefisher">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
-	<!-- # Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- # Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- # CSS Plugins -->
-	<link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <!-- # CSS Plugins -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
 
-	<!-- # Main Style Sheet -->
-	<link rel="stylesheet" href="css/style.css">
-	<style>
+  <!-- # Main Style Sheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gap-2>*+* {
+      margin-left: 0.5rem;
+    }
 
- .gap-2 > * + * {
-    margin-left: 0.5rem;
-  }
-.nav-tabs {
-  border-bottom: none;
-}
+    .nav-tabs {
+      border-bottom: none;
+    }
 
-.nav-tabs .nav-link {
-  border: none;
-  border-radius: 0;
-  color: #495057;
-  padding: 0.5rem 1rem;
-  background: none;
-  font-weight: normal;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
+    .nav-tabs .nav-link {
+      border: none;
+      border-radius: 0;
+      color: #495057;
+      padding: 0.5rem 1rem;
+      background: none;
+      font-weight: normal;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
 
-.nav-tabs .nav-link.active {
-  background: none !important;
-  color: #000;
-  font-weight: bold;
-}
+    .nav-tabs .nav-link.active {
+      background: none !important;
+      color: #000;
+      font-weight: bold;
+    }
 
-.nav-tabs .nav-link:hover {
-  background: none;
-  color: #000;
-  font-weight: bold;
-}
+    .nav-tabs .nav-link:hover {
+      background: none;
+      color: #000;
+      font-weight: bold;
+    }
 
-.nav-tabs .nav-link .badge {
-  margin-left: 0.25rem;
-  vertical-align: middle;
-  font-size: 0.75rem;
-  padding: 0.25em 0.5em;
-  line-height: 1;
-  display: inline-block;
-}
+    .nav-tabs .nav-link .badge {
+      margin-left: 0.25rem;
+      vertical-align: middle;
+      font-size: 0.75rem;
+      padding: 0.25em 0.5em;
+      line-height: 1;
+      display: inline-block;
+    }
 
-.border-bottom {
-  border-bottom: 1px solid #dee2e6 !important;
-}
+    .border-bottom {
+      border-bottom: 1px solid #dee2e6 !important;
+    }
+
+    .category-scroll-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 30px;
+      max-width: 100%;
+    }
+
+    .category-scroll-inner-mask {
+      overflow: hidden;
+      width: 600px;
+      /* Chiều rộng giới hạn hiển thị đúng 5 mục */
+    }
+
+    .category-scroll-inner {
+      display: flex;
+      transition: transform 0.3s ease;
+      will-change: transform;
+      width: max-content;
+      /* ✅ giúp nội dung dài hơn wrapper */
+    }
 
 
+    .category-scroll-inner ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
 
-</style>
+    .nav-item {
+      flex: 0 0 auto;
+      width: 120px;
+      margin-right: 16px;
+      /* hoặc giữ mr-3 */
+      text-align: center;
+    }
+
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: none;
+      font-size: 20px;
+      padding: 4px 8px;
+      color: #666;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .scroll-btn:hover {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+
+    .scroll-left {
+      left: 0;
+    }
+
+    .scroll-right {
+      right: 0;
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="navigation">
-  <div class="container">
- <nav class="navbar navbar-expand-lg navbar-light px-0 d-flex justify-content-between">
+  <header class="navigation">
 
-      <a class="navbar-brand order-1 py-0" href="index.html">
-        <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
-      </a>
-      <div class="navbar-actions order-3 ml-0 ml-md-4">
-  <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
-    data-target="#navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <div class="">
+      <!-- Thanh search đen trên cùng -->
+      <div
+        style="background: #ebe1e6b8; height: 32px; display: flex; justify-content: flex-end; align-items: center; padding: 0 16px;">
+        <form onsubmit="handleSearch(event)" style="display: flex; align-items: center;">
+          <input type="text" id="searchInput" placeholder="Tìm kiếm..."
+            style="height: 24px; font-size: 13px; padding: 0 8px; border: none; border-radius: 2px 0 0 2px; outline: none;" />
+          <button type="submit"
+            style="background: #fff; border: none; height: 24px; width: 28px; display: flex; align-items: center; justify-content: center; border-radius: 0 2px 2px 0;">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="18" fill="black">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.16 5.59 12.53 3 9.5 3S3.84 5.59 3.84 8.39s2.63 5.39 5.66 5.39a6.47 6.47 0 005.34-1.48l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+          </button>
+        </form>
+      </div>
 
- <!-- Navbar Actions: Write + Publish + User Avatar -->
-<div class="navbar-actions d-flex align-items-center ml-auto">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light px-0">
+          <a class="navbar-brand order-1 py-0" href="index.html">
+            <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
+          </a>
+          <div class="navbar-actions order-3 ml-0 ml-md-4">
+            <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
+              data-target="#navigation">
+              <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="navbar-actions order-3 ml-0 ml-md-4 d-flex align-items-center" style="margin-right: 35px;">
+              <a href="create-post.html" class="d-flex align-items-center mr-3 text-dark"
+                style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                  aria-label="Write">
+                  <path fill="currentColor"
+                    d="M14 4a.5.5 0 0 0 0-1zm7 6a.5.5 0 0 0-1 0zm-7-7H4v1h10zM3 4v16h1V4zm1 17h16v-1H4zm17-1V10h-1v10zm-1 1a1 1 0 0 0 1-1h-1zM3 20a1 1 0 0 0 1 1v-1zM4 3a1 1 0 0 0-1 1h1z">
+                  </path>
+                  <path stroke="currentColor"
+                    d="m17.5 4.5-8.458 8.458a.25.25 0 0 0-.06.098l-.824 2.47a.25.25 0 0 0 .316.316l2.47-.823a.25.25 0 0 0 .098-.06L19.5 6.5m-2-2 2.323-2.323a.25.25 0 0 1 .354 0l1.646 1.646a.25.25 0 0 1 0 .354L19.5 6.5m-2-2 2 2">
+                  </path>
+                </svg>
+                <span class="ml-1">Write</span>
+              </a>
+
+
+              <div class="nav-item dropdown">
+
+
+                <a class="dropdown-toggle d-flex align-items-center" href="#" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false" style="text-decoration: none; color: inherit;">
+                  <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2"
+                    width="40" height="40">
+                  <span class="d-none d-md-inline" style="color: rgb(105, 103, 103);">Vũ Hải Đăng</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
+
+                  <div class="d-flex align-items-center mb-2">
+
+                    <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2"
+                      width="50" height="50">
+                    <div>
+                      <strong>Vũ Hải Đăng</strong><br>
+                      <small class="text-muted">Founder</small>
+                    </div>
+                  </div>
+                  <div class="dropdown-divider"></div>
+
+                  <a class="dropdown-item" href="profile.html">
+                    <i class="fas fa-user mr-2"></i> Profile
+                  </a>
+                  <a class="dropdown-item" href="stories.html">
+                    <i class="fas fa-user mr-2"></i> Stories
+                  </a>
+
+                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="setting.html">
+                    <span><i class="fas fa-cog mr-2"></i> Settings</span>
+                  </a>
+
+                  <a class="dropdown-item text-danger" href="login.html">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 
-  <!-- Nút Write -->
-  <a href="write.html" class="d-flex align-items-center mr-3 text-dark" style="text-decoration: none;">
-    <!-- SVG Write Icon -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" aria-label="Write">
-      <path fill="currentColor" d="M14 4a.5.5 0 0 0 0-1zm7 6a.5.5 0 0 0-1 0zm-7-7H4v1h10zM3 4v16h1V4zm1 17h16v-1H4zm17-1V10h-1v10zm-1 1a1 1 0 0 0 1-1h-1zM3 20a1 1 0 0 0 1 1v-1zM4 3a1 1 0 0 0-1 1h1z"></path>
-      <path stroke="currentColor" d="m17.5 4.5-8.458 8.458a.25.25 0 0 0-.06.098l-.824 2.47a.25.25 0 0 0 .316.316l2.47-.823a.25.25 0 0 0 .098-.06L19.5 6.5m-2-2 2.323-2.323a.25.25 0 0 1 .354 0l1.646 1.646a.25.25 0 0 1 0 .354L19.5 6.5m-2-2 2 2"></path>
-    </svg>
-    <span class="ml-1">Write</span>
-  </a>
+          <!-- Phần navbar-collapse chứa danh mục -->
+          <!-- Phần navbar-collapse chứa danh mục -->
+          <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
+            <div class="category-scroll-wrapper">
+              <button class="scroll-btn scroll-left" onclick="scrollCategories(-1)" id="btnScrollLeft"
+                style="display: none;">‹</button>
 
-  <!-- Dropdown Avatar -->
-  <div class="nav-item dropdown">
-    <a class="dropdown-toggle d-flex align-items-center" href="#" role="button"
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="40" height="40">
-      <span class="d-none d-md-inline">Vũ Hải Đăng</span>
-    </a>
-    <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
-      <div class="d-flex align-items-center mb-2">
-        <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="50" height="50">
-        <div>
-          <strong>Vũ Hải Đăng</strong><br>
-          <small class="text-muted">Founder</small>
+              <div class="category-scroll-inner-mask">
+                <div class="category-scroll-inner" id="categoryScroll">
+                  <ul class="navbar-nav d-flex flex-row flex-nowrap">
+                    <li class="nav-item mr-3"><a class="nav-link" href="category.html">Thể thao</a></li>
+                    <li class="nav-item mr-3"><a class="nav-link" href="category.html">Đời sống</a></li>
+                    <li class="nav-item mr-3"><a class="nav-link" href="category.html">Giáo dục</a></li>
+                    <li class="nav-item mr-3"><a class="nav-link" href="category.html">Công nghệ</a></li>
+                    <li class="nav-item mr-3"><a class="nav-link" href="category.html">Thời trang</a></li>
+                    <li class="nav-item mr-3"><a class="nav-link" href="category.html">Kinh tế</a></li>
+                    <li class="nav-item mr-3"><a class="nav-link" href="category.html">Giải trí</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <button class="scroll-btn scroll-right" onclick="scrollCategories(1)" id="btnScrollRight">›</button>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Thay (hoặc thêm) vào bên trong <body> sau <header> -->
+  <main class="container my-5" style="max-width:900px;">
+    <div class="d-flex align-items-center mb-4">
+      <h1 class="h1 mr-auto font-weight-bold">Your Draft stories</h1>
+      <div class="d-flex gap-2">
+        <a href="create-post.html" class="btn btn-success rounded-pill px-4">Write a story</a>
+
+      </div>
+    </div>
+
+
+    <!-- Tabs with Bottom Bar -->
+    <!-- Tabs with Bottom Bar -->
+    <div class="d-flex flex-column">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="nav nav-tabs border-0">
+          <div class="nav-item">
+            <a class="nav-link active" href="draft.html">Drafts <span class="badge badge-secondary"
+                id="count-drafts">0</span></a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="published.html">Published <span class="badge badge-secondary"
+                id="count-published">0</span></a>
+          </div>
+          <div class="nav-item">
+            <a class="nav-link" href="responses.html">Responses <span class="badge badge-secondary"
+                id="count-responses">0</span></a>
+          </div>
         </div>
       </div>
-      <div class="dropdown-divider"></div>
-       <a class="dropdown-item" href="profile.html">
-        <i class="fas fa-user mr-2"></i> Profile
-      </a>
-       <a class="dropdown-item" href="stories.html">
-        <i class="fas fa-user mr-2"></i> Stories
-      </a>
-      <a class="dropdown-item d-flex justify-content-between align-items-center" href="setting.html">
-        <span><i class="fas fa-cog mr-2"></i> Settings</span>
- 
-      </a>
-      <a class="dropdown-item text-danger" href="login.html">
-        <i class="fas fa-sign-out-alt mr-2"></i> Logout
-      </a>
+      <div class="border-bottom"></div>
     </div>
-  </div>
-</div>
-
-  </div>
-  </div>
-</div>
- 
-</header>
-
-<!-- Thay (hoặc thêm) vào bên trong <body> sau <header> -->
-<main class="container my-5" style="max-width:900px;">
-<div class="d-flex align-items-center mb-4">
-  <h1 class="h1 mr-auto font-weight-bold">Your Draft stories</h1>
-  <div class="d-flex gap-2">
-      <a href="write.html" class="btn btn-success rounded-pill px-4">Write a story</a>
-    
-    </div>
-</div>
 
 
-<!-- Tabs with Bottom Bar -->
-<!-- Tabs with Bottom Bar -->
-<div class="d-flex flex-column">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <div class="nav nav-tabs border-0">
-      <div class="nav-item">
-        <a class="nav-link active" href="draft.html">Drafts <span class="badge badge-secondary" id="count-drafts">0</span></a>
-      </div>
-      <div class="nav-item">
-        <a class="nav-link" href="published.html">Published <span class="badge badge-secondary" id="count-published">0</span></a>
-      </div>
-      <div class="nav-item">
-        <a class="nav-link" href="#">Responses <span class="badge badge-secondary" id="count-responses">0</span></a>
-      </div>
-    </div>
-  </div>
-  <div class="border-bottom"></div>
-</div>
+    <!-- Draft List Output -->
+    <div id="draftList"></div>
 
-
- <!-- Draft List Output -->
-  <div id="draftList"></div>
-
-</main>
+  </main>
 
 
 
 
 
 
-<!-- # JS Plugins -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/bootstrap/bootstrap.min.js"></script>
-<!-- Editor.js Core -->
+  <!-- # JS Plugins -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <!-- Editor.js Core -->
 
 
-  
-</script>
-<!-- TinyMCE CDN -->
-<!-- CDN có key -->
-<script src="https://cdn.tiny.cloud/1/70dme6jtaubbdgcdg2eeiiz87tt8wq4nkgvtvuobarzj0vkx/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+  </script>
+  <!-- TinyMCE CDN -->
+  <!-- CDN có key -->
+  <script src="https://cdn.tiny.cloud/1/70dme6jtaubbdgcdg2eeiiz87tt8wq4nkgvtvuobarzj0vkx/tinymce/6/tinymce.min.js"
+    referrerpolicy="origin"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/editorjs-paste-parser@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/editorjs-paste-parser@latest"></script>
 
-<script>
-  function formatTimeAgo(isoString) {
-    const savedDate = new Date(isoString);
-    const now = new Date();
-    const diffMins = Math.floor((now - savedDate) / 60000);
-    if (diffMins < 1) return "Just now";
-    if (diffMins < 60) return `Last edited ${diffMins} minute${diffMins > 1 ? 's' : ''} ago`;
-    const hours = Math.floor(diffMins / 60);
-    return `Last edited ${hours} hour${hours > 1 ? 's' : ''} ago`;
-  }
+  <script>
+    function formatTimeAgo(isoString) {
+      if (!isoString) return 'Unknown time';
 
-  function countWords(text) {
-    return text.trim().split(/\s+/).filter(Boolean).length;
-  }
+      const savedDate = new Date(isoString);
+      if (isNaN(savedDate.getTime())) return 'Unknown time';  // ✅ kiểm tra ngày không hợp lệ
 
-    /* ---------- XÓA 1 NHÁP ---------- */
- function deleteDraft(id) {
-  if (!confirm('Bạn chắc chắn muốn xoá bản nháp này?')) return;
+      const now = new Date();
+      const diffMins = Math.floor((now - savedDate) / 60000);
 
-  const list = JSON.parse(localStorage.getItem('drafts') || '[]');
- const updatedList = list.filter(item => String(item.id) !== String(id));
+      if (diffMins < 1) return "Just now";
+      if (diffMins < 60) return `Last edited ${diffMins} minute${diffMins > 1 ? 's' : ''} ago`;
 
-  localStorage.setItem('drafts', JSON.stringify(updatedList));
-
-  // Cập nhật lại số lượng hiển thị badge nếu có
-  const badge = document.getElementById('draft-count');
-  if (badge) badge.textContent = updatedList.length;
-
-  renderDraftList();  // vẽ lại danh sách
-}
-
-
-  function renderDraftList() {
-    const draftList = JSON.parse(localStorage.getItem('drafts') || '[]');
-    const container = document.getElementById('draftList');
-    const badge = document.getElementById('draft-count');
-    
-    if (badge) badge.textContent = draftList.length;
-
-    if (draftList.length === 0) {
-      container.innerHTML = '<p class="text-muted">No drafts available.</p>';
-      return;
+      const hours = Math.floor(diffMins / 60);
+      return `Last edited ${hours} hour${hours > 1 ? 's' : ''} ago`;
     }
 
-    let html = '';
-    draftList.forEach(draft => {
-      const plainText = draft.content.replace(/<[^>]*>?/gm, '');
-      const wordCount = countWords(plainText);
-      const readTime = Math.max(1, Math.floor(wordCount / 200));
 
-   html += `
+
+    function countWords(text) {
+      return text.trim().split(/\s+/).filter(Boolean).length;
+    }
+
+    /* ---------- XÓA 1 NHÁP ---------- */
+    function deleteDraft(id) {
+      if (!confirm('Bạn chắc chắn muốn xoá bản nháp này?')) return;
+
+      const list = JSON.parse(localStorage.getItem('drafts') || '[]');
+      const updatedList = list.filter(item => String(item.id) !== String(id));
+
+      localStorage.setItem('drafts', JSON.stringify(updatedList));
+
+      // Cập nhật lại số lượng hiển thị badge nếu có
+      const badge = document.getElementById('draft-count');
+      if (badge) badge.textContent = updatedList.length;
+
+      renderDraftList();  // vẽ lại danh sách
+    }
+
+
+    function renderDraftList() {
+      const draftList = JSON.parse(localStorage.getItem('drafts') || '[]');
+      const container = document.getElementById('draftList');
+      const badge = document.getElementById('draft-count');
+
+      if (badge) badge.textContent = draftList.length;
+
+      if (draftList.length === 0) {
+        container.innerHTML = '<p class="text-muted">No drafts available.</p>';
+        return;
+      }
+
+      let html = '';
+      draftList.forEach(draft => {
+        const plainText = draft.content.replace(/<[^>]*>?/gm, '');
+        const wordCount = countWords(plainText);
+        const readTime = Math.max(1, Math.floor(wordCount / 200));
+
+        html += `
 <div class="d-flex justify-content-between align-items-start border-bottom py-3">
   <div class="flex-grow-1">
     <h4 class="fw-bold mb-1">
@@ -264,7 +398,7 @@
     </h4>
     <p class="mb-1 text-muted small">${plainText.slice(0, 100)}${plainText.length > 100 ? '...' : ''}</p>
     <div class="text-muted small">
-      ${formatTimeAgo(draft.savedAt)} · ${readTime} min read (${wordCount} words)
+     ${formatTimeAgo(draft?.createdAt || draft?.savedAt)} · ${readTime} min read (${wordCount} words)
     </div>
   </div>
   <div class="dropdown ms-3">
@@ -277,33 +411,104 @@
 </div>`;
 
 
+      });
+
+      container.innerHTML = html;
+    }
+
+
+    renderDraftList();
+
+  </script>
+
+  <script>
+    function loadAllComments() {
+      const responses = [];
+      const posts = JSON.parse(localStorage.getItem('published') || '[]');
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('comments_post_')) {
+          const postId = key.split('_').pop();
+          const comments = JSON.parse(localStorage.getItem(key) || '[]');
+
+          // Tìm post tương ứng (chuyển cả 2 về string để so)
+          const post = posts.find(p => String(p.id) === String(postId));
+          const postTitle = post ? post.title : '(Không tìm thấy bài viết)';
+
+          comments.forEach(cmt => {
+            responses.push({
+              postId,
+              postTitle,
+              commentContent: cmt.content,
+              commentTime: cmt.time
+            });
+          });
+        }
+      }
+
+      return responses;
+    }
+
+    function updateTabBadges() {
+      const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
+      const published = JSON.parse(localStorage.getItem('published') || '[]');
+      const responses = loadAllComments();
+
+      document.getElementById('count-drafts').textContent = drafts.length;
+      document.getElementById('count-published').textContent = published.length;
+      document.getElementById('count-responses').textContent = responses.length;
+    }
+
+    renderDraftList();
+    updateTabBadges();
+  </script>
+  <script>
+    const scrollContainer = document.querySelector("#categoryScroll");
+    const btnScrollLeft = document.getElementById("btnScrollLeft");
+    const btnScrollRight = document.getElementById("btnScrollRight");
+
+    let currentOffset = 0;
+    const visibleWidth = 600; // khớp với .category-scroll-inner-mask width
+
+    function scrollCategories(direction) {
+      const scrollAmount = 136 * direction; // item width + margin (120 + 16)
+      const maxOffset = scrollContainer.scrollWidth - visibleWidth;
+
+      currentOffset += scrollAmount;
+      currentOffset = Math.max(0, Math.min(currentOffset, maxOffset));
+
+      scrollContainer.style.transform = `translateX(${-currentOffset}px)`;
+      updateButtons(maxOffset);
+    }
+
+    function updateButtons(maxOffset) {
+      btnScrollLeft.style.display = currentOffset <= 0 ? "none" : "block";
+      btnScrollRight.style.display = currentOffset >= maxOffset ? "none" : "block";
+    }
+
+    window.addEventListener("load", () => {
+      updateButtons(scrollContainer.scrollWidth - visibleWidth);
     });
 
-    container.innerHTML = html;
-  }
-  
-
-  renderDraftList();
-
-</script>
-<script>
-  function updateTabBadges() {
-    const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
-    const published = JSON.parse(localStorage.getItem('published') || '[]'); // nếu có
-    const responses = JSON.parse(localStorage.getItem('responses') || '[]'); // nếu có
-
-    document.getElementById('count-drafts').textContent = drafts.length;
-    document.getElementById('count-published').textContent = published.length;
-    document.getElementById('count-responses').textContent = responses.length;
-  }
-
-  renderDraftList();
-  updateTabBadges();
-</script>
+    window.addEventListener("resize", () => {
+      updateButtons(scrollContainer.scrollWidth - visibleWidth);
+    });
+  </script>
+  <script>
+    function handleSearch(event) {
+      event.preventDefault();
+      const keyword = document.getElementById("searchInput").value.trim();
+      if (keyword) {
+        window.location.href = `search.html?keyword=${encodeURIComponent(keyword)}`;
+      }
+    }
+  </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
+
 </html>
