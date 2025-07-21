@@ -56,13 +56,15 @@
         #language {
             width: 100%;
             max-width: 400px;
-         margin-right: 30px;
+            margin-right: 30px;
         }
+
         #status {
             width: 100%;
             max-width: 400px;
             margin-left: 30px;
         }
+
         #is_origin {
             width: 100%;
             max-width: 400px;
@@ -145,6 +147,14 @@
             margin: 1rem 0;
             object-fit: contain;
         }
+            img {
+  max-width: 100%;       /* Không cho ảnh vượt quá vùng soạn thảo */
+  height: auto;          /* Giữ tỷ lệ ảnh */
+  display: block;        /* Ảnh xuống dòng riêng */
+  margin: 10px 0;        /* Tạo khoảng cách trên/dưới */
+  border-radius: 8px;    /* Bo góc ảnh cho đẹp */
+}
+
     </style>
 
 </head>
@@ -164,10 +174,14 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <!-- Navbar Actions: Write + Publish + User Avatar -->
-                    <div class="navbar-actions d-flex align-items-center ml-auto">
+                    <!-- RIGHT GROUP -->
+                    <div class="navbar-actions order-3 ml-0 ml-md-4 d-flex align-items-center">
 
-
+                        <!-- ✅ Draft Saved nằm bên phải logo -->
+                        <span id="draftSavedMsg"
+                            style="color: green; font-weight: 500; font-size: 0.95rem; margin-right: 16px; display: none;">
+                            Draft Saved
+                        </span>
 
                         <!-- Nút Write -->
                         <a href="write.html" class="d-flex align-items-center mr-3 text-dark"
@@ -203,7 +217,7 @@
                                     </div>
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="profile.html">
                                     <i class="fas fa-user mr-2"></i> Profile
                                 </a>
                                 <a class="dropdown-item" href="stories.html">
@@ -212,7 +226,6 @@
                                 <a class="dropdown-item d-flex justify-content-between align-items-center"
                                     href="setting.html">
                                     <span><i class="fas fa-cog mr-2"></i> Settings</span>
-
                                 </a>
                                 <a class="dropdown-item text-danger" href="login.html">
                                     <i class="fas fa-sign-out-alt mr-2"></i> Logout
@@ -274,18 +287,8 @@
                 <input id="description" type="text" class="form-control" placeholder="Nhập mô tả ngắn" required>
             </div>
 
- <div class="mb-3">
-  <label for="is_origin" class="form-label">Nguồn bài viết</label>
-  <select id="is_origin" class="form-select">
-    <option value="">-- Chọn nguồn --</option>
-    <option value="true">Bài viết gốc</option>
-    <option value="false">Bài viết dịch lại / chia sẻ</option>
-  </select>
-</div>
-
-
             <!-- Trạng thái -->
-            <div class="mb-4" >
+            <div class="mb-4">
                 <label for="status" class="form-label">Trạng thái</label>
                 <select id="status" class="form-select" required>
                     <option value="" selected disabled>-- Chọn trạng thái --</option>
@@ -293,6 +296,16 @@
                     <option value="0">Không hoạt động</option>
                 </select>
             </div>
+
+        <!-- Bộ chọn ngôn ngữ + nút dịch -->
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <div>
+    <button type="button" class="btn btn-primary btn-sm me-2" id="btn-vi" disabled>Tiếng Việt</button>
+    <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-en" disabled>Tiếng Anh</button>
+  </div>
+  <button type="button" class="btn btn-success btn-sm" id="btn-translate">→ Dịch sang tiếng Anh</button>
+</div>
+
 
             <!-- Nội dung CKEditor -->
             <div class="mb-4">
@@ -302,7 +315,7 @@
 
             <!-- Nút hành động -->
             <div class="d-flex justify-content-end gap-2">
-                <a href="profile.html" class="btn btn-outline-secondary">Hủy</a>
+                <a href="index.html" class="btn btn-outline-secondary">Hủy</a>
                 <button type="submit" class="btn btn-primary" id="saveBtn">Tạo bài viết</button>
             </div>
         </form>
@@ -323,147 +336,201 @@
     </script>
     <!-- TinyMCE CDN -->
     <!-- CDN có key -->
-    <script src="https://cdn.tiny.cloud/1/70dme6jtaubbdgcdg2eeiiz87tt8wq4nkgvtvuobarzj0vkx/tinymce/6/tinymce.min.js"
-        referrerpolicy="origin"></script>
+   
 
+<script src="tinymce/tinymce.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/editorjs-paste-parser@latest"></script>
 
 
-    <script>
-        tinymce.init({
-            selector: '#contentEditor',
-            height: 400,
-            menubar: false,
-            plugins: 'lists link image table code',
-            toolbar: 'undo redo | styles | bold italic underline | ' +
-                'alignleft aligncenter alignright | bullist numlist | link image | code',
-            branding: false,
-            content_style: `
-    img{max-width:100%!important;width:100%!important;height:auto!important;
-    display:block;margin:1rem 0;object-fit:contain;}
+<script>
+let currentLang = 'vi';
+let autoDraftId = new URLSearchParams(location.search).get('id') || Date.now().toString();
+document.title = "Tạo bài viết";
+
+
+function saveDraft() {
+  const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
+  const title = document.getElementById('title').value.trim();
+  const description = document.getElementById('description').value.trim();
+  const content = tinymce.get('contentEditor')?.getContent()?.trim() || '';
+
+  const existingIndex = drafts.findIndex(d => d.id === autoDraftId && d.lang === currentLang);
+  const existing = existingIndex >= 0 ? drafts[existingIndex] : null;
+
+  const draftData = {
+    id: autoDraftId,
+    lang: currentLang,
+    title,
+    description,
+    content,
+    createdAt: existing?.createdAt || new Date().toISOString() // ✅ giữ thời gian cũ nếu đã có
+  };
+
+  if (existingIndex >= 0) drafts[existingIndex] = draftData;
+  else drafts.push(draftData);
+
+  localStorage.setItem('drafts', JSON.stringify(drafts));
+
+  // ✅ Hiển thị "Draft Saved" trên header
+  const msgEl = document.getElementById('draftSavedMsg');
+  if (msgEl) msgEl.style.display = 'inline';
+}
+
+
+
+// ✅ Gắn auto-save khi người dùng gõ nội dung
+['title', 'description'].forEach(id => {
+  document.getElementById(id).addEventListener('input', saveDraft);
+});
+
+// ✅ Gắn auto-save cho nội dung TinyMCE
+function editorSetup(lang) {
+ tinymce.init({
+  selector: '#contentEditor',
+  height: 300,
+  content_style: `
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 10px 0;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 14px;
+    }
   `,
-  paste_preprocess: (_, args) => {
-  const wrap = document.createElement('div');
-  wrap.innerHTML = args.content;
-
-  // 1. Bỏ thẻ rác
-  wrap.querySelectorAll('noscript,script,style,iframe,link,svg')
-      .forEach(el => el.remove());
-
-  // 2. picture ➜ img (di chuyển, tránh clone)
-  wrap.querySelectorAll('picture').forEach(pic => {
-    const img = pic.querySelector('img');
-    img ? pic.replaceWith(img) : pic.remove();
-  });
-
-  // 3. Chuẩn hoá src, xoá thuộc tính thừa
-  wrap.querySelectorAll('img').forEach(img => {
-    if (img.dataset?.src) img.src = img.dataset.src;      // lazy‑load
-    ['data-src','data-srcset','srcset','loading',
-     'style','width','height'].forEach(a => img.removeAttribute(a));
-  });
-
-  // 4. Giữ 1 ảnh/figure
-  wrap.querySelectorAll('figure').forEach(fig => {
-    fig.querySelectorAll('img').forEach((im,i) => { if (i) im.remove(); });
-  });
-
-  // 5. Xoá ảnh trùng theo tên file
-  const seen = new Set();
-  wrap.querySelectorAll('img').forEach(img => {
-    try {
-      const filename = new URL(img.src).pathname.split('/').pop().toLowerCase();
-      if (seen.has(filename)) img.remove(); else seen.add(filename);
-    } catch {}
-  });
-
-  args.content = wrap.innerHTML;
-},
- setup: (editor) => {
-    editor.on('init', () => {
-      const draftId = new URLSearchParams(location.search).get('id');
-      if (!draftId) return;
-
+  setup: function (editor) {
+    editor.on('init', function () {
       const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
-      const draft = drafts.find(d => d.id === draftId);
-      if (!draft) return;
+      const draft = drafts.find(d => d.id === autoDraftId && d.lang === currentLang);
+      if (draft) {
+        document.getElementById('title').value = draft.title || '';
+        document.getElementById('description').value = draft.description || '';
+        editor.setContent(draft.content || '');
+      }
+    });
+    editor.on('Change KeyUp Paste', function () {
+      saveDraft();
+      });
+    }
+  });
+}
 
-      // Gán title và content
-      document.getElementById('title').value = draft.title || '';
-      editor.setContent(draft.content || '');
+// ✅ Khi chuyển ngôn ngữ
+document.getElementById('btn-translate').addEventListener('click', () => {
+  saveDraft();
+  currentLang = 'en';
+
+  // Chuyển giao diện
+  document.getElementById('btn-vi').classList.remove('btn-primary');
+  document.getElementById('btn-vi').classList.add('btn-outline-primary');
+  document.getElementById('btn-en').classList.remove('btn-outline-secondary');
+  document.getElementById('btn-en').classList.add('btn-primary');
+
+  document.getElementById('title').value = '';
+  document.getElementById('description').value = '';
+  if (tinymce.get('contentEditor')) {
+    tinymce.get('contentEditor').setContent('');
+  }
+
+  const languageSelect = document.getElementById('language');
+  for (let option of languageSelect.options) {
+    if (option.text === 'Tiếng Anh') {
+      languageSelect.value = option.value;
+      break;
+    }
+  }
+
+  tinymce.remove();
+  setTimeout(() => editorSetup('en'), 100);
+});
+
+// ✅ Submit
+document.getElementById('postForm').addEventListener('submit', e => {
+  e.preventDefault();
+  saveDraft();
+
+  const categoryEl = document.getElementById('category');
+  const statusEl = document.getElementById('status');
+
+  const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
+  const viPost = drafts.find(d => d.id === autoDraftId && d.lang === 'vi');
+  const enPost = drafts.find(d => d.id === autoDraftId && d.lang === 'en');
+
+  const isValid = (p) => p && p.title && p.description && p.content;
+
+  if (!isValid(viPost)) {
+    alert('Vui lòng nhập đầy đủ thông tin tiếng Việt!');
+    return;
+  }
+
+  const createdAt = new Date().toISOString();
+  const postVi = {
+    id: Date.now(),
+    origin_id: null,
+    author: 'Vũ Hải Đăng',
+    category: categoryEl.value,
+    language: 'vi',
+    title: viPost.title,
+    description: viPost.description,
+    status: statusEl.value,
+    content: viPost.content,
+    createdAt
+  };
+
+  const postsToSave = [postVi];
+
+  if (isValid(enPost)) {
+    const postEn = {
+      id: postVi.id + 1,
+      origin_id: postVi.id,
+      author: 'Vũ Hải Đăng',
+      category: categoryEl.value,
+      language: 'en',
+      title: enPost.title,
+      description: enPost.description,
+      status: statusEl.value,
+      content: enPost.content,
+      createdAt
+    };
+    postsToSave.push(postEn);
+  }
+
+  const myPosts = JSON.parse(localStorage.getItem('myPosts') || '[]');
+  const published = JSON.parse(localStorage.getItem('published') || '[]');
+
+  for (let p of postsToSave) {
+    myPosts.unshift(p);
+    published.unshift({
+      id: p.id,
+      origin_id: p.origin_id,
+      title: p.title,
+      description: p.description,
+      content: p.content,
+      createdAt: p.createdAt
     });
   }
-  
-});
 
-        
+  localStorage.setItem('myPosts', JSON.stringify(myPosts));
+  localStorage.setItem('published', JSON.stringify(published));
 
-        document.getElementById('postForm').addEventListener('submit', e => {
-            e.preventDefault();
-
-            const is_origin = document.getElementById('is_origin');
-
-
-            const post = {
-                id: Date.now(),
-                author: 'Vũ Hải Đăng',
-                category: category.value,
-                language: language.value,
-               
-                title: title.value.trim(),
-                is_origin: is_origin.value,
-                desc: description.value.trim(),
-                status: document.getElementById('status').value,
-
-                content: tinymce.get('contentEditor').getContent(),
-              createdAt: new Date().toISOString()
-            };
-
-            console.log(post); // Xem thử tất cả các giá trị người dùng nhập
-
-if (
-  !post.category ||
-  !post.language ||
-  !post.status ||
-  !post.title ||
-  !post.is_origin ||
-  !post.desc ||
-  !post.content.trim()
-) {
-  alert('Vui lòng nhập đầy đủ thông tin!');
-  return;
-}
-            const list = JSON.parse(localStorage.getItem('myPosts') || '[]');
-            list.unshift(post);
-            localStorage.setItem('myPosts', JSON.stringify(list));
-
-     
-
-const published = JSON.parse(localStorage.getItem('published') || '[]');
-published.unshift({
-  id         : post.id,
-  title      : post.title,
-  desc       : post.desc,
-  content    : post.content,
-createdAt: new Date().toISOString()
-});
-localStorage.setItem('published', JSON.stringify(published));
-
-// ✅ Xóa bản nháp nếu có draftId trong URL
-const draftId = new URLSearchParams(location.search).get('id');
-if (draftId) {
-  const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
-  const newDrafts = drafts.filter(d => d.id !== draftId);
+  const newDrafts = drafts.filter(d => d.id !== autoDraftId);
   localStorage.setItem('drafts', JSON.stringify(newDrafts));
-}
-
 
   window.location.href = 'published.html';
-        });
+});
 
-        
-    </script>
+// ✅ Khởi tạo lần đầu
+editorSetup('vi');
+</script>
+
+
+
+
+
+
 
 
 </body>

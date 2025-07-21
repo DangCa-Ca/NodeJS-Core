@@ -1,357 +1,359 @@
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
-    data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
+  data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
 
 <!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:44:28 GMT -->
 
 <head>
-    <style>
-  /* Thu nhỏ chữ cho link trong sidebar */
+  <style>
+    /* Thu nhỏ chữ cho link trong sidebar */
 
-   .navbar .dropdown-toggle {
-            text-decoration: none;
-        }
+    .navbar .dropdown-toggle {
+      text-decoration: none;
+    }
 
-        .tab-buttons .nav-link {
-            border: none;
-            background: none;
-            padding: .5rem 1rem;
-            color: #555;
-            transition: color .2s;
-        }
+    .tab-buttons .nav-link {
+      border: none;
+      background: none;
+      padding: .5rem 1rem;
+      color: #555;
+      transition: color .2s;
+    }
 
-        .tab-buttons .nav-link.active {
-            font-weight: bold;
-            color: #000;
-            border-bottom: 2px solid #000;
-        }
+    .tab-buttons .nav-link.active {
+      font-weight: bold;
+      color: #000;
+      border-bottom: 2px solid #000;
+    }
 
-        .setting-item {
-            cursor: pointer;
-        }
+    .setting-item {
+      cursor: pointer;
+    }
 
-        .setting-edit {
-            display: none;
-            border: 1px solid #ddd;
-            padding: 1rem;
-            border-radius: .5rem;
-            margin-top: .5rem;
-        }
+    .setting-edit {
+      display: none;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: .5rem;
+      margin-top: .5rem;
+    }
 
-        .modal-content {
-            border-radius: 6px;
-        }
+    .modal-content {
+      border-radius: 6px;
+    }
 
-        .modal-header .close {
-            font-size: 1.25rem;
-        }
- body {
-  padding-top: 100px; /* bằng chiều cao header */
-}
-</style>
+    .modal-header .close {
+      font-size: 1.25rem;
+    }
 
-    <meta charset="utf-8" />
-    <title>Dashboard | Velzon - Admin & Dashboard Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    body {
+      padding-top: 100px;
+      /* bằng chiều cao header */
+    }
+  </style>
 
-    <!-- jsvectormap css -->
-    <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8" />
+  <title>Dashboard | Velzon - Admin & Dashboard Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+  <meta content="Themesbrand" name="author" />
+  <!-- App favicon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <!--Swiper slider css-->
-    <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+  <!-- jsvectormap css -->
+  <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- Layout config Js -->
-    <script src="assets/js/layout.js"></script>
-    <!-- Bootstrap Css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Icons Css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-    <!-- custom Css-->
-    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+  <!--Swiper slider css-->
+  <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
 
-  
+  <!-- Layout config Js -->
+  <script src="assets/js/layout.js"></script>
+  <!-- Bootstrap Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <!-- Icons Css -->
+  <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <!-- App Css-->
+  <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+  <!-- custom Css-->
+  <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+
 </head>
 
 <body>
 
-    <!-- Begin page -->
-    <div id="layout-wrapper">
+  <!-- Begin page -->
+  <div id="layout-wrapper">
 
-       <header id="page-topbar">
-            <div class="layout-width">
-                <div class="navbar-header">
-                    <div class="d-flex">
- 
-                        <!-- App Search-->
-                        <form class="app-search d-none d-md-block">
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
-                                    id="search-options" value="">
-                                <span class="mdi mdi-magnify search-widget-icon"></span>
-                                <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
-                                    id="search-close-options"></span>
-                            </div>
-                            <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
+    <header id="page-topbar">
+      <div class="layout-width">
+        <div class="navbar-header">
+          <div class="d-flex">
 
-                                <div class="text-center pt-3 pb-1">
-                                    <a href="pages-search-results.html" class="btn btn-primary btn-sm">View All Results
-                                        <i class="ri-arrow-right-line ms-1"></i></a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+            <!-- App Search-->
+            <form class="app-search d-none d-md-block">
+              <div class="position-relative">
+                <input type="text" class="form-control" placeholder="Search..." autocomplete="off" id="search-options"
+                  value="">
+                <span class="mdi mdi-magnify search-widget-icon"></span>
+                <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
+                  id="search-close-options"></span>
+              </div>
+              <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
 
-                    <div class="d-flex align-items-center">
-                    
-
-                      
-
-                        <div class="dropdown ms-sm-3 header-item topbar-user">
-                            <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="d-flex align-items-center">
-                                    <img class="rounded-circle header-profile-user"
-                                        src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif">
-                                    <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Vũ Hải
-                                            Đăng</span>
-                                        <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
-                                    </span>
-                                </span>
-                            </button>
-                           <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                              
-                                <a class="dropdown-item" href="profile.html"><i
-                                        class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Profile</span></a>
- 
-                                <a class="dropdown-item" href="setting.html"><i
-                                        class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Settings</span></a>
-                                
-                                <a class="dropdown-item" href="login.html"><i
-                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle" data-key="t-logout">Logout</span></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="text-center pt-3 pb-1">
+                  <a href="pages-search-results.html" class="btn btn-primary btn-sm">View All Results
+                    <i class="ri-arrow-right-line ms-1"></i></a>
                 </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="d-flex align-items-center">
+
+
+
+
+            <div class="dropdown ms-sm-3 header-item topbar-user">
+              <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="d-flex align-items-center">
+                  <img class="rounded-circle header-profile-user" src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif">
+                  <span class="text-start ms-xl-2">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Vũ Hải
+                      Đăng</span>
+                    <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
+                  </span>
+                </span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end">
+                <!-- item-->
+
+                <a class="dropdown-item" href="profile.html"><i
+                    class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                    class="align-middle">Profile</span></a>
+
+                <a class="dropdown-item" href="setting.html"><i
+                    class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
+                    class="align-middle">Settings</span></a>
+
+                <a class="dropdown-item" href="login.html"><i
+                    class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
+                    data-key="t-logout">Logout</span></a>
+              </div>
             </div>
-        </header>
+          </div>
+        </div>
+      </div>
+    </header>
 
 
-        <main class="container my-5" style="max-width: 900px; margin-right: 100px;">
-        <div class="d-flex align-items-center mb-4">
-            <h1 class="h2 flex-grow-1">Settings</h1>
+    <main class="container my-5" style="max-width: 900px; margin-right: 100px;">
+      <div class="d-flex align-items-center mb-4">
+        <h1 class="h2 flex-grow-1">Settings</h1>
 
+      </div>
+
+      <ul class="nav tab-buttons mb-3" id="settingsTabs" role="tablist">
+        <a class="nav-link" href="setting.html" data-tab="account">Account</a>
+        </li>
+        <a class="nav-link " href="publishing.html" data-tab="publishing">Publishing</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="notification.html" data-tab="notification">Notifications</a>
+        </li>
+      </ul>
+      <!-- Bảng “Account” đơn giản -->
+
+
+      <div class="mb-3 d-flex justify-content-between align-items-start">
+        <div>
+          <h3>Thông báo qua email</h3>
+          <span class="text-dark" style="cursor: pointer;"> Đề xuất câu chuyện </span>
+        </div>
+      </div>
+
+      <!-- Bản tóm tắt trung bình mới -->
+      <div class="mb-3 d-flex justify-content-between align-items-start">
+        <div>
+          <strong>Bản tóm tắt trung bình mới</strong>
+          <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
+            Những câu chuyện hay nhất trên Medium được cá nhân hóa dựa trên sở thích của bạn, cũng như những câu chuyện
+            nổi bật được biên tập viên của chúng tôi lựa chọn.
+          </div>
+        </div>
+        <div>
+          <input class="form-check-input mt-1" type="checkbox" id="summaryToggle">
+        </div>
+      </div>
+
+      <!-- Đọc sách được đề xuất -->
+      <div class="mb-3 d-flex justify-content-between align-items-start">
+        <div>
+          <strong>Đọc sách được đề xuất</strong>
+          <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
+            Những câu chuyện, chuyên mục và bộ sưu tập nổi bật mà chúng tôi nghĩ bạn sẽ thích dựa trên lịch sử đọc của
+            bạn.
+          </div>
+        </div>
+        <div>
+          <input class="form-check-input mt-1" type="checkbox" id="recommendToggle">
+        </div>
+      </div>
+
+
+      <div class="border-bottom my-3"></div>
+
+      <strong>Từ các nhà văn và ấn phẩm</strong>
+
+      <div class="mb-3 d-flex justify-content-between align-items-start">
+        <div>
+          <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
+            Những câu chuyện mới được thêm vào danh sách bạn đã lưu
+          </div>
+        </div>
+        <div>
+          <input class="form-check-input mt-1" type="checkbox" id="themToggle">
         </div>
 
-        <ul class="nav tab-buttons mb-3" id="settingsTabs" role="tablist">
-             <a class="nav-link" href="setting.html" data-tab="account">Account</a>
-</li>
-  <a class="nav-link " href="publishing.html" data-tab="publishing">Publishing</a>
-</li>
 
-             <li class="nav-item">
-  <a class="nav-link active" href="notification.html" data-tab="notification">Notifications</a>
-</li>
-        </ul>
-        <!-- Bảng “Account” đơn giản -->
-     
+      </div>
+      <div class="border-bottom my-3"></div>
 
-<div class="mb-3 d-flex justify-content-between align-items-start">
-  <div>
-    <h3>Thông báo qua email</h3>
-   <span class="text-dark" style="cursor: pointer;" > Đề xuất câu chuyện </span>
-  </div>
-</div>
+      <strong>Hoạt động xã hội</strong>
 
-<!-- Bản tóm tắt trung bình mới -->
-<div class="mb-3 d-flex justify-content-between align-items-start">
-  <div>
-    <strong>Bản tóm tắt trung bình mới</strong>
-    <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
-      Những câu chuyện hay nhất trên Medium được cá nhân hóa dựa trên sở thích của bạn, cũng như những câu chuyện nổi bật được biên tập viên của chúng tôi lựa chọn.
-    </div>
-  </div>
-  <div>
-    <input class="form-check-input mt-1" type="checkbox" id="summaryToggle">
-  </div>
-</div>
-
-<!-- Đọc sách được đề xuất -->
-<div class="mb-3 d-flex justify-content-between align-items-start">
-  <div>
-    <strong>Đọc sách được đề xuất</strong>
-    <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
-      Những câu chuyện, chuyên mục và bộ sưu tập nổi bật mà chúng tôi nghĩ bạn sẽ thích dựa trên lịch sử đọc của bạn.
-    </div>
-  </div>
-  <div>
-    <input class="form-check-input mt-1" type="checkbox" id="recommendToggle">
-  </div>
-</div>
-
-
-   <div class="border-bottom my-3"></div>
-
-   <strong>Từ các nhà văn và ấn phẩm</strong>
-  
-   <div class="mb-3 d-flex justify-content-between align-items-start">
-  <div>
-    <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
-     Những câu chuyện mới được thêm vào danh sách bạn đã lưu
-    </div>
-  </div>
-  <div>
-    <input class="form-check-input mt-1" type="checkbox" id="themToggle">
+      <div class="mb-3 d-flex justify-content-between align-items-start">
+        <div>
+          <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
+            Khi ai đó theo dõi bạn hoặc đánh dấu cùng một đoạn trong một câu chuyện
+          </div>
+        </div>
+        <div>
+          <input class="form-check-input mt-1" type="checkbox" id="hoatdongToggle">
+        </div>
+      </div>
   </div>
 
-  
-</div>
-  <div class="border-bottom my-3"></div>
-
-   <strong>Hoạt động xã hội</strong>
-
-     <div class="mb-3 d-flex justify-content-between align-items-start">
-  <div>
-    <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px;">
-    Khi ai đó theo dõi bạn hoặc đánh dấu cùng một đoạn trong một câu chuyện
-    </div>
-  </div>
-  <div>
-    <input class="form-check-input mt-1" type="checkbox" id="hoatdongToggle">
-  </div>
-</div>
-</div>
 
 
+  <h1 style="margin-top: 100px; margin-left: 390px;"> Thông báo đẩy
+  </h1>
 
-<h1 style="margin-top: 100px; margin-left: 390px;"> Thông báo đẩy
-</h1>
-
- <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px; margin-left: 390px; " >
+  <div class="text-muted" style="font-size: 0.875rem; margin-top: 2px; margin-left: 390px; ">
     Mở ứng dụng Medium từ thiết bị di động của bạn để thực hiện thay đổi cho thông báo đẩy.
-    </div>
+  </div>
 
-    </main>
+  </main>
 
-    
+
   <div class="modal fade" id="emailEditModal" tabindex="-1" aria-labelledby="emailEditModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="emailEditModalLabel">Chỉnh sửa địa chỉ email 'Trả lời tới'</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
-      </div>
-      <div class="modal-body">
-        <input type="email" class="form-control" id="editReplyEmailInput">
-        <small class="text-muted">Email này sẽ được hiển thị cho người đăng ký khi họ trả lời.</small>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-        <button type="button" class="btn btn-success" onclick="saveReplyEmail()">Cưu</button>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="emailEditModalLabel">Chỉnh sửa địa chỉ email 'Trả lời tới'</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <div class="modal-body">
+          <input type="email" class="form-control" id="editReplyEmailInput">
+          <small class="text-muted">Email này sẽ được hiển thị cho người đăng ký khi họ trả lời.</small>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-success" onclick="saveReplyEmail()">Cưu</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-           <!-- ========== App Menu ========== -->
-        <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif; ">
+  <!-- ========== App Menu ========== -->
+  <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif; ">
 
-            <!-- LOGO -->
-            <div class="navbar-brand-box">
-                <!-- Dark Logo-->
-                <a href="index.html" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="17">
-                    </span>
-                </a>
-                <!-- Light Logo-->
-                <a href="index.html" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="17">
-                    </span>
-                </a>
-                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
-                    id="vertical-hover">
-                    <i class="ri-record-circle-line"></i>
-                </button>
-            </div>
+    <!-- LOGO -->
+    <div class="navbar-brand-box">
+      <!-- Dark Logo-->
+      <a href="index.html" class="logo logo-dark">
+        <span class="logo-sm">
+          <img src="assets/images/logo-sm.png" alt="" height="22">
+        </span>
+        <span class="logo-lg">
+          <img src="assets/images/logo-dark.png" alt="" height="17">
+        </span>
+      </a>
+      <!-- Light Logo-->
+      <a href="index.html" class="logo logo-light">
+        <span class="logo-sm">
+          <img src="assets/images/logo-sm.png" alt="" height="22">
+        </span>
+        <span class="logo-lg">
+          <img src="assets/images/logo-light.png" alt="" height="17">
+        </span>
+      </a>
+      <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+        id="vertical-hover">
+        <i class="ri-record-circle-line"></i>
+      </button>
+    </div>
 
-            <div class="dropdown sidebar-user m-1 rounded">
-                <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-flex align-items-center gap-2">
-                        <img class="rounded header-profile-user" src="assets/images/users/avatar-1.jpg"
-                            alt="Header Avatar">
-                        <span class="text-start">
-                            <span class="d-block fw-medium sidebar-user-name-text">Anna Adame</span>
-                            <span class="d-block fs-14 sidebar-user-name-sub-text"><i
-                                    class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span
-                                    class="align-middle">Online</span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
-                   
-                    <a class="dropdown-item" href="profile.html"><i
-                            class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle">Profile</span></a>
-                   
-                   
-                 
-                    <div class="dropdown-divider"></div>
-                  
-                    <a class="dropdown-item" href="setting.html"><i
-                            class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle">Settings</span></a>
-                    <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
-                            class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock
-                            screen</span></a>
-                    <a class="dropdown-item" href="auth-logout-basic.html"><i
-                            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
-                            data-key="t-logout">Logout</span></a>
-                </div>
-            </div>
-          
+    <div class="dropdown sidebar-user m-1 rounded">
+      <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <span class="d-flex align-items-center gap-2">
+          <img class="rounded header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+          <span class="text-start">
+            <span class="d-block fw-medium sidebar-user-name-text">Anna Adame</span>
+            <span class="d-block fs-14 sidebar-user-name-sub-text"><i
+                class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span
+                class="align-middle">Online</span></span>
+          </span>
+        </span>
+      </button>
+      <div class="dropdown-menu dropdown-menu-end">
+        <!-- item-->
 
-            <div class="sidebar-background"></div>
-        </div>
-        <!-- Left Sidebar End -->
-        <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
+        <a class="dropdown-item" href="profile.html"><i
+            class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+            class="align-middle">Profile</span></a>
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
 
-        <body>
 
-            <div class="container mt-3">
-                <!-- Nút mở Modal -->
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item" href="setting.html"><i
+            class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
+            class="align-middle">Settings</span></a>
+        <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
+            class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock
+            screen</span></a>
+        <a class="dropdown-item" href="auth-logout-basic.html"><i
+            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
+            data-key="t-logout">Logout</span></a>
+      </div>
+    </div>
+
+
+    <div class="sidebar-background"></div>
+  </div>
+  <!-- Left Sidebar End -->
+  <!-- Vertical Overlay-->
+  <div class="vertical-overlay"></div>
+
+  <!-- ============================================================== -->
+  <!-- Start right Content here -->
+  <!-- ============================================================== -->
+
+  <body>
+
+    <div class="container mt-3">
+      <!-- Nút mở Modal -->
 
 
 
 
 
-        </body>
+  </body>
 
 </html>
 
@@ -388,7 +390,7 @@
     const summaryToggle = document.getElementById('summaryToggle');
     const recommendToggle = document.getElementById('recommendToggle');
     const themToggle = document.getElementById('themToggle');
-     const hoatdongToggle = document.getElementById('hoatdongToggle');
+    const hoatdongToggle = document.getElementById('hoatdongToggle');
 
     summaryToggle.checked = localStorage.getItem('summaryToggle') === 'true';
     recommendToggle.checked = localStorage.getItem('recommendToggle') === 'true';
@@ -405,7 +407,7 @@
       alert(this.checked ? '✅ Đã bật Đọc sách được đề xuất' : '❌ Đã tắt Đọc sách được đề xuất');
     });
 
-     themToggle.addEventListener('change', function () {
+    themToggle.addEventListener('change', function () {
       localStorage.setItem('themToggle', this.checked);
       alert(this.checked ? '✅ Đã bật Những câu chuyện mới được thêm vào danh sách bạn đã lưu' : '❌ Đã tắt Những câu chuyện mới được thêm vào danh sách bạn đã lưu');
     });

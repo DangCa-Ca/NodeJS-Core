@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
+    data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
+
+
+<!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:44:28 GMT -->
+
+<head>
+    <style>
+        /* Thu nhỏ chữ cho link trong sidebar */
+        .app-menu .nav-link {
+            font-size: 13px !important;
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+
+        /* Thu nhỏ chữ tiêu đề menu */
+        .app-menu .menu-title {
+            font-size: 11px !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9aa4b2;
+        }
+        img {
+  max-width: 100%;       /* Không cho ảnh vượt quá vùng soạn thảo */
+  height: auto;          /* Giữ tỷ lệ ảnh */
+  display: block;        /* Ảnh xuống dòng riêng */
+  margin: 10px 0;        /* Tạo khoảng cách trên/dưới */
+  border-radius: 8px;    /* Bo góc ảnh cho đẹp */
+}
+
+    </style>
+
+
+    <meta charset="utf-8" />
+    <title>Dashboard | Velzon - Admin & Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- jsvectormap css -->
+    <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+
+    <!--Swiper slider css-->
+    <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Layout config Js -->
+    <script src="assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="layout-width">
+                <div class="navbar-header">
+                    <div class="d-flex">
+
+                        <!-- App Search-->
+                        <form class="app-search d-none d-md-block">
+                            <div class="position-relative">
+                                <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
+                                    id="search-options" value="">
+                                <span class="mdi mdi-magnify search-widget-icon"></span>
+                                <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
+                                    id="search-close-options"></span>
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
+
+                                <div class="text-center pt-3 pb-1">
+                                    <a href="pages-search-results.html" class="btn btn-primary btn-sm">View All Results
+                                        <i class="ri-arrow-right-line ms-1"></i></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+
+
+
+
+                        <div class="dropdown ms-sm-3 header-item topbar-user">
+                            <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="d-flex align-items-center">
+                                    <img class="rounded-circle header-profile-user"
+                                        src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif">
+                                    <span class="text-start ms-xl-2">
+                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Vũ Hải
+                                            Đăng</span>
+                                        <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
+                                    </span>
+                                </span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+
+                                <a class="dropdown-item" href="profile.html"><i
+                                        class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                                        class="align-middle">Profile</span></a>
+
+                                <a class="dropdown-item" href="setting.html"><i
+                                        class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
+                                        class="align-middle">Settings</span></a>
+
+                                <a class="dropdown-item" href="login.html"><i
+                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
+                                        class="align-middle" data-key="t-logout">Logout</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    </div>
+    </div>
+
+
+   <div class="main-content bg-white">
+    <div class="page-content">
+        <div class="container-fluid" style="max-width: 800px;">
+            <h1 class="mb-4 fw-bold text-primary"> Tạo bài viết mới</h1>
+
+            <form id="postForm" class="p-4 bg-white border border-2 rounded-4 shadow-sm">
+
+                <!-- Người đăng (không chỉnh sửa) -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold text-dark">Người đăng bài</label>
+                    <input type="text" class="form-control-plaintext ps-2 fw-bold text-dark bg-light" value="Vũ Hải Đăng" readonly>
+                </div>
+
+                <!-- Danh mục & Ngôn ngữ -->
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                       <label for="category" class="form-label fw-bold text-dark">Danh mục</label>
+
+                        <select id="category" class="form-select" required>
+                            <option value="" selected disabled>-- Chọn danh mục --</option>
+                            <option>Thể thao</option>
+                            <option>Thế giới</option>
+                            <option>Đời sống</option>
+                            <option>Giao thông</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="language" class="form-label fw-semibold text-dark">Ngôn ngữ</label>
+                        <select id="language" class="form-select" required>
+                            <option value="" selected disabled>-- Chọn ngôn ngữ --</option>
+                            <option>Tiếng Việt</option>
+                            <option>Tiếng Anh</option>
+                            <option>Tiếng Nhật</option>
+                            <option>Tiếng Hàn</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tiêu đề -->
+                <div class="mb-3">
+                    <label for="title" class="form-label fw-semibold text-dark">Tiêu đề</label>
+                    <input id="title" type="text" class="form-control" placeholder="Nhập tiêu đề" required>
+                </div>
+
+                <!-- Mô tả -->
+                <div class="mb-3">
+                    <label for="description" class="form-label fw-semibold text-dark">Mô tả</label>
+                    <input id="description" type="text" class="form-control" placeholder="Nhập mô tả ngắn" required>
+                </div>
+
+                <!-- Trạng thái -->
+                <div class="mb-3">
+                    <label for="status" class="form-label fw-semibold text-dark">Trạng thái</label>
+                    <select id="trangthai" class="form-select" required>
+                        <option value="" selected disabled>-- Chọn Trạng thái --</option>
+                        <option value="1">Hoạt động</option>
+                        <option value="0">Không hoạt động</option>
+                    </select>
+                </div>
+
+                <!-- Bộ chọn ngôn ngữ + nút dịch -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary btn-sm fw-semibold" id="btn-vi" disabled>🇻🇳 Tiếng Việt</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold" id="btn-en" disabled>en Tiếng Anh</button>
+                    </div>
+                    <button type="button" class="btn btn-success btn-sm fw-semibold" id="btn-translate">
+                        <i class="bi bi-arrow-right-circle me-1"></i> Dịch sang tiếng Anh
+                    </button>
+                </div>
+
+                <!-- Nội dung -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold text-dark">Nội dung</label>
+                    <textarea id="contentEditor"></textarea>
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="post.html" class="btn btn-outline-secondary fw-semibold">Hủy</a>
+                    <button type="submit" class="btn btn-primary fw-semibold" id="saveBtn">Tạo bài viết</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- ========== App Menu ========== -->
+    <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif; ">
+
+        <!-- LOGO -->
+        <div class="navbar-brand-box">
+            <!-- Dark Logo-->
+            <a href="index.html" class="logo logo-dark">
+                <span class="logo-sm">
+                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                </span>
+            </a>
+            <!-- Light Logo-->
+            <a href="index.html" class="logo logo-light">
+                <span class="logo-sm">
+                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/logo-light.png" alt="" height="17">
+                </span>
+            </a>
+            <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+                id="vertical-hover">
+                <i class="ri-record-circle-line"></i>
+            </button>
+        </div>
+
+        <div class="dropdown sidebar-user m-1 rounded">
+            <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="d-flex align-items-center gap-2">
+                    <img class="rounded header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                    <span class="text-start">
+                        <span class="d-block fw-medium sidebar-user-name-text">Anna Adame</span>
+                        <span class="d-block fs-14 sidebar-user-name-sub-text"><i
+                                class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span
+                                class="align-middle">Online</span></span>
+                    </span>
+                </span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end">
+                <!-- item-->
+
+                <a class="dropdown-item" href="profile.html"><i
+                        class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                        class="align-middle">Profile</span></a>
+
+
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="setting.html"><i
+                        class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
+                        class="align-middle">Settings</span></a>
+                <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
+                        class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock
+                        screen</span></a>
+                <a class="dropdown-item" href="auth-logout-basic.html"><i
+                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
+                        data-key="t-logout">Logout</span></a>
+            </div>
+        </div>
+        <div id="scrollbar">
+            <div class="container-fluid ">
+
+
+                <div id="two-column-menu">
+                </div>
+                <ul class="navbar-nav" id="navbar-nav" style="font-size: 12px;">
+
+                    <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                    <li class="nav-item">
+                        <a href="categorie.html" class="nav-link " data-key="t-ecommerce"> Categorie </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="user.html" class="nav-link" data-key="t-crypto"> User </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="post.html" class="nav-link" data-key="t-projects">Post </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="role.html" class="nav-link" data-key="t-projects">Role </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="language.html" class="nav-link" data-key="t-projects">Language </a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- Sidebar -->
+        </div>
+
+        <div class="sidebar-background"></div>
+    </div>
+    <!-- Left Sidebar End -->
+    <!-- Vertical Overlay-->
+    <div class="vertical-overlay"></div>
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+
+    <body>
+
+        <div class="container mt-3">
+            <!-- Nút mở Modal -->
+
+    </body>
+
+</html>
+
+<script src="tinymce/tinymce.min.js"></script>
+
+<!-- JAVASCRIPT -->
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/libs/node-waves/waves.min.js"></script>
+<script src="assets/libs/feather-icons/feather.min.js"></script>
+<script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+<script src="assets/js/plugins.js"></script>
+
+<!-- apexcharts -->
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+<!-- Vector map-->
+<script src="assets/libs/jsvectormap/js/jsvectormap.min.js"></script>
+<script src="assets/libs/jsvectormap/maps/world-merc.js"></script>
+
+<!--Swiper slider js-->
+<script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+
+<!-- Dashboard init -->
+<script src="assets/js/pages/dashboard-ecommerce.init.js"></script>
+
+<!-- App js -->
+<script src="assets/js/app.js"></script>
+<script>
+    let currentLang = 'vi';
+    let contentData = {
+        vi: { title: '', description: '', content: '' },
+        en: { title: '', description: '', content: '' }
+    };
+
+    function getCurrentInputs() {
+        return {
+            title: document.getElementById('title').value.trim(),
+            description: document.getElementById('description').value.trim(),
+            content: tinymce.get('contentEditor')?.getContent()?.trim() || ''
+        };
+    }
+
+    function setInputs(data) {
+        document.getElementById('title').value = data.title || '';
+        document.getElementById('description').value = data.description || '';
+        tinymce.get('contentEditor')?.setContent(data.content || '');
+    }
+
+    function switchLang(lang) {
+        // Lưu lại dữ liệu hiện tại trước khi chuyển
+        contentData[currentLang] = getCurrentInputs();
+        currentLang = lang;
+
+        // Update giao diện nút
+        document.getElementById('btn-vi').classList.toggle('btn-primary', lang === 'vi');
+        document.getElementById('btn-vi').classList.toggle('btn-outline-primary', lang !== 'vi');
+        document.getElementById('btn-en').classList.toggle('btn-primary', lang === 'en');
+        document.getElementById('btn-en').classList.toggle('btn-outline-secondary', lang !== 'en');
+
+        // Reset và set nội dung
+        setInputs(contentData[lang]);
+    }
+
+   function editorSetup() {
+  tinymce.init({
+    selector: '#contentEditor',
+    height: 300,
+    plugins: 'image link lists code',
+    toolbar:
+      'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code',
+    content_style: `
+      body { font-family:Helvetica,Arial,sans-serif; font-size:14px }
+      img { max-width: 100%; height: auto; display: block; margin: 10px 0; border-radius: 8px; }
+    `,
+    setup: function (editor) {
+      editor.on('init', function () {
+        setInputs(contentData['vi']); // mặc định khởi tạo tiếng Việt
+      });
+    }
+  });
+}
+
+
+    // Nút chuyển sang tiếng Anh
+    document.getElementById('btn-translate').addEventListener('click', () => {
+        switchLang('en');
+        document.getElementById('language').value = 'Tiếng Anh';
+    });
+
+    // Submit
+    document.getElementById('postForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Lưu dữ liệu đang hiển thị
+        contentData[currentLang] = getCurrentInputs();
+
+        const category = document.getElementById('category').value;
+        const status = document.getElementById('trangthai').value;
+        
+
+        const isValid = (data) => data.title && data.description && data.content;
+
+        if (!isValid(contentData.vi)) {
+            alert('Vui lòng nhập đầy đủ thông tin tiếng Việt!');
+            return;
+        }
+
+        const createdAt = new Date().toISOString();
+        const posts = [];
+
+        const postVi = {
+            id: Date.now(),
+            origin_id: null,
+            author: 'Vũ Hải Đăng',
+            category,
+            language: 'vi',
+            title: contentData.vi.title,
+            description: contentData.vi.description,
+            content: contentData.vi.content,
+            status,
+            createdAt
+        };
+
+        posts.push(postVi);
+
+        if (isValid(contentData.en)) {
+            const postEn = {
+                id: postVi.id + 1,
+                origin_id: postVi.id,
+                author: 'Vũ Hải Đăng',
+                category,
+                language: 'en',
+                title: contentData.en.title,
+                description: contentData.en.description,
+                content: contentData.en.content,
+                status,
+                createdAt
+            };
+            posts.push(postEn);
+        }
+
+        // Lưu vào localStorage
+        const myPosts = JSON.parse(localStorage.getItem('myPosts') || '[]');
+        const post = JSON.parse(localStorage.getItem('post') || '[]');
+
+        posts.forEach(p => {
+            myPosts.unshift(p);
+            post.unshift({
+                id: p.id,
+                origin_id: p.origin_id,
+                title: p.title,
+                description: p.description,
+                content: p.content,
+                createdAt: p.createdAt
+            });
+        });
+
+        localStorage.setItem('myPosts', JSON.stringify(myPosts));
+        localStorage.setItem('post', JSON.stringify(post));
+
+        window.location.href = 'post.html';
+    });
+
+    // Khởi tạo editor
+    editorSetup();
+</script>
+
+</body>
+
+
+<!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:45:33 GMT -->
+
+</html>

@@ -10,435 +10,447 @@
 <html lang="en-us">
 
 <head>
-	<meta charset="utf-8">
-	<title>Reporter - HTML Blog Template</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-	<meta name="description" content="This is meta description">
-	<meta name="author" content="Themefisher">
-	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <meta charset="utf-8">
+  <title>Reporter - HTML Blog Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="description" content="This is meta description">
+  <meta name="author" content="Themefisher">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
-	<!-- # Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- # Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
-	<!-- # CSS Plugins -->
-	<link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <!-- # CSS Plugins -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
 
-	<!-- # Main Style Sheet -->
-	<link rel="stylesheet" href="css/style.css">
-
-  
-	<style>
-.category-scroll-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 30px;
-  max-width: 100%;
-}
-
-.category-scroll-inner-mask {
-  overflow: hidden;
-  width: 600px; /* Chiều rộng giới hạn hiển thị đúng 5 mục */
-}
-
-.category-scroll-inner {
-  display: flex;
-  transition: transform 0.3s ease;
-}
-
-.category-scroll-inner ul {
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-item {
-  flex: 0 0 auto;
-  width: 120px;
-  text-align: center;
-}
-
-.scroll-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #fff;
-  border: none;
-  font-size: 20px;
-  padding: 4px 8px;
-  color: #666;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease-in-out;
-}
-
-.scroll-btn:hover {
-  background-color: #f0f0f0;
-  color: #000;
-}
-
-.scroll-left {
-  left: 0;
-}
-
-.scroll-right {
-  right: 0;
-}
+  <!-- # Main Style Sheet -->
+  <link rel="stylesheet" href="css/style.css">
 
 
+  <style>
+    .category-scroll-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 30px;
+      max-width: 100%;
+    }
 
-</style>
+    .category-scroll-inner-mask {
+      overflow: hidden;
+      width: 600px;
+      /* Chiều rộng giới hạn hiển thị đúng 5 mục */
+    }
+
+    .category-scroll-inner {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .category-scroll-inner ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      flex: 0 0 auto;
+      width: 120px;
+      text-align: center;
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: none;
+      font-size: 20px;
+      padding: 4px 8px;
+      color: #666;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .scroll-btn:hover {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+
+    .scroll-left {
+      left: 0;
+    }
+
+    .scroll-right {
+      right: 0;
+    }
+    .category-scroll-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 30px;
+      max-width: 100%;
+    }
+
+    .category-scroll-inner-mask {
+      overflow: hidden;
+      width: 600px;
+      /* Chiều rộng giới hạn hiển thị đúng 5 mục */
+    }
+
+    .category-scroll-inner {
+      display: flex;
+      transition: transform 0.3s ease;
+      will-change: transform;
+      width: max-content;
+      /* ✅ giúp nội dung dài hơn wrapper */
+    }
+
+
+    .category-scroll-inner ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-item {
+      flex: 0 0 auto;
+      width: 120px;
+      margin-right: 16px;
+      /* hoặc giữ mr-3 */
+      text-align: center;
+    }
+
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: none;
+      font-size: 20px;
+      padding: 4px 8px;
+      color: #666;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .scroll-btn:hover {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+
+    .scroll-left {
+      left: 0;
+    }
+
+    .scroll-right {
+      right: 0;
+    }
+    
+  </style>
 </head>
 
 <body>
 
-<header class="navigation">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light px-0">
-      <a class="navbar-brand order-1 py-0" href="index.html">
-        <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
-      </a>
-      <div class="navbar-actions order-3 ml-0 ml-md-4">
-  <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
-    data-target="#navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <header class="navigation">
 
- <div class="navbar-actions order-3 ml-0 ml-md-4 d-flex align-items-center">
-   <a href="write.html" class="d-flex align-items-center mr-3 text-dark" style="text-decoration: none;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" aria-label="Write">
-      <path fill="currentColor" d="M14 4a.5.5 0 0 0 0-1zm7 6a.5.5 0 0 0-1 0zm-7-7H4v1h10zM3 4v16h1V4zm1 17h16v-1H4zm17-1V10h-1v10zm-1 1a1 1 0 0 0 1-1h-1zM3 20a1 1 0 0 0 1 1v-1zM4 3a1 1 0 0 0-1 1h1z"></path>
-      <path stroke="currentColor" d="m17.5 4.5-8.458 8.458a.25.25 0 0 0-.06.098l-.824 2.47a.25.25 0 0 0 .316.316l2.47-.823a.25.25 0 0 0 .098-.06L19.5 6.5m-2-2 2.323-2.323a.25.25 0 0 1 .354 0l1.646 1.646a.25.25 0 0 1 0 .354L19.5 6.5m-2-2 2 2"></path>
-    </svg>
-    <span class="ml-1">Write</span>
-  </a>
-  <div class="nav-item dropdown">
-   
-    
-    <a class=" dropdown-toggle d-flex align-items-center" href="#" role="button"
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="40" height="40">
-      <span class="d-none d-md-inline">Vũ Hải Đăng</span>
-    </a>
-
-    <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
-      
-      <div class="d-flex align-items-center mb-2">
-        
-        <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="50" height="50">
-        <div>
-          <strong>Vũ Hải Đăng</strong><br>
-          <small class="text-muted">Founder</small>
-        </div>
+    <div class="">
+      <!-- Thanh search đen trên cùng -->
+      <div
+        style="background: #ebe1e6b8; height: 32px; display: flex; justify-content: flex-end; align-items: center; padding: 0 16px;">
+        <form onsubmit="handleSearch(event)" style="display: flex; align-items: center;">
+          <input type="text" id="searchInput" placeholder="Tìm kiếm..."
+            style="height: 24px; font-size: 13px; padding: 0 8px; border: none; border-radius: 2px 0 0 2px; outline: none;" />
+          <button type="submit"
+            style="background: #fff; border: none; height: 24px; width: 28px; display: flex; align-items: center; justify-content: center; border-radius: 0 2px 2px 0;">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="18" fill="black">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.16 5.59 12.53 3 9.5 3S3.84 5.59 3.84 8.39s2.63 5.39 5.66 5.39a6.47 6.47 0 005.34-1.48l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+          </button>
+        </form>
       </div>
-      <div class="dropdown-divider"></div>
-    
-      <a class="dropdown-item" href="profile.html">
-        <i class="fas fa-user mr-2"></i> Profile
-      </a>
-       <a class="dropdown-item" href="stories.html">
-        <i class="fas fa-user mr-2"></i> Stories
-      </a>
-        <a class="dropdown-item d-flex justify-content-between align-items-center" href="setting.html">
-        <span><i class="fas fa-cog mr-2"></i> Settings</span>
-       
-      </a>
-      <a class="dropdown-item text-danger" href="login.html">
-        <i class="fas fa-sign-out-alt mr-2"></i> Logout
-      </a>
-    </div>
-  </div>
-  </div>
-</div>
+
+     <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="navbar-brand order-1 py-0" href="index.html">
+          <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
+        </a>
+        <div class="navbar-actions order-3 ml-0 ml-md-4">
+          <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
+            data-target="#navigation">
+            <span class="navbar-toggler-icon"></span>
+
+          </button>
+
+          <div class="navbar-actions order-3 ml-0 ml-md-4 d-flex align-items-center" style="margin-right: 35px;">
+            <a href="create-post.html" class="d-flex align-items-center mr-3 text-dark" style="text-decoration: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                aria-label="Write">
+                <path fill="currentColor"
+                  d="M14 4a.5.5 0 0 0 0-1zm7 6a.5.5 0 0 0-1 0zm-7-7H4v1h10zM3 4v16h1V4zm1 17h16v-1H4zm17-1V10h-1v10zm-1 1a1 1 0 0 0 1-1h-1zM3 20a1 1 0 0 0 1 1v-1zM4 3a1 1 0 0 0-1 1h1z">
+                </path>
+                <path stroke="currentColor"
+                  d="m17.5 4.5-8.458 8.458a.25.25 0 0 0-.06.098l-.824 2.47a.25.25 0 0 0 .316.316l2.47-.823a.25.25 0 0 0 .098-.06L19.5 6.5m-2-2 2.323-2.323a.25.25 0 0 1 .354 0l1.646 1.646a.25.25 0 0 1 0 .354L19.5 6.5m-2-2 2 2">
+                </path>
+              </svg>
+              <span class="ml-1">Write</span>
+            </a>
 
 
-      
+            <div class="nav-item dropdown">
 
 
-     <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
-  <div class="category-scroll-wrapper">
-    <button class="scroll-btn scroll-left" onclick="scrollCategories(-1)" id="btnScrollLeft" style="display: none;">‹</button>
+              <a class="dropdown-toggle d-flex align-items-center" href="#" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="text-decoration: none; color: inherit;">
+                <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2"
+                  width="40" height="40">
+                <span class="d-none d-md-inline" style="color: rgb(105, 103, 103);">Vũ Hải Đăng</span>
+              </a>
 
-    <div class="category-scroll-inner-mask">
-      <div class="category-scroll-inner" id="categoryScroll">
-        <ul class="navbar-nav d-flex flex-row flex-nowrap">
-          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Thể thao</a></li>
-          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Đời sống</a></li>
-          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Giáo dục</a></li>
-          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Công nghệ</a></li>
-          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Thời trang</a></li>
-          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Kinh tế</a></li>
-          <li class="nav-item mr-3"> <a class="nav-link" href="category.html">Giải trí</a></li>
-        </ul>
-      </div>
-    </div>
+              <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
 
-    <button class="scroll-btn scroll-right" onclick="scrollCategories(1)" id="btnScrollRight">›</button>
-  </div>
-</div>
-    </nav>
-  </div>
-</header>
+                <div class="d-flex align-items-center mb-2">
 
-<main>
-	<section class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 mb-5 mb-lg-0">
-					<article>
-						<img loading="lazy" decoding="async" src="https://photo.znews.vn/w1000/Uploaded/bpivpawv/2024_11_06/mbappe.JPG" alt="Post Thumbnail" class="w-100">
-						<ul class="post-meta mb-2 mt-4">
-							<li>
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="margin-right:5px;margin-top:-4px" class="text-dark" viewBox="0 0 16 16">
-									<path d="M5.5 10.5A.5.5 0 0 1 6 10h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
-									<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
-									<path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
-								</svg> <span>29 May, 2021</span>
-							</li>
-						</ul>
-						<h1 class="my-3">Top 7 Reasons to Visit Denver this Summer</h1>
-						<ul class="post-meta mb-4">
-							<li> <a href="/categories/destination">destination</a>
-							</li>
-						</ul>
-						<div class="content text-left">
-							<h1 id="heading">Heading</h1>
-							<p>Here is example of hedings. You can use this heading by following markdownify rules. For example: use <code>#</code> for heading 1 and use <code>######</code> for heading 6.</p>
-							<h2 id="emphasis">Emphasis</h2>
-							<p>Emphasis, aka italics, with <em>asterisks</em> or <em>underscores</em>.</p>
-							<p>Strong emphasis, aka bold, with <strong>asterisks</strong> or <strong>underscores</strong>.</p>
-							<p>Combined emphasis with <strong>asterisks and <em>underscores</em></strong>.</p>
-							<p>Strikethrough uses two tildes. <del>Scratch this.</del>
-							</p>
-							<!-- table of content -->
-						
-						
-							
-							
-						</div>
-					</article>
-          
-					<div class="mt-5">
-						<div id="disqus_thread"></div>
-						<script type="application/javascript">
-							var disqus_config = function () {
-							    
-							    
-							    
-							    };
-							    (function() {
-							        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-							            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-							            return;
-							        }
-							        var d = document, s = d.createElement('script'); s.async = true;
-							        s.src = '//' + "themefisher-template" + '.disqus.com/embed.js';
-							        s.setAttribute('data-timestamp', +new Date());
-							        (d.head || d.body).appendChild(s);
-							    })();
-						</script>
-						<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-						</noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-					</div>
-            <!-- BÌNH LUẬN -->
-<section class="mt-5">
-  <h5 class="fw-bold mb-3 border-start border-4 border-danger ps-2">03 COMMENTS</h5>
-
-  <!-- Form bình luận -->
-  <div class="mb-4 p-4 bg-light rounded shadow-sm">
-    <div class="mb-3">
-      <label for="commentInput" class="form-label fw-semibold">Nội dung <span class="text-danger">*</span></label>
-  <textarea id="commentInput"></textarea>
-    </div>
- <button id="submitComment" class="btn btn-danger mt-3">Gửi bình luận</button>
-  </div>
-
-  <!-- Danh sách bình luận -->
-<!-- Comment list -->
-<div id="commentList" class="mt-4"></div>
-    <!-- Các comment sẽ được thêm ở đây bằng JS -->
-</section>
-				</div>
-
-        
-        <div class="col-lg-4">
-  <div class="widget-blocks">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="widget">
-          <div class="widget-body">
-            <img loading="lazy" decoding="async" src="images/author.jpg" alt="About Me" class="w-100 author-thumb-sm d-block">
-            <h2 class="widget-title my-3">Hootan Safiyari</h2>
-            <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter, Developer and Story teller. Working as a Content writter at CoolTech Agency. Quam nihil …</p> <a href="category.html" class="btn btn-sm btn-outline-primary">Know
-              More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-12 col-md-6">
-        <div class="widget">
-          <h2 class="section-title mb-3">Recommended</h2>
-          <div class="widget-body">
-            <div class="widget-list">
-              <article class="card mb-4">
-                <div class="card-image">
-                  <div class="post-info"> <span class="text-uppercase">1 minutes read</span>
-                  </div>
-                  <img loading="lazy" decoding="async" src="images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
-                </div>
-                <div class="card-body px-0 pb-1">
-                  <h3><a class="post-title post-title-sm"
-                      href="article.html">Portugal and France Now
-                      Allow Unvaccinated Tourists</a></h3>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor …</p>
-                  <div class="content"> <a class="read-more-btn" href="article.html">Read Full Article</a>
+                  <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2"
+                    width="50" height="50">
+                  <div>
+                    <strong>Vũ Hải Đăng</strong><br>
+                    <small class="text-muted">Founder</small>
                   </div>
                 </div>
-              </article>
-              <a class="media align-items-center" href="article.html">
-                <img loading="lazy" decoding="async" src="images/post/post-2.jpg" alt="Post Thumbnail" class="w-100">
-                <div class="media-body ml-3">
-                  <h3 style="margin-top:-5px">These Are Making It Easier To Visit</h3>
-                  <p class="mb-0 small">Heading Here is example of hedings. You can use …</p>
-                </div>
-              </a>
-              <a class="media align-items-center" href="article.html"> <span class="image-fallback image-fallback-xs">No Image Specified</span>
-                <div class="media-body ml-3">
-                  <h3 style="margin-top:-5px">No Image specified</h3>
-                  <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
-                </div>
-              </a>
-              <a class="media align-items-center" href="article.html">
-                <img loading="lazy" decoding="async" src="images/post/post-5.jpg" alt="Post Thumbnail" class="w-100">
-                <div class="media-body ml-3">
-                  <h3 style="margin-top:-5px">Perfect For Fashion</h3>
-                  <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
-                </div>
-              </a>
-              <a class="media align-items-center" href="article.html">
-                <img loading="lazy" decoding="async" src="images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
-                <div class="media-body ml-3">
-                  <h3 style="margin-top:-5px">Record Utra Smooth Video</h3>
-                  <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
-                </div>
-              </a>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="profile.html">
+                  <i class="fas fa-user mr-2"></i> Profile
+                </a>
+                <a class="dropdown-item" href="stories.html">
+                  <i class="fas fa-user mr-2"></i> Stories
+                </a>
+
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="setting.html">
+                  <span><i class="fas fa-cog mr-2"></i> Settings</span>
+                </a>
+
+                <a class="dropdown-item text-danger" href="login.html">
+                  <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </a>
+
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-12 col-md-6">
-        <div class="widget">
-          <h2 class="section-title mb-3">Categories</h2>
-          <div class="widget-body">
-            <ul class="widget-list">
-              <li><a href="#!">computer<span class="ml-auto">(3)</span></a>
-              </li>
-              <li><a href="#!">cruises<span class="ml-auto">(2)</span></a>
-              </li>
-              <li><a href="#!">destination<span class="ml-auto">(1)</span></a>
-              </li>
-              <li><a href="#!">internet<span class="ml-auto">(4)</span></a>
-              </li>
-              <li><a href="#!">lifestyle<span class="ml-auto">(2)</span></a>
-              </li>
-              <li><a href="#!">news<span class="ml-auto">(5)</span></a>
-              </li>
-              <li><a href="#!">telephone<span class="ml-auto">(1)</span></a>
-              </li>
-              <li><a href="#!">tips<span class="ml-auto">(1)</span></a>
-              </li>
-              <li><a href="#!">travel<span class="ml-auto">(3)</span></a>
-              </li>
-              <li><a href="#!">website<span class="ml-auto">(4)</span></a>
-              </li>
-              <li><a href="#!">hugo<span class="ml-auto">(2)</span></a>
-              </li>
-            </ul>
+
+
+
+        <!-- Phần navbar-collapse chứa danh mục -->
+        <!-- Phần navbar-collapse chứa danh mục -->
+        <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
+          <div class="category-scroll-wrapper">
+            <button class="scroll-btn scroll-left" onclick="scrollCategories(-1)" id="btnScrollLeft"
+              style="display: none;">‹</button>
+
+            <div class="category-scroll-inner-mask">
+              <div class="category-scroll-inner" id="categoryScroll">
+                <ul class="navbar-nav d-flex flex-row flex-nowrap">
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Thể thao</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Đời sống</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Giáo dục</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Công nghệ</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Thời trang</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Kinh tế</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Giải trí</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <button class="scroll-btn scroll-right" onclick="scrollCategories(1)" id="btnScrollRight">›</button>
           </div>
+        </div>
+
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mb-5 mb-lg-0">
+            <article>
+              <img loading="lazy" decoding="async"
+                src="https://photo.znews.vn/w1000/Uploaded/bpivpawv/2024_11_06/mbappe.JPG" alt="Post Thumbnail"
+                class="w-100">
+              <ul class="post-meta mb-2 mt-4">
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    style="margin-right:5px;margin-top:-4px" class="text-dark" viewBox="0 0 16 16">
+                    <path d="M5.5 10.5A.5.5 0 0 1 6 10h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z" />
+                    <path
+                      d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
+                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
+                  </svg> <span>29 May, 2021</span>
+                </li>
+              </ul>
+              <h1 class="my-3">Top 7 Reasons to Visit Denver this Summer</h1>
+              <ul class="post-meta mb-4">
+                <li> <a href="/categories/destination">destination</a>
+                </li>
+              </ul>
+              <div class="content text-left">
+                <h1 id="heading">Heading</h1>
+                <p>Here is example of hedings. You can use this heading by following markdownify rules. For example: use
+                  <code>#</code> for heading 1 and use <code>######</code> for heading 6.</p>
+                <h2 id="emphasis">Emphasis</h2>
+                <p>Emphasis, aka italics, with <em>asterisks</em> or <em>underscores</em>.</p>
+                <p>Strong emphasis, aka bold, with <strong>asterisks</strong> or <strong>underscores</strong>.</p>
+                <p>Combined emphasis with <strong>asterisks and <em>underscores</em></strong>.</p>
+                <p>Strikethrough uses two tildes. <del>Scratch this.</del>
+                </p>
+                <!-- table of content -->
+
+
+
+
+              </div>
+            </article>
+
+            <div class="mt-5">
+              <div id="disqus_thread"></div>
+              <script type="application/javascript">
+                var disqus_config = function () {
+
+
+
+                };
+                (function () {
+                  if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+                    document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+                    return;
+                  }
+                  var d = document, s = d.createElement('script'); s.async = true;
+                  s.src = '//' + "themefisher-template" + '.disqus.com/embed.js';
+                  s.setAttribute('data-timestamp', +new Date());
+                  (d.head || d.body).appendChild(s);
+                })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered
+                  by Disqus.</a>
+              </noscript>
+              <a href="https://disqus.com" class="dsq-brlink">comments powered by <span
+                  class="logo-disqus">Disqus</span></a>
+            </div>
+            <!-- BÌNH LUẬN -->
+            <section class="mt-5">
+                <h5 class="fw-bold mb-3 border-start border-4 border-danger ps-2">00 COMMENTS</h5>
+
+
+              <!-- Form bình luận -->
+              <div class="mb-4 p-4 bg-light rounded shadow-sm">
+                <div class="mb-3">
+                  <label for="commentInput" class="form-label fw-semibold">Nội dung <span
+                      class="text-danger">*</span></label>
+                  <textarea id="commentInput"></textarea>
+                </div>
+                <button id="submitComment" class="btn btn-danger mt-3">Gửi bình luận</button>
+              </div>
+
+              <!-- Danh sách bình luận -->
+              <!-- Comment list -->
+              <div id="commentList" class="mt-4"></div>
+              <!-- Các comment sẽ được thêm ở đây bằng JS -->
+            </section>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+
+
+
+  </main>
+
+  <footer class="bg-dark mt-5">
+    <div class="container section">
+      <div class="row">
+        <div class="col-lg-10 mx-auto text-center">
+          <a class="d-inline-block mb-4 pb-2" href="index.html">
+            <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo-white.png" alt="Reporter Hugo">
+          </a>
+          <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
+            <li class="nav-item my-0"> <a class="nav-link" href="category.html">About</a></li>
+            <li class="nav-item my-0"> <a class="nav-link" href="article.html">Elements</a></li>
+            <li class="nav-item my-0"> <a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
+            <li class="nav-item my-0"> <a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
+            <li class="nav-item my-0"> <a class="nav-link" href="404.html">404 Page</a></li>
+          </ul>
         </div>
       </div>
     </div>
-  </div>
-</div>
-			</div>
-		</div>
-	</section>
+    <div class="copyright bg-dark content">Designed &amp; Developed By <a
+        href="https://themefisher.com/">Themefisher</a></div>
+  </footer>
 
 
+  <!-- # JS Plugins -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="tinymce/tinymce.min.js"></script>
+    referrerpolicy="origin"></script>
+  <!-- Main Script -->
+  <script src="js/script.js"></script>
+
+  <script>
+    const scrollContainer = document.querySelector("#categoryScroll");
+    const btnScrollLeft = document.getElementById("btnScrollLeft");
+    const btnScrollRight = document.getElementById("btnScrollRight");
+
+    let currentOffset = 0;
+    const visibleWidth = 600; // khớp với .category-scroll-inner-mask width
+
+    function scrollCategories(direction) {
+      const scrollAmount = 136 * direction; // item width + margin (120 + 16)
+      const maxOffset = scrollContainer.scrollWidth - visibleWidth;
+
+      currentOffset += scrollAmount;
+      currentOffset = Math.max(0, Math.min(currentOffset, maxOffset));
+
+      scrollContainer.style.transform = `translateX(${-currentOffset}px)`;
+      updateButtons(maxOffset);
+    }
+
+    function updateButtons(maxOffset) {
+      btnScrollLeft.style.display = currentOffset <= 0 ? "none" : "block";
+      btnScrollRight.style.display = currentOffset >= maxOffset ? "none" : "block";
+    }
+
+    window.addEventListener("load", () => {
+      updateButtons(scrollContainer.scrollWidth - visibleWidth);
+    });
+
+    window.addEventListener("resize", () => {
+      updateButtons(scrollContainer.scrollWidth - visibleWidth);
+    });
 
 
-</main>
-
-<footer class="bg-dark mt-5">
-  <div class="container section">
-    <div class="row">
-      <div class="col-lg-10 mx-auto text-center">
-        <a class="d-inline-block mb-4 pb-2" href="index.html">
-          <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo-white.png" alt="Reporter Hugo">
-        </a>
-        <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
-          <li class="nav-item my-0"> <a class="nav-link" href="category.html">About</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="article.html">Elements</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="404.html">404 Page</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="copyright bg-dark content">Designed &amp; Developed By <a href="https://themefisher.com/">Themefisher</a></div>
-</footer>
-
-
-<!-- # JS Plugins -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/bootstrap/bootstrap.min.js"></script>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script src="https://cdn.tiny.cloud/1/70dme6jtaubbdgcdg2eeiiz87tt8wq4nkgvtvuobarzj0vkx/tinymce/6/tinymce.min.js" 
-referrerpolicy="origin"></script>
-<!-- Main Script -->
-<script src="js/script.js"></script>
-
-<script>
-  const scrollContainer = document.querySelector("#categoryScroll");
-  const btnScrollLeft = document.getElementById("btnScrollLeft");
-  const btnScrollRight = document.getElementById("btnScrollRight");
-
-  let currentOffset = 0;
-  const visibleWidth = 600; // khớp với .category-scroll-inner-mask width
-
-  function scrollCategories(direction) {
-    const scrollAmount = 136 * direction; // item width + margin (120 + 16)
-    const maxOffset = scrollContainer.scrollWidth - visibleWidth;
-
-    currentOffset += scrollAmount;
-    currentOffset = Math.max(0, Math.min(currentOffset, maxOffset));
-
-    scrollContainer.style.transform = `translateX(${-currentOffset}px)`;
-    updateButtons(maxOffset);
-  }
-
-  function updateButtons(maxOffset) {
-    btnScrollLeft.style.display = currentOffset <= 0 ? "none" : "block";
-    btnScrollRight.style.display = currentOffset >= maxOffset ? "none" : "block";
-  }
-
-  window.addEventListener("load", () => {
-    updateButtons(scrollContainer.scrollWidth - visibleWidth);
-  });
-
-  window.addEventListener("resize", () => {
-    updateButtons(scrollContainer.scrollWidth - visibleWidth);
-  });
-
-  
-</script>
-
+  </script>
 <script>
   // Khởi tạo TinyMCE
   tinymce.init({
@@ -452,8 +464,11 @@ referrerpolicy="origin"></script>
 
   const submitComment = document.getElementById('submitComment');
   const commentList = document.getElementById('commentList');
+  const commentTitle = document.querySelector("section h5");
 
-  const comments = [];
+  const postId = getPostId(); // lấy ID bài viết
+  const storageKey = `comments_post_${postId}`;
+  let comments = JSON.parse(localStorage.getItem(storageKey) || '[]');
 
   function renderComments() {
     commentList.innerHTML = "";
@@ -472,6 +487,9 @@ referrerpolicy="origin"></script>
       `;
       commentList.innerHTML += commentHTML;
     });
+
+    // Cập nhật số bình luận
+    commentTitle.textContent = `${comments.length.toString().padStart(2, '0')} COMMENTS`;
   }
 
   submitComment.addEventListener("click", function () {
@@ -487,19 +505,23 @@ referrerpolicy="origin"></script>
       time: new Date().toLocaleString("vi-VN")
     };
     comments.unshift(newComment);
+    localStorage.setItem(storageKey, JSON.stringify(comments));
     renderComments();
     editor.setContent(""); // Xoá nội dung sau khi gửi
   });
 
-  // Comment mẫu
-  comments.push(
-    { content: "tôi mới bình luận hôm 27/5", time: "2 tháng trước" },
-    { content: "hố này sụt còn nhỏ đấy", time: "2 tháng trước" }
-  );
+  function getPostId() {
+    // Lấy id bài viết từ URL dạng post-detail.html?id=123
+    const params = new URLSearchParams(window.location.search);
+    return params.get('id') || 'default';
+  }
+
   renderComments();
 </script>
 
 
 
+
 </body>
+
 </html>

@@ -51,6 +51,37 @@
             padding-top: 100px;
             /* bằng chiều cao header */
         }
+        .app-menu .nav-link {
+      font-size: 13px !important;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+
+    /* Thu nhỏ chữ tiêu đề menu */
+    .app-menu .menu-title {
+      font-size: 11px !important;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #9aa4b2;
+    }
+
+    .bg-pink {
+      background-color: #eca2c7 !important;
+    }
+
+    #postDetailModal img {
+      max-width: 100%;
+      max-height: 350px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    body {
+      padding-top: 100px;
+      /* bằng chiều cao header */
+    }
     </style>
 
     <meta charset="utf-8" />
@@ -150,7 +181,7 @@
         </header>
 
 
-        <main class="container my-5" style="max-width: 900px; margin-right: 100px;">
+        <main class="container my-5" style="max-width: 900px; margin-right: 200px;">
             <div class="d-flex align-items-center mb-4">
                 <h1 class="h2 flex-grow-1">Settings</h1>
 
@@ -197,40 +228,9 @@
                 </div>
                 <div class="border-bottom my-3"></div>
 
-                <div class="mb-4">
-                    <span class="bh ac hs hn">
-                        <span class="ac hs">
-                            <span class="m hu">
-                                <span class="bf b bg ab iw text-danger" id="cancelAccountBtn" style="cursor: pointer;">
-                                    Deactivate account
-                                </span>
-                            </span>
+            
 
-                            <div class="ia m ib">
-                                <span class="bf b dt ab ds text-muted">
-                                    Deactivating will suspend your account until you sign back in.
-                                </span>
-                            </div>
-                        </span>
-                    </span>
-                </div>
-
-                <div class="mb-3">
-                    <span class="bh ac hs hn">
-                        <span class="ac hs">
-                            <span class="m hu">
-                                <span class="bf b bg ab iw text-danger" id="deleteAccountBtn" style="cursor: pointer;">
-                                    Delete account
-                                </span>
-                            </span>
-                            <div class="ia m ib">
-                                <span class="bf b dt ab ds text-muted">
-                                    Permanently delete your account and all of your content.
-                                </span>
-                            </div>
-                        </span>
-                    </span>
-                </div>
+               
 
 
 
@@ -279,30 +279,7 @@
                     </div>
                 </div>
 
-                <!-- Modal xác nhận xóa tài khoản -->
-                <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content p-3">
-                            <div class="modal-header">
-                                <h5 class="modal-title text-danger" id="deleteAccountLabel">Confirm account deletion
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-
-                                Are you sure you want to <strong>delete permanently</strong> account and all its
-                                contents?
-                                This action <span class="text-danger">cannot be undone</span>.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-danger" id="confirmDelete">Delete account</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              
 
                 <!-- Modal Blocked Users -->
                 <div class="modal fade" id="blockedUsersModal" tabindex="-1" aria-labelledby="blockedUsersLabel"
@@ -438,6 +415,37 @@
                             data-key="t-logout">Logout</span></a>
                 </div>
             </div>
+             <div id="scrollbar">
+        <div class="container-fluid ">
+
+
+          <div id="two-column-menu">
+          </div>
+          <ul class="navbar-nav" id="navbar-nav" style="font-size: 12px;">
+
+            <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+            <li class="nav-item">
+              <a href="categorie.html" class="nav-link " data-key="t-ecommerce"> Categorie </a>
+            </li>
+            <li class="nav-item">
+              <a href="user.html" class="nav-link" data-key="t-crypto"> User </a>
+            </li>
+            <li class="nav-item">
+              <a href="post.html" class="nav-link" data-key="t-projects">Post </a>
+            </li>
+            <li class="nav-item">
+              <a href="role.html" class="nav-link" data-key="t-projects">Role </a>
+            </li>
+            <li class="nav-item">
+              <a href="language.html" class="nav-link" data-key="t-projects">Language </a>
+            </li>
+
+
+
+          </ul>
+        </div>
+        <!-- Sidebar -->
+      </div>
 
 
             <div class="sidebar-background"></div>
@@ -533,28 +541,7 @@
     });
 
 </script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const deleteBtn = document.getElementById('deleteAccountBtn');
-        const deleteModal = new bootstrap.Modal(document.getElementById('deleteAccountModal'));
-        const confirmDelete = document.getElementById('confirmDelete');
 
-        // Khi click vào dòng "Xóa tài khoản"
-        deleteBtn.addEventListener('click', () => {
-            deleteModal.show();
-        });
-
-        // Khi click "Xóa tài khoản" trong modal
-        confirmDelete.addEventListener('click', () => {
-            deleteModal.hide();
-
-            // TODO: gọi API để xóa tài khoản
-            alert("Account has been deleted ().");
-
-            // Ví dụ: fetch('/api/delete-account', { method: 'DELETE' }).then(...)
-        });
-    });
-</script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         /* =======  Demo dữ liệu bị chặn  ======= */

@@ -10,515 +10,572 @@
 <html lang="en-us">
 
 <head>
-	<meta charset="utf-8">
-	<title>Reporter - HTML Blog Template</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-	<meta name="description" content="This is meta description">
-	<meta name="author" content="Themefisher">
-	<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-	<link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <meta charset="utf-8">
+  <title>Reporter - HTML Blog Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="description" content="This is meta description">
+  <meta name="author" content="Themefisher">
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
 
   <!-- theme meta -->
   <meta name="theme-name" content="reporter" />
 
-	<!-- # Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- # Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
-	<!-- # CSS Plugins -->
-	<link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
+  <!-- # CSS Plugins -->
+  <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
 
-	<!-- # Main Style Sheet -->
-	<link rel="stylesheet" href="css/style.css">
- <style>
-.category-scroll-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 30px;
-  max-width: 100%;
-}
+  <!-- # Main Style Sheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .category-scroll-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 30px;
+      max-width: 100%;
+    }
 
-.category-scroll-inner-mask {
-  overflow: hidden;
-  width: 600px; /* Chiều rộng giới hạn hiển thị đúng 5 mục */
-}
+    .category-scroll-inner-mask {
+      overflow: hidden;
+      width: 600px;
+      /* Chiều rộng giới hạn hiển thị đúng 5 mục */
+    }
 
-.category-scroll-inner {
-  display: flex;
-  transition: transform 0.3s ease;
-  will-change: transform;
-  width: max-content; /* ✅ giúp nội dung dài hơn wrapper */
-}
-
-
-.category-scroll-inner ul {
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
-.nav-item {
-  flex: 0 0 auto;
-  width: 120px;
-  margin-right: 16px; /* hoặc giữ mr-3 */
-  text-align: center;
-}
+    .category-scroll-inner {
+      display: flex;
+      transition: transform 0.3s ease;
+      will-change: transform;
+      width: max-content;
+      /* ✅ giúp nội dung dài hơn wrapper */
+    }
 
 
-.scroll-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #fff;
-  border: none;
-  font-size: 20px;
-  padding: 4px 8px;
-  color: #666;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease-in-out;
-}
+    .category-scroll-inner ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+    }
 
-.scroll-btn:hover {
-  background-color: #f0f0f0;
-  color: #000;
-}
-
-.scroll-left {
-  left: 0;
-}
-
-.scroll-right {
-  right: 0;
-}
+    .nav-item {
+      flex: 0 0 auto;
+      width: 120px;
+      margin-right: 16px;
+      /* hoặc giữ mr-3 */
+      text-align: center;
+    }
 
 
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: none;
+      font-size: 20px;
+      padding: 4px 8px;
+      color: #666;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease-in-out;
+    }
 
-</style>
+    .scroll-btn:hover {
+      background-color: #f0f0f0;
+      color: #000;
+    }
+
+    .scroll-left {
+      left: 0;
+    }
+
+    .scroll-right {
+      right: 0;
+    }
+    
+  </style>
+  
 
 </head>
 
 <body>
-  
 
-<header class="navigation">
-  
-  <div class="container">
-    
-    <nav class="navbar navbar-expand-lg navbar-light px-0">
-      <a class="navbar-brand order-1 py-0" href="index.html">
-        <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
-      </a>
-      <div class="navbar-actions order-3 ml-0 ml-md-4">
-  <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
-    data-target="#navigation">
-    <span class="navbar-toggler-icon"></span>
-    
-  </button>
 
-  <div class="navbar-actions order-3 ml-0 ml-md-4 d-flex align-items-center">
-   <a href="write.html" class="d-flex align-items-center mr-3 text-dark" style="text-decoration: none;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" aria-label="Write">
-      <path fill="currentColor" d="M14 4a.5.5 0 0 0 0-1zm7 6a.5.5 0 0 0-1 0zm-7-7H4v1h10zM3 4v16h1V4zm1 17h16v-1H4zm17-1V10h-1v10zm-1 1a1 1 0 0 0 1-1h-1zM3 20a1 1 0 0 0 1 1v-1zM4 3a1 1 0 0 0-1 1h1z"></path>
-      <path stroke="currentColor" d="m17.5 4.5-8.458 8.458a.25.25 0 0 0-.06.098l-.824 2.47a.25.25 0 0 0 .316.316l2.47-.823a.25.25 0 0 0 .098-.06L19.5 6.5m-2-2 2.323-2.323a.25.25 0 0 1 .354 0l1.646 1.646a.25.25 0 0 1 0 .354L19.5 6.5m-2-2 2 2"></path>
-    </svg>
-    <span class="ml-1">Write</span>
-  </a>
-  <div class="nav-item dropdown">
-   
-    
-    <a class=" dropdown-toggle d-flex align-items-center" href="#" role="button"
-      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="40" height="40">
-      <span class="d-none d-md-inline">Vũ Hải Đăng</span>
-    </a>
+  <header class="navigation">
 
-    <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
-      
-      <div class="d-flex align-items-center mb-2">
-        
-        <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2" width="50" height="50">
-        <div>
-          <strong>Vũ Hải Đăng</strong><br>
-          <small class="text-muted">Founder</small>
-        </div>
+    <div class="">
+      <!-- Thanh search đen trên cùng -->
+      <div
+        style="background: #ebe1e6b8; height: 32px; display: flex; justify-content: flex-end; align-items: center; padding: 0 16px;">
+        <form onsubmit="handleSearch(event)" style="display: flex; align-items: center;">
+          <input type="text" id="searchInput" placeholder="Tìm kiếm..."
+            style="height: 24px; font-size: 13px; padding: 0 8px; border: none; border-radius: 2px 0 0 2px; outline: none;" />
+          <button type="submit"
+            style="background: #fff; border: none; height: 24px; width: 28px; display: flex; align-items: center; justify-content: center; border-radius: 0 2px 2px 0;">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="18" fill="black">
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.16 5.59 12.53 3 9.5 3S3.84 5.59 3.84 8.39s2.63 5.39 5.66 5.39a6.47 6.47 0 005.34-1.48l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+          </button>
+        </form>
       </div>
-      <div class="dropdown-divider"></div>
-    
-      <a class="dropdown-item" href="profile.html">
-        <i class="fas fa-user mr-2"></i> Profile
-      </a>
-       <a class="dropdown-item" href="stories.html">
-        <i class="fas fa-user mr-2"></i> Stories
-      </a>
-      
-      <a class="dropdown-item d-flex justify-content-between align-items-center" href="setting.html">
-        <span><i class="fas fa-cog mr-2"></i> Settings</span>
-      </a>
-      
-      <a class="dropdown-item text-danger" href="login.html">
-        <i class="fas fa-sign-out-alt mr-2"></i> Logout
-      </a>
 
-    </div>
-  </div>
-  </div>
-</div>
+     <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="navbar-brand order-1 py-0" href="index.html">
+          <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo.png" alt="Reporter Hugo">
+        </a>
+        <div class="navbar-actions order-3 ml-0 ml-md-4">
+          <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
+            data-target="#navigation">
+            <span class="navbar-toggler-icon"></span>
+
+          </button>
+
+          <div class="navbar-actions order-3 ml-0 ml-md-4 d-flex align-items-center" style="margin-right: 35px;">
+            <a href="create-post.html" class="d-flex align-items-center mr-3 text-dark" style="text-decoration: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                aria-label="Write">
+                <path fill="currentColor"
+                  d="M14 4a.5.5 0 0 0 0-1zm7 6a.5.5 0 0 0-1 0zm-7-7H4v1h10zM3 4v16h1V4zm1 17h16v-1H4zm17-1V10h-1v10zm-1 1a1 1 0 0 0 1-1h-1zM3 20a1 1 0 0 0 1 1v-1zM4 3a1 1 0 0 0-1 1h1z">
+                </path>
+                <path stroke="currentColor"
+                  d="m17.5 4.5-8.458 8.458a.25.25 0 0 0-.06.098l-.824 2.47a.25.25 0 0 0 .316.316l2.47-.823a.25.25 0 0 0 .098-.06L19.5 6.5m-2-2 2.323-2.323a.25.25 0 0 1 .354 0l1.646 1.646a.25.25 0 0 1 0 .354L19.5 6.5m-2-2 2 2">
+                </path>
+              </svg>
+              <span class="ml-1">Write</span>
+            </a>
 
 
-      
+            <div class="nav-item dropdown">
 
 
-      <!-- Phần navbar-collapse chứa danh mục -->
-<!-- Phần navbar-collapse chứa danh mục -->
-<div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
-  <div class="category-scroll-wrapper">
-    <button class="scroll-btn scroll-left" onclick="scrollCategories(-1)" id="btnScrollLeft" style="display: none;">‹</button>
+              <a class="dropdown-toggle d-flex align-items-center" href="#" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="text-decoration: none; color: inherit;">
+                <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2"
+                  width="40" height="40">
+                <span class="d-none d-md-inline" style="color: rgb(105, 103, 103);">Vũ Hải Đăng</span>
+              </a>
 
-    <div class="category-scroll-inner-mask">
-      <div class="category-scroll-inner" id="categoryScroll">
-        <ul class="navbar-nav d-flex flex-row flex-nowrap">
-          <li class="nav-item mr-3"><a class="nav-link" href="category.html">Thể thao</a></li>
-          <li class="nav-item mr-3"><a class="nav-link" href="category.html">Đời sống</a></li>
-          <li class="nav-item mr-3"><a class="nav-link" href="category.html">Giáo dục</a></li>
-          <li class="nav-item mr-3"><a class="nav-link" href="category.html">Công nghệ</a></li>
-          <li class="nav-item mr-3"><a class="nav-link" href="category.html">Thời trang</a></li>
-          <li class="nav-item mr-3"><a class="nav-link" href="category.html">Kinh tế</a></li>
-          <li class="nav-item mr-3"><a class="nav-link" href="category.html">Giải trí</a></li>
-        </ul>
+              <div class="dropdown-menu dropdown-menu-right p-3" style="min-width: 250px;">
+
+                <div class="d-flex align-items-center mb-2">
+
+                  <img src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mr-2"
+                    width="50" height="50">
+                  <div>
+                    <strong>Vũ Hải Đăng</strong><br>
+                    <small class="text-muted">Founder</small>
+                  </div>
+                </div>
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="profile.html">
+                  <i class="fas fa-user mr-2"></i> Profile
+                </a>
+                <a class="dropdown-item" href="stories.html">
+                  <i class="fas fa-user mr-2"></i> Stories
+                </a>
+
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="setting.html">
+                  <span><i class="fas fa-cog mr-2"></i> Settings</span>
+                </a>
+
+                <a class="dropdown-item text-danger" href="login.html">
+                  <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Phần navbar-collapse chứa danh mục -->
+        <!-- Phần navbar-collapse chứa danh mục -->
+        <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
+          <div class="category-scroll-wrapper">
+            <button class="scroll-btn scroll-left" onclick="scrollCategories(-1)" id="btnScrollLeft"
+              style="display: none;">‹</button>
+
+            <div class="category-scroll-inner-mask">
+              <div class="category-scroll-inner" id="categoryScroll">
+                <ul class="navbar-nav d-flex flex-row flex-nowrap">
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Thể thao</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Đời sống</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Giáo dục</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Công nghệ</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Thời trang</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Kinh tế</a></li>
+                  <li class="nav-item mr-3"><a class="nav-link" href="category.html">Giải trí</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <button class="scroll-btn scroll-right" onclick="scrollCategories(1)" id="btnScrollRight">›</button>
+          </div>
+        </div>
+
+      </nav>
       </div>
     </div>
+  </header>
 
-    <button class="scroll-btn scroll-right" onclick="scrollCategories(1)" id="btnScrollRight">›</button>
-  </div>
-</div>
-
-
-
-
-
-
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="section">
-    <div class="container">
-      <div class="row no-gutters-lg">
-        <div class="col-12">
-          <h2 class="section-title">Bài Viết Mới Nhất</h2>
-        </div>
-        <div class="col-lg-8 mb-5 mb-lg-0">
-          <div class="row">
-            <div class="col-12 mb-4">
-              <article class="card article-card">
-                <a href="post-detail.html">
-                  <div class="card-image">
-                    <div class="post-info"> <span class="text-uppercase">04 Jun 2021</span>
-                      <span class="text-uppercase">3 minutes read</span>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="row no-gutters-lg">
+          <div class="col-12">
+            <h2 class="section-title">Bài Viết Mới Nhất</h2>
+          </div>
+          <div class="col-lg-8 mb-5 mb-lg-0">
+            <div class="row">
+              <div class="col-12 mb-4">
+                <article class="card article-card">
+                  <a href="post-detail.html">
+                    <div class="card-image">
+                      <div class="post-info"> <span class="text-uppercase">04 Jun 2021</span>
+                        <span class="text-uppercase">3 minutes read</span>
+                      </div>
+                      <img loading="lazy" decoding="async" src="https://photo.znews.vn/w960/Uploaded/bpivpawv/2024_03_04/manchester_city_v_manchester_united_premier_league_9.jpg  " alt="Post Thumbnail"
+                        class="w-100">
                     </div>
-                    <img loading="lazy" decoding="async" src="images/post/post-1.jpg" alt="Post Thumbnail" class="w-100">
+                  </a>
+                  <div class="card-body px-0 pb-1">
+                    <ul class="post-meta mb-2">
+                      <li> <a href="#!"> Thể thao </a>
+                        <a href="#!">Mới nhất</a>
+                      </li>
+                    </ul>
+                    <h2 class="h1"><a class="post-title" href="post-detail.html">Muller</a></h2>
+                    <p class="card-text">Không hào nhoáng, không theo khuôn mẫu, Thomas Muller rời sân cỏ như cách anh
+                      từng chơi bóng: dị biệt, hiệu quả và không thể thay thế..</p>
+                    <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
+                    </div>
                   </div>
-                </a>
-                <div class="card-body px-0 pb-1">
-                  <ul class="post-meta mb-2">
-                    <li> <a href="#!"> Thể thao </a>
-                      <a href="#!">Mới nhất</a>
-                    </li>
-                  </ul>
-                  <h2 class="h1"><a class="post-title" href="post-detail.html">Muller</a></h2>
-                  <p class="card-text">Không hào nhoáng, không theo khuôn mẫu, Thomas Muller rời sân cỏ như cách anh từng chơi bóng: dị biệt, hiệu quả và không thể thay thế..</p>
-                  <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
+                </article>
+              </div>
+              <div class="col-md-6 mb-4">
+                <article class="card article-card article-card-sm h-100">
+                  <a href="post-detail.html">
+                    <div class="card-image">
+                      <div class="post-info"> <span class="text-uppercase">03 Jun 2021</span>
+                        <span class="text-uppercase">2 minutes read</span>
+                      </div>
+                      <img loading="lazy" decoding="async" src="https://photo.znews.vn/w960/Uploaded/mfnuy/2025_07_18/ronaldo_mu.jpeg" alt="Post Thumbnail"
+                        class="w-100">
+                    </div>
+                  </a>
+                  <div class="card-body px-0 pb-0">
+                    <ul class="post-meta mb-2">
+                      <li> <a href="#!">Thể thao</a>
+                      </li>
+                    </ul>
+                    <h2><a class="post-title" href="post-detail.html">An
+                        Experiential Guide to Explore This Kingdom</a></h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                      incididunt ut labore et dolore magna …</p>
+                    <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="col-md-6 mb-4">
+                <article class="card article-card article-card-sm h-100">
+                  <a href="post-detail.html">
+                    <div class="card-image">
+                      <div class="post-info"> <span class="text-uppercase">02 Jun 2021</span>
+                        <span class="text-uppercase">2 minutes read</span>
+                      </div>
+                      <img loading="lazy" decoding="async" src="https://photo.znews.vn/w1000/Uploaded/mdf_uswreo/2025_07_17/anonimostory.com_Instagram_jiahuuiii_3602625326968647830_566822032_1.jpeg" alt="Post Thumbnail"
+                        class="w-100">
+                    </div>
+                  </a>
+                  <div class="card-body px-0 pb-0">
+                    <ul class="post-meta mb-2">
+                      <li> <a href="#!"> Đời Sống </a>
+                      </li>
+                    </ul>
+                    <h2><a class="post-title" href="post-detail.html">What
+                        to Do in Houston: Ideas for Your Visit</a></h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                      incididunt ut labore et dolore magna …</p>
+                    <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="col-md-6 mb-4">
+                <article class="card article-card article-card-sm h-100">
+                  <a href="post-detail.html">
+                    <div class="card-image">
+                      <div class="post-info"> <span class="text-uppercase">01 Jun 2021</span>
+                        <span class="text-uppercase">3 minutes read</span>
+                      </div>
+                      <img loading="lazy" decoding="async" src="https://photo.znews.vn/w1920/Uploaded/neg_esfjaex/2025_07_16/20250524_DSC_7560_znews_1_.jpg" alt="Post Thumbnail"
+                        class="w-100">
+                    </div>
+                  </a>
+                  <div class="card-body px-0 pb-0">
+                    <ul class="post-meta mb-2">
+                      <li> <a href="#!"> Giáo Dục</a>
+                        <a href="#!">Mới nhất</a>
+                      </li>
+                    </ul>
+                    <h2><a class="post-title" href="post-detail.html">Alaska
+                        Cruises Will Restart as Biden Signs New Tourism Law</a></h2>
+                    <p class="card-text">Heading Here is example of hedings. You can use this heading by following
+                      markdownify rules. For example: use # for …</p>
+                    <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="col-md-6 mb-4">
+                <article class="card article-card article-card-sm h-100">
+                  <a href="post-detail.html">
+                    <div class="card-image">
+                      <div class="post-info"> <span class="text-uppercase">30 May 2021</span>
+                        <span class="text-uppercase">3 minutes read</span>
+                      </div>
+                      <img loading="lazy" decoding="async" src="https://kenh14cdn.com/203336854389633024/2025/7/18/1632726694412052-1752817664934-1752817665270506857132.jpg" alt="Post Thumbnail"
+                        class="w-100">
+                    </div>
+                  </a>
+                  <div class="card-body px-0 pb-0">
+                    <ul class="post-meta mb-2">
+                      <li> <a href="#!"> Giao thông</a>
+                        <a href="#!">Mới nhất</a>
+                      </li>
+                    </ul>
+                    <h2><a class="post-title" href="post-detail.html">U.S.
+                        Travel Association Calls on CDC to Remove Cruise Restrictions</a></h2>
+                    <p class="card-text">Heading Here is example of hedings. You can use this heading by following
+                      markdownify rules. For example: use # for …</p>
+                    <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-12">
+                    <nav class="mt-4">
+                      <!-- pagination -->
+                      <nav class="mb-md-50">
+                        <ul class="pagination justify-content-center">
+                          <li class="page-item">
+                            <a class="page-link" href="#!" aria-label="Pagination Arrow">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                  d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                              </svg>
+                            </a>
+                          </li>
+                          <li class="page-item active "> <a href="index.html" class="page-link">
+                              1
+                            </a>
+                          </li>
+                          <li class="page-item"> <a href="#!" class="page-link">
+                              2
+                            </a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#!" aria-label="Pagination Arrow">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                  d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                              </svg>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </nav>
                   </div>
                 </div>
-              </article>
+              </div>
             </div>
-            <div class="col-md-6 mb-4">
-              <article class="card article-card article-card-sm h-100">
-                <a href="post-detail.html">
-                  <div class="card-image">
-                    <div class="post-info"> <span class="text-uppercase">03 Jun 2021</span>
-                      <span class="text-uppercase">2 minutes read</span>
-                    </div>
-                    <img loading="lazy" decoding="async" src="images/post/post-2.jpg" alt="Post Thumbnail" class="w-100">
-                  </div>
-                </a>
-                <div class="card-body px-0 pb-0">
-                  <ul class="post-meta mb-2">
-                    <li> <a href="#!">Thể thao</a>
-                    </li>
-                  </ul>
-                  <h2><a class="post-title" href="post-detail.html">An
-                      Experiential Guide to Explore This Kingdom</a></h2>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna …</p>
-                  <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6 mb-4">
-              <article class="card article-card article-card-sm h-100">
-                <a href="post-detail.html">
-                  <div class="card-image">
-                    <div class="post-info"> <span class="text-uppercase">02 Jun 2021</span>
-                      <span class="text-uppercase">2 minutes read</span>
-                    </div>
-                    <img loading="lazy" decoding="async" src="images/post/ls-2.jpg" alt="Post Thumbnail" class="w-100">
-                  </div>
-                </a>
-                <div class="card-body px-0 pb-0">
-                  <ul class="post-meta mb-2">
-                    <li> <a href="#!"> Đời Sống </a>
-                    </li>
-                  </ul>
-                  <h2><a class="post-title" href="post-detail.html">What
-                      to Do in Houston: Ideas for Your Visit</a></h2>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna …</p>
-                  <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6 mb-4">
-              <article class="card article-card article-card-sm h-100">
-                <a href="post-detail.html">
-                  <div class="card-image">
-                    <div class="post-info"> <span class="text-uppercase">01 Jun 2021</span>
-                      <span class="text-uppercase">3 minutes read</span>
-                    </div>
-                    <img loading="lazy" decoding="async" src="images/post/cr-1.jpg" alt="Post Thumbnail" class="w-100">
-                  </div>
-                </a>
-                <div class="card-body px-0 pb-0">
-                  <ul class="post-meta mb-2">
-                    <li> <a href="#!"> Giáo Dục</a>
-                      <a href="#!">Mới nhất</a>
-                    </li>
-                  </ul>
-                  <h2><a class="post-title" href="post-detail.html">Alaska
-                      Cruises Will Restart as Biden Signs New Tourism Law</a></h2>
-                  <p class="card-text">Heading Here is example of hedings. You can use this heading by following markdownify rules. For example: use # for …</p>
-                  <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-6 mb-4">
-              <article class="card article-card article-card-sm h-100">
-                <a href="post-detail.html">
-                  <div class="card-image">
-                    <div class="post-info"> <span class="text-uppercase">30 May 2021</span>
-                      <span class="text-uppercase">3 minutes read</span>
-                    </div>
-                    <img loading="lazy" decoding="async" src="images/post/cr-2.jpg" alt="Post Thumbnail" class="w-100">
-                  </div>
-                </a>
-                <div class="card-body px-0 pb-0">
-                  <ul class="post-meta mb-2">
-                    <li> <a href="#!"> Giao thông</a>
-                      <a href="#!">Mới nhất</a>
-                    </li>
-                  </ul>
-                  <h2><a class="post-title" href="post-detail.html">U.S.
-                      Travel Association Calls on CDC to Remove Cruise Restrictions</a></h2>
-                  <p class="card-text">Heading Here is example of hedings. You can use this heading by following markdownify rules. For example: use # for …</p>
-                  <div class="content"> <a class="read-more-btn" href="post-detail.html">Đọc toàn bộ bài viết</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-
-            <div class="col-12">
+          </div>
+          <div class="col-lg-4">
+            <div class="widget-blocks">
               <div class="row">
-                <div class="col-12">
-                  <nav class="mt-4">
-                    <!-- pagination -->
-                    <nav class="mb-md-50">
-                      <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                          <a class="page-link" href="#!" aria-label="Pagination Arrow">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
-                              <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
-                            </svg>
-                          </a>
+                <div class="col-lg-12">
+                  <div class="widget">
+                    <div class="widget-body">
+                      <img loading="lazy" decoding="async" src="https://photo.znews.vn/w960/Uploaded/wobjcak/2025_07_18/Screenshot_1.jpg" alt="Báo Thể thao"
+                        class="w-100 author-thumb-sm d-block">
+                      <h2 class="widget-title my-3">PSG</h2>
+                      <p class="mb-3 pb-2">Thua cuộc trước Chealsea, PSG có khủng hoảng gì không ?</p> <a href="category.html"
+                        class="btn btn-sm btn-outline-primary">Know
+                        More</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-6">
+                  <div class="widget">
+                    <h2 class="section-title mb-3">Gợi ý Bài Viết</h2>
+                    <div class="widget-body">
+                      <div class="widget-list">
+                        <article class="card mb-4">
+                          <div class="card-image">
+                            <div class="post-info"> <span class="text-uppercase">1 minutes read</span>
+                            </div>
+                            <img loading="lazy" decoding="async" src="https://photo.znews.vn/w960/Uploaded/bpivpawv/2025_02_24/isak.JPG" alt="Post Thumbnail"
+                              class="w-100">
+                          </div>
+                          <div class="card-body px-0 pb-1">
+                            <h3><a class="post-title post-title-sm" href="post-detail.html">Tin tức chuyển nhượng Isak đang quyết định đến MU</a></h3>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                              tempor …</p>
+                            <div class="content"> <a class="read-more-btn" href="post-detail.html">Read Full Article</a>
+                            </div>
+                          </div>
+                        </article>
+                        <a class="media align-items-center" href="post-detail.html">
+                          <img loading="lazy" decoding="async" src="https://photo.znews.vn/w480/Uploaded/yrfjpyesfly/2025_07_18/Nhieu_vet_dot_o_dau_mat_lung_tay_chan_2.jpg" alt="Post Thumbnail"
+                            class="w-100">
+                          <div class="media-body ml-3">
+                            <h3 style="margin-top:-5px">These Are Making It Easier To Visit</h3>
+                            <p class="mb-0 small">Heading Here is example of hedings. You can use …</p>
+                          </div>
+                        </a>
+                       <a class="media align-items-center" href="post-detail.html">
+                          <img loading="lazy" decoding="async" src="https://photo.znews.vn/w360/Uploaded/yrfjpyesfly/2025_07_17/bun_chuyen_mau_10232620.jpg" alt="Post Thumbnail"
+                            class="w-100">
+                          <div class="media-body ml-3">
+                            <h3 style="margin-top:-5px">These Are Making It Easier To Visit</h3>
+                            <p class="mb-0 small">Heading Here is example of hedings. You can use …</p>
+                          </div>
+                        </a>
+                        <a class="media align-items-center" href="post-detail.html">
+                          <img loading="lazy" decoding="async" src="https://photo.znews.vn/w480/Uploaded/gtnvzv/2025_07_18/ong_Trump_1.jpg" alt="Post Thumbnail"
+                            class="w-100">
+                          <div class="media-body ml-3">
+                            <h3 style="margin-top:-5px">Perfect For Fashion</h3>
+                            <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
+                          </div>
+                        </a>
+                        <a class="media align-items-center" href="post-detail.html">
+                          <img loading="lazy" decoding="async" src="https://photo.znews.vn/w360/Uploaded/sgorvz/2025_07_15/soi_than_1.jpg" alt="Post Thumbnail"
+                            class="w-100">
+                          <div class="media-body ml-3">
+                            <h3 style="margin-top:-5px">Record Utra Smooth Video</h3>
+                            <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-6">
+                  <div class="widget">
+                    <h2 class="section-title mb-3">Categories</h2>
+                    <div class="widget-body">
+                      <ul class="widget-list">
+                        <li><a href="#!">Báo Thể thao<span class="ml-auto">(3)</span></a>
                         </li>
-                        <li class="page-item active "> <a href="index.html" class="page-link">
-                            1
-                          </a>
+                        <li><a href="#!">Báo Đời sống<span class="ml-auto">(2)</span></a>
                         </li>
-                        <li class="page-item"> <a href="#!" class="page-link">
-                            2
-                          </a>
+                        <li><a href="#!">Báo Giáo dục<span class="ml-auto">(1)</span></a>
                         </li>
-                        <li class="page-item">
-                          <a class="page-link" href="#!" aria-label="Pagination Arrow">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16">
-                              <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                            </svg>
-                          </a>
+                        <li><a href="#!">Báo Giao thông<span class="ml-auto">(4)</span></a>
                         </li>
                       </ul>
-                    </nav>
-                  </nav>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-  <div class="widget-blocks">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="widget">
-          <div class="widget-body">
-            <img loading="lazy" decoding="async" src="images/author.jpg" alt="Báo Thể thao" class="w-100 author-thumb-sm d-block">
-            <h2 class="widget-title my-3">Hootan Safiyari</h2>
-            <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter, Developer and Story teller. Working as a Content writter at CoolTech Agency. Quam nihil …</p> <a href="category.html" class="btn btn-sm btn-outline-primary">Know
-              More</a>
-          </div>
-        </div>
       </div>
-      <div class="col-lg-12 col-md-6">
-        <div class="widget">
-          <h2 class="section-title mb-3">Gợi ý Bài Viết</h2>
-          <div class="widget-body">
-            <div class="widget-list">
-              <article class="card mb-4">
-                <div class="card-image">
-                  <div class="post-info"> <span class="text-uppercase">1 minutes read</span>
-                  </div>
-                  <img loading="lazy" decoding="async" src="images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
-                </div>
-                <div class="card-body px-0 pb-1">
-                  <h3><a class="post-title post-title-sm"
-                      href="post-detail.html">Portugal and France Now
-                      Allow Unvaccinated Tourists</a></h3>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor …</p>
-                  <div class="content"> <a class="read-more-btn" href="post-detail.html">Read Full Article</a>
-                  </div>
-                </div>
-              </article>
-              <a class="media align-items-center" href="post-detail.html">
-                <img loading="lazy" decoding="async" src="images/post/post-2.jpg" alt="Post Thumbnail" class="w-100">
-                <div class="media-body ml-3">
-                  <h3 style="margin-top:-5px">These Are Making It Easier To Visit</h3>
-                  <p class="mb-0 small">Heading Here is example of hedings. You can use …</p>
-                </div>
-              </a>
-              <a class="media align-items-center" href="post-detail.html"> <span class="image-fallback image-fallback-xs">No Image Specified</span>
-                <div class="media-body ml-3">
-                  <h3 style="margin-top:-5px">No Image specified</h3>
-                  <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
-                </div>
-              </a>
-              <a class="media align-items-center" href="post-detail.html">
-                <img loading="lazy" decoding="async" src="images/post/post-5.jpg" alt="Post Thumbnail" class="w-100">
-                <div class="media-body ml-3">
-                  <h3 style="margin-top:-5px">Perfect For Fashion</h3>
-                  <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
-                </div>
-              </a>
-              <a class="media align-items-center" href="post-detail.html">
-                <img loading="lazy" decoding="async" src="images/post/post-9.jpg" alt="Post Thumbnail" class="w-100">
-                <div class="media-body ml-3">
-                  <h3 style="margin-top:-5px">Record Utra Smooth Video</h3>
-                  <p class="mb-0 small">Lorem ipsum dolor sit amet, consectetur adipiscing …</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-12 col-md-6">
-        <div class="widget">
-          <h2 class="section-title mb-3">Categories</h2>
-          <div class="widget-body">
-            <ul class="widget-list">
-              <li><a href="#!">Báo Thể thao<span class="ml-auto">(3)</span></a>
-              </li>
-              <li><a href="#!">Báo Đời sống<span class="ml-auto">(2)</span></a>
-              </li>
-              <li><a href="#!">Báo Giáo dục<span class="ml-auto">(1)</span></a>
-              </li>
-              <li><a href="#!">Báo Giao thông<span class="ml-auto">(4)</span></a>
-              </li>
-            </ul>
-          </div>
+    </section>
+  </main>
+
+  <footer class="bg-dark mt-5">
+    <div class="container section">
+      <div class="row">
+        <div class="col-lg-10 mx-auto text-center">
+          <a class="d-inline-block mb-4 pb-2" href="index.html">
+            <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo-white.png" alt="Reporter Hugo">
+          </a>
+          <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
+            <li class="nav-item my-0"> <a class="nav-link" href="category.html">About</a></li>
+            <li class="nav-item my-0"> <a class="nav-link" href="post-detail.html">Elements</a></li>
+            <li class="nav-item my-0"> <a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
+            <li class="nav-item my-0"> <a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
+            <li class="nav-item my-0"> <a class="nav-link" href="404.html">404 Page</a></li>
+          </ul>
         </div>
       </div>
     </div>
-  </div>
-</div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="bg-dark mt-5">
-  <div class="container section">
-    <div class="row">
-      <div class="col-lg-10 mx-auto text-center">
-        <a class="d-inline-block mb-4 pb-2" href="index.html">
-          <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo-white.png" alt="Reporter Hugo">
-        </a>
-        <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
-          <li class="nav-item my-0"> <a class="nav-link" href="category.html">About</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="post-detail.html">Elements</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="terms-conditions.html">Terms Conditions</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="404.html">404 Page</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="copyright bg-dark content">Designed &amp; Developed By <a href="https://themefisher.com/">Themefisher</a></div>
-</footer>
+    <div class="copyright bg-dark content">Designed &amp; Developed By <a
+        href="https://themefisher.com/">Themefisher</a></div>
+  </footer>
 
 
-<!-- # JS Plugins -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <!-- # JS Plugins -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
 
-<!-- Main Script -->
-<script src="js/script.js"></script>
+  <!-- Main Script -->
+  <script src="js/script.js"></script>
 
-<script>
-  const scrollContainer = document.querySelector("#categoryScroll");
-  const btnScrollLeft = document.getElementById("btnScrollLeft");
-  const btnScrollRight = document.getElementById("btnScrollRight");
+  <script>
+    const scrollContainer = document.querySelector("#categoryScroll");
+    const btnScrollLeft = document.getElementById("btnScrollLeft");
+    const btnScrollRight = document.getElementById("btnScrollRight");
 
-  let currentOffset = 0;
-  const visibleWidth = 600; // khớp với .category-scroll-inner-mask width
+    let currentOffset = 0;
+    const visibleWidth = 600; // khớp với .category-scroll-inner-mask width
 
-  function scrollCategories(direction) {
-    const scrollAmount = 136 * direction; // item width + margin (120 + 16)
-    const maxOffset = scrollContainer.scrollWidth - visibleWidth;
+    function scrollCategories(direction) {
+      const scrollAmount = 136 * direction; // item width + margin (120 + 16)
+      const maxOffset = scrollContainer.scrollWidth - visibleWidth;
 
-    currentOffset += scrollAmount;
-    currentOffset = Math.max(0, Math.min(currentOffset, maxOffset));
+      currentOffset += scrollAmount;
+      currentOffset = Math.max(0, Math.min(currentOffset, maxOffset));
 
-    scrollContainer.style.transform = `translateX(${-currentOffset}px)`;
-    updateButtons(maxOffset);
-  }
+      scrollContainer.style.transform = `translateX(${-currentOffset}px)`;
+      updateButtons(maxOffset);
+    }
 
-  function updateButtons(maxOffset) {
-    btnScrollLeft.style.display = currentOffset <= 0 ? "none" : "block";
-    btnScrollRight.style.display = currentOffset >= maxOffset ? "none" : "block";
-  }
+    function updateButtons(maxOffset) {
+      btnScrollLeft.style.display = currentOffset <= 0 ? "none" : "block";
+      btnScrollRight.style.display = currentOffset >= maxOffset ? "none" : "block";
+    }
 
-  window.addEventListener("load", () => {
-    updateButtons(scrollContainer.scrollWidth - visibleWidth);
-  });
+    window.addEventListener("load", () => {
+      updateButtons(scrollContainer.scrollWidth - visibleWidth);
+    });
 
-  window.addEventListener("resize", () => {
-    updateButtons(scrollContainer.scrollWidth - visibleWidth);
-  });
-</script>
+    window.addEventListener("resize", () => {
+      updateButtons(scrollContainer.scrollWidth - visibleWidth);
+    });
+  </script>
+  <script>
+    function handleSearch(event) {
+      event.preventDefault();
+      const keyword = document.getElementById("searchInput").value.trim();
+      if (keyword) {
+        window.location.href = `search.html?keyword=${encodeURIComponent(keyword)}`;
+      }
+    }
+  </script>
 
 
 
@@ -526,4 +583,5 @@
 
 
 </body>
+
 </html>

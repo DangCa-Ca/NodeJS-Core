@@ -1,311 +1,370 @@
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
-    data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
+  data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
 
 <!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:44:28 GMT -->
 
 <head>
-    <style>
-  /* Thu nhỏ chữ cho link trong sidebar */
-  .app-menu .nav-link {
-    font-size: 13px !important;
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
+  <style>
+    /* Thu nhỏ chữ cho link trong sidebar */
+    .app-menu .nav-link {
+      font-size: 13px !important;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
 
-  /* Thu nhỏ chữ tiêu đề menu */
-  .app-menu .menu-title {
-    font-size: 11px !important;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #9aa4b2;
-  }
-  .bg-pink {
-  background-color: #eca2c7 !important;
-}
- #postDetailModal img {
-    max-width: 100%;
-    max-height: 350px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 1rem;
-  }
-  body {
-  padding-top: 100px; /* bằng chiều cao header */
-}
+    /* Thu nhỏ chữ tiêu đề menu */
+    .app-menu .menu-title {
+      font-size: 11px !important;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #9aa4b2;
+    }
 
-</style>
+    .bg-pink {
+      background-color: #eca2c7 !important;
+    }
 
-    <meta charset="utf-8" />
-    <title>Dashboard | Velzon - Admin & Dashboard Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    #postDetailModal img {
+      max-width: 100%;
+      max-height: 350px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 1rem;
+    }
 
-    <!-- jsvectormap css -->
-    <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
+    body {
+      padding-top: 100px;
+      /* bằng chiều cao header */
+    }
+  </style>
 
-    <!--Swiper slider css-->
-    <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8" />
+  <title>Dashboard | Velzon - Admin & Dashboard Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+  <meta content="Themesbrand" name="author" />
+  <!-- App favicon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <!-- Layout config Js -->
-    <script src="assets/js/layout.js"></script>
-    <!-- Bootstrap Css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Icons Css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-    <!-- custom Css-->
-    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+  <!-- jsvectormap css -->
+  <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
 
-  
+  <!--Swiper slider css-->
+  <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+
+  <!-- Layout config Js -->
+  <script src="assets/js/layout.js"></script>
+  <!-- Bootstrap Css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <!-- Icons Css -->
+  <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <!-- App Css-->
+  <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+  <!-- custom Css-->
+  <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+
 </head>
 
 <body>
 
-    <!-- Begin page -->
-    <div id="layout-wrapper">
+  <!-- Begin page -->
+  <div id="layout-wrapper">
 
-     <header id="page-topbar">
-            <div class="layout-width">
-                <div class="navbar-header">
-                    <div class="d-flex">
- 
-                        <!-- App Search-->
-                        <form class="app-search d-none d-md-block">
-                            <div class="position-relative">
-                                <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
-                                    id="search-options" value="">
-                                <span class="mdi mdi-magnify search-widget-icon"></span>
-                                <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
-                                    id="search-close-options"></span>
-                            </div>
-                            <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
+    <header id="page-topbar">
+      <div class="layout-width">
+        <div class="navbar-header">
+          <div class="d-flex">
 
-                                <div class="text-center pt-3 pb-1">
-                                    <a href="pages-search-results.html" class="btn btn-primary btn-sm">View All Results
-                                        <i class="ri-arrow-right-line ms-1"></i></a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+            <!-- App Search-->
+            <form class="app-search d-none d-md-block">
+              <div class="position-relative">
+                <input type="text" class="form-control" placeholder="Search..." autocomplete="off" id="search-options"
+                  value="">
+                <span class="mdi mdi-magnify search-widget-icon"></span>
+                <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
+                  id="search-close-options"></span>
+              </div>
+              <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
 
-                    <div class="d-flex align-items-center">
-                    
-
-                      
-
-                        <div class="dropdown ms-sm-3 header-item topbar-user">
-                            <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="d-flex align-items-center">
-                                    <img class="rounded-circle header-profile-user"
-                                        src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif">
-                                    <span class="text-start ms-xl-2">
-                                        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Vũ Hải
-                                            Đăng</span>
-                                        <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
-                                    </span>
-                                </span>
-                            </button>
-                           <div class="dropdown-menu dropdown-menu-end">
-                                <!-- item-->
-                              
-                                <a class="dropdown-item" href="profile.html"><i
-                                        class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Profile</span></a>
- 
-                                <a class="dropdown-item" href="setting.html"><i
-                                        class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle">Settings</span></a>
-                                
-                                <a class="dropdown-item" href="login.html"><i
-                                        class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                        class="align-middle" data-key="t-logout">Logout</span></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="text-center pt-3 pb-1">
+                  <a href="pages-search-results.html" class="btn btn-primary btn-sm">View All Results
+                    <i class="ri-arrow-right-line ms-1"></i></a>
                 </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="d-flex align-items-center">
+
+
+
+
+            <div class="dropdown ms-sm-3 header-item topbar-user">
+              <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="d-flex align-items-center">
+                  <img class="rounded-circle header-profile-user" src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif">
+                  <span class="text-start ms-xl-2">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Vũ Hải
+                      Đăng</span>
+                    <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
+                  </span>
+                </span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end">
+                <!-- item-->
+
+                <a class="dropdown-item" href="profile.html"><i
+                    class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+                    class="align-middle">Profile</span></a>
+
+                <a class="dropdown-item" href="setting.html"><i
+                    class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
+                    class="align-middle">Settings</span></a>
+
+                <a class="dropdown-item" href="login.html"><i
+                    class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
+                    data-key="t-logout">Logout</span></a>
+              </div>
             </div>
-        </header>
-
-<main class="container my-2" style="max-width: 900px; margin-top: 100px; margin-right: 100px;">
-    <div class="row">
-      <!-- LEFT: Thông tin người dùng -->
-      <div class="col-md-8 border-end pe-md-4">
-        <div class="p-4 bg-light border rounded shadow-sm mb-4">
-          <h3 class="mb-4">Thông tin người dùng</h3>
-
-          <div class="row mb-3"><div class="col-4 fw-bold">ID:</div><div class="col-8">41</div></div>
-          <div class="row mb-3"><div class="col-4 fw-bold">Tên người dùng:</div><div class="col-8"><h5 class="mb-0">Vũ Hải Đăng</h5></div></div>
-          <div class="row mb-3"><div class="col-4 fw-bold">Email:</div><div class="col-8">dangdepzai918@gmail.com</div></div>
-          <div class="row mb-3"><div class="col-4 fw-bold">Pronouns:</div><div class="col-8" id="pronounsDisplay">N/A</div></div>
-          <div class="row mb-3"><div class="col-4 fw-bold">Short bio:</div><div class="col-8" id="bioDisplay">N/A</div></div>
-
-          <div class="row mb-3"><div class="col-4 fw-bold">Vai trò:</div><div class="col-8"><span class="badge bg-primary">Founder</span></div></div>
-          <div class="row mb-3"><div class="col-4 fw-bold">Ngày tạo:</div><div class="col-8">17/07/2024</div></div>
-          <div class="row mb-3"><div class="col-4 fw-bold">Trạng thái:</div><div class="col-8"><span class="badge bg-success">Hoạt động</span></div></div>
-
-          <a class="btn btn-danger mt-3" href="post.html">Danh sách bài viết</a>
+          </div>
         </div>
       </div>
+    </header>
 
-      <!-- RIGHT: Avatar + Edit -->
-      <div class="col-md-4 ps-md-4 d-flex flex-column align-items-center text-center">
-        <img id="avatarDisplay" src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle mb-3" width="150" height="150" />
-        <h5>Vũ Hải Đăng</h5>
-        <a href="#" class="text-primary text-decoration-underline mt-2" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-          Edit Profile
-        </a>
-      </div>
-    </div>
-  </main>
+    <main class="container my-2" style="max-width: 900px; margin-top: 100px; margin-right: 200px;">
+      <div class="row">
+        <!-- LEFT: Thông tin người dùng -->
+        <div class="col-md-8 border-end pe-md-4">
+          <div class="p-4 bg-light border rounded shadow-sm mb-4">
+            <h3 class="mb-4">Thông tin người dùng</h3>
 
-  <!-- Modal Edit -->
-  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content p-4">
-        <h5 class="fw-bold text-center mb-4">Profile information</h5>
-
-        <!-- Photo + Upload -->
-        <div class="d-flex align-items-start mb-4">
-          <div class="me-3">
-            <img id="avatarPreview" src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar" class="rounded-circle border" width="80" height="80" />
-          </div>
-          <div class="flex-grow-1">
-            <div class="mb-1">
-              <a href="#" class="text-success me-2" onclick="document.getElementById('avatarInput').click()">Update</a>
-              <a href="#" class="text-danger" onclick="removeAvatar()">Remove</a>
+            <div class="row mb-3">
+              <div class="col-4 fw-bold">ID:</div>
+              <div class="col-8">41</div>
             </div>
-            <small class="text-muted">Recommended: Square JPG, PNG, or GIF, at least 1,000 pixels per side.</small>
-            <input type="file" id="avatarInput" accept="image/*" class="d-none" onchange="previewAvatar(event)">
-          </div>
-        </div>
-
-        <!-- Form -->
-        <form id="editProfileForm">
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Name*</label>
-            <input type="text" class="form-control" maxlength="50" id="nameInput" value="Vũ Hải Đăng" oninput="updateCharCount(this, 'nameCount', 50)">
-            <div class="text-end small text-muted"><span id="nameCount">11</span>/50</div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Pronouns</label>
-            <input type="text" class="form-control" maxlength="4" id="pronounsInput" placeholder="Add..." oninput="updateCharCount(this, 'pronounsCount', 4)">
-            <div class="text-end small text-muted"><span id="pronounsCount">0</span>/4</div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Short bio</label>
-            <textarea class="form-control" rows="3" maxlength="160" id="bioInput" placeholder="Write a short bio..." oninput="updateCharCount(this, 'bioCount', 160)"></textarea>
-            <div class="text-end small text-muted"><span id="bioCount">0</span>/160</div>
-          </div>
-
-          <hr />
-          <p class="text-muted small"><strong>About Page</strong><br />Personalize with images and more to paint more of a vivid portrait of yourself than your ‘Short bio.’</p>
-
-          <div class="text-end mt-4">
-            <button type="button" class="btn btn-outline-success rounded-pill px-4 me-2" data-bs-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-success rounded-pill px-4" disabled id="saveBtn">Save</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-         <!-- ========== App Menu ========== -->
-        <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif; ">
-
-            <!-- LOGO -->
-            <div class="navbar-brand-box">
-                <!-- Dark Logo-->
-                <a href="index.html" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="17">
-                    </span>
-                </a>
-                <!-- Light Logo-->
-                <a href="index.html" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="22">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="17">
-                    </span>
-                </a>
-                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
-                    id="vertical-hover">
-                    <i class="ri-record-circle-line"></i>
-                </button>
+            <div class="row mb-3">
+              <div class="col-4 fw-bold">Tên người dùng:</div>
+              <div class="col-8">
+                <h5 class="mb-0">Vũ Hải Đăng</h5>
+              </div>
             </div>
-
-            <div class="dropdown sidebar-user m-1 rounded">
-                <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-flex align-items-center gap-2">
-                        <img class="rounded header-profile-user" src="assets/images/users/avatar-1.jpg"
-                            alt="Header Avatar">
-                        <span class="text-start">
-                            <span class="d-block fw-medium sidebar-user-name-text">Anna Adame</span>
-                            <span class="d-block fs-14 sidebar-user-name-sub-text"><i
-                                    class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span
-                                    class="align-middle">Online</span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
-                   
-                    <a class="dropdown-item" href="profile.html"><i
-                            class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle">Profile</span></a>
-                   
-                   
-                 
-                    <div class="dropdown-divider"></div>
-                  
-                    <a class="dropdown-item" href="setting.html"><i
-                            class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
-                            class="align-middle">Settings</span></a>
-                    <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
-                            class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock
-                            screen</span></a>
-                    <a class="dropdown-item" href="auth-logout-basic.html"><i
-                            class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
-                            data-key="t-logout">Logout</span></a>
-                </div>
+            <div class="row mb-3">
+              <div class="col-4 fw-bold">Email:</div>
+              <div class="col-8">dangdepzai918@gmail.com</div>
             </div>
           
+            <div class="row mb-3">
+              <div class="col-4 fw-bold">Vai trò:</div>
+              <div class="col-8"><span class="badge bg-primary">Founder</span></div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4 fw-bold">Ngày tạo:</div>
+              <div class="col-8">17/07/2024</div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4 fw-bold">Trạng thái:</div>
+              <div class="col-8"><span class="badge bg-success">Hoạt động</span></div>
+            </div>
 
-            <div class="sidebar-background"></div>
+           
+          </div>
         </div>
-        <!-- Left Sidebar End -->
-        <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
 
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
+        <!-- RIGHT: Avatar + Edit -->
+        <div class="col-md-4 ps-md-4 d-flex flex-column align-items-center text-center">
+          <img id="avatarDisplay" src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar"
+            class="rounded-circle mb-3" width="150" height="150" />
+          <h5>Vũ Hải Đăng</h5>
+          <a href="#" class="text-primary text-decoration-underline mt-2" data-bs-toggle="modal"
+            data-bs-target="#editProfileModal">
+            Edit Profile
+          </a>
+        </div>
+      </div>
+    </main>
 
-        <body>
+    <!-- Modal Edit -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-4">
+          <h5 class="fw-bold text-center mb-4">Profile information</h5>
 
-            <div class="container mt-3">
-                <!-- Nút mở Modal -->
+          <!-- Photo + Upload -->
+          <div class="d-flex align-items-start mb-4">
+            <div class="me-3">
+              <img id="avatarPreview" src="https://gddt.edu.vn/media/6/2023/05/con-bo.jfif" alt="Avatar"
+                class="rounded-circle border" width="80" height="80" />
+            </div>
+            <div class="flex-grow-1">
+              <div class="mb-1">
+                <a href="#" class="text-success me-2"
+                  onclick="document.getElementById('avatarInput').click()">Update</a>
+                <a href="#" class="text-danger" onclick="removeAvatar()">Remove</a>
+              </div>
+              <small class="text-muted">Recommended: Square JPG, PNG, or GIF, at least 1,000 pixels per side.</small>
+              <input type="file" id="avatarInput" accept="image/*" class="d-none" onchange="previewAvatar(event)">
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form id="editProfileForm">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Name*</label>
+              <input type="text" class="form-control" maxlength="50" id="nameInput" value="Vũ Hải Đăng"
+                oninput="updateCharCount(this, 'nameCount', 50)">
+              <div class="text-end small text-muted"><span id="nameCount">11</span>/50</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Pronouns</label>
+              <input type="text" class="form-control" maxlength="4" id="pronounsInput" placeholder="Add..."
+                oninput="updateCharCount(this, 'pronounsCount', 4)">
+              <div class="text-end small text-muted"><span id="pronounsCount">0</span>/4</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Short bio</label>
+              <textarea class="form-control" rows="3" maxlength="160" id="bioInput" placeholder="Write a short bio..."
+                oninput="updateCharCount(this, 'bioCount', 160)"></textarea>
+              <div class="text-end small text-muted"><span id="bioCount">0</span>/160</div>
+            </div>
+
+            <hr />
+            <p class="text-muted small"><strong>About Page</strong><br />Personalize with images and more to paint more
+              of a vivid portrait of yourself than your ‘Short bio.’</p>
+
+            <div class="text-end mt-4">
+              <button type="button" class="btn btn-outline-success rounded-pill px-4 me-2"
+                data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-success rounded-pill px-4" disabled id="saveBtn">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== App Menu ========== -->
+    <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif; ">
+
+      <!-- LOGO -->
+      <div class="navbar-brand-box">
+        <!-- Dark Logo-->
+        <a href="index.html" class="logo logo-dark">
+          <span class="logo-sm">
+            <img src="assets/images/logo-sm.png" alt="" height="22">
+          </span>
+          <span class="logo-lg">
+            <img src="assets/images/logo-dark.png" alt="" height="17">
+          </span>
+        </a>
+        <!-- Light Logo-->
+        <a href="index.html" class="logo logo-light">
+          <span class="logo-sm">
+            <img src="assets/images/logo-sm.png" alt="" height="22">
+          </span>
+          <span class="logo-lg">
+            <img src="assets/images/logo-light.png" alt="" height="17">
+          </span>
+        </a>
+        <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
+          id="vertical-hover">
+          <i class="ri-record-circle-line"></i>
+        </button>
+      </div>
+
+      <div class="dropdown sidebar-user m-1 rounded">
+        <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <span class="d-flex align-items-center gap-2">
+            <img class="rounded header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+            <span class="text-start">
+              <span class="d-block fw-medium sidebar-user-name-text">Anna Adame</span>
+              <span class="d-block fs-14 sidebar-user-name-sub-text"><i
+                  class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span
+                  class="align-middle">Online</span></span>
+            </span>
+          </span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end">
+          <!-- item-->
+
+          <a class="dropdown-item" href="profile.html"><i
+              class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
+              class="align-middle">Profile</span></a>
+
+
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="setting.html"><i
+              class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
+              class="align-middle">Settings</span></a>
+          <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
+              class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock
+              screen</span></a>
+          <a class="dropdown-item" href="auth-logout-basic.html"><i
+              class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle"
+              data-key="t-logout">Logout</span></a>
+        </div>
+      </div>
+       <div id="scrollbar">
+        <div class="container-fluid ">
+
+
+          <div id="two-column-menu">
+          </div>
+          <ul class="navbar-nav" id="navbar-nav" style="font-size: 12px;">
+
+            <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+            <li class="nav-item">
+              <a href="categorie.html" class="nav-link " data-key="t-ecommerce"> Categorie </a>
+            </li>
+            <li class="nav-item">
+              <a href="user.html" class="nav-link" data-key="t-crypto"> User </a>
+            </li>
+            <li class="nav-item">
+              <a href="post.html" class="nav-link" data-key="t-projects">Post </a>
+            </li>
+            <li class="nav-item">
+              <a href="role.html" class="nav-link" data-key="t-projects">Role </a>
+            </li>
+            <li class="nav-item">
+              <a href="language.html" class="nav-link" data-key="t-projects">Language </a>
+            </li>
+
+
+
+          </ul>
+        </div>
+        <!-- Sidebar -->
+      </div>
+
+
+      <div class="sidebar-background"></div>
+    </div>
+    <!-- Left Sidebar End -->
+    <!-- Vertical Overlay-->
+    <div class="vertical-overlay"></div>
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+
+    <body>
+
+      <div class="container mt-3">
+        <!-- Nút mở Modal -->
 
 
 
 
 
-        </body>
+    </body>
 
 </html>
 
@@ -338,8 +397,8 @@
 
 
 
-   
-  <script>
+
+<script>
   const avatarInput = document.getElementById("avatarInput");
   const avatarPreview = document.getElementById("avatarPreview");
   const avatarDisplay = document.getElementById("avatarDisplay");
@@ -392,7 +451,7 @@
     saveBtn.disabled = !(previewChanged || nameChanged || pronounsChanged || bioChanged);
   }
 
- document.getElementById("editProfileForm").addEventListener("submit", function (e) {
+  document.getElementById("editProfileForm").addEventListener("submit", function (e) {
 
     e.preventDefault();
 
@@ -411,22 +470,22 @@
     saveBtn.disabled = true;
   });
   document.getElementById("editProfileModal").addEventListener("show.bs.modal", function () {
-  // Gán lại src avatar gốc để so sánh
-  originalAvatarSrc = avatarDisplay.src;
-  avatarPreview.src = avatarDisplay.src;
+    // Gán lại src avatar gốc để so sánh
+    originalAvatarSrc = avatarDisplay.src;
+    avatarPreview.src = avatarDisplay.src;
 
-  // Gán các input = display
-  nameInput.value = nameDisplay.textContent;
-  pronounsInput.value = pronounsDisplay.textContent === "N/A" ? "" : pronounsDisplay.textContent;
-  bioInput.value = bioDisplay.textContent === "N/A" ? "" : bioDisplay.textContent;
+    // Gán các input = display
+    nameInput.value = nameDisplay.textContent;
+    pronounsInput.value = pronounsDisplay.textContent === "N/A" ? "" : pronounsDisplay.textContent;
+    bioInput.value = bioDisplay.textContent === "N/A" ? "" : bioDisplay.textContent;
 
-  // Gọi lại cập nhật đếm ký tự
-  updateCharCount(nameInput, 'nameCount', 50);
-  updateCharCount(pronounsInput, 'pronounsCount', 4);
-  updateCharCount(bioInput, 'bioCount', 160);
+    // Gọi lại cập nhật đếm ký tự
+    updateCharCount(nameInput, 'nameCount', 50);
+    updateCharCount(pronounsInput, 'pronounsCount', 4);
+    updateCharCount(bioInput, 'bioCount', 160);
 
-  checkChanges();
-});
+    checkChanges();
+  });
 
 </script>
 
