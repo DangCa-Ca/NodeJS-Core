@@ -22,19 +22,19 @@
             letter-spacing: 1px;
             color: #9aa4b2;
         }
-         #postPreviewModal .modal-body img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px auto;
-    border-radius: 6px;
-    object-fit: contain;
-  }
 
-  #postPreviewModal .modal-body {
-    word-break: break-word;
-  }
-  
+        #postPreviewModal .modal-body img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        #postPreviewModal .modal-body {
+            word-break: break-word;
+        }
     </style>
 
 
@@ -348,10 +348,11 @@
                                                                     <th scope="col">Category</th>
                                                                     <th scope="col">Tiêu đề</th>
                                                                     <th scope="col">Language</th>
-                                                                     <th scope="col">Nguồn gốc</th>
+                                                                    <th scope="col">Nguồn gốc</th>
 
                                                                     <th scope="col">Trạng thái</th>
-                                                                    <th scope="col" class="text-center align-middle">Hành động</th>
+                                                                    <th scope="col" class="text-center align-middle">
+                                                                        Hành động</th>
 
                                                                 </tr>
                                                             </thead>
@@ -362,20 +363,23 @@
                                                     </div>
                                                 </div>
                                                 <!-- Modal preview -->
-  <div class="modal fade" id="postPreviewModal" tabindex="-1" aria-labelledby="previewLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewLabel">Xem bài viết</h5>
-          <!-- Nút đóng X -->
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
-        </div>
-        <div class="modal-body" id="previewContent">
-          <!-- Nội dung bài viết sẽ hiển thị ở đây -->
-        </div>
-      </div>
-    </div>
-  </div>
+                                                <div class="modal fade" id="postPreviewModal" tabindex="-1"
+                                                    aria-labelledby="previewLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="previewLabel">Xem bài viết
+                                                                </h5>
+                                                                <!-- Nút đóng X -->
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Đóng"></button>
+                                                            </div>
+                                                            <div class="modal-body" id="previewContent">
+                                                                <!-- Nội dung bài viết sẽ hiển thị ở đây -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
 
 
@@ -407,27 +411,27 @@
                                                 <!-- App js -->
                                                 <script src="assets/js/app.js"></script>
 
-                 <script>
- function renderPosts() {
-  const tbody = document.getElementById('postTableBody');
-  const empty = document.getElementById('emptyMsg');
-  const posts = JSON.parse(localStorage.getItem('myPosts') || '[]');
+                                                <script>
+                                                    function renderPosts() {
+                                                        const tbody = document.getElementById('postTableBody');
+                                                        const empty = document.getElementById('emptyMsg');
+                                                        const posts = JSON.parse(localStorage.getItem('myPosts') || '[]');
 
-  if (!posts.length) {
-    if (empty) empty.style.display = 'block';
-    tbody.innerHTML = '';
-    return;
-  }
-  if (empty) empty.style.display = 'none';
+                                                        if (!posts.length) {
+                                                            if (empty) empty.style.display = 'block';
+                                                            tbody.innerHTML = '';
+                                                            return;
+                                                        }
+                                                        if (empty) empty.style.display = 'none';
 
-  function truncateWords(text, maxWords) {
-    if (!text) return '';
-    const words = text.trim().split(/\s+/);
-    if (words.length <= maxWords) return text;
-    return words.slice(0, maxWords).join(' ') + '...';
-  }
+                                                        function truncateWords(text, maxWords) {
+                                                            if (!text) return '';
+                                                            const words = text.trim().split(/\s+/);
+                                                            if (words.length <= maxWords) return text;
+                                                            return words.slice(0, maxWords).join(' ') + '...';
+                                                        }
 
-  tbody.innerHTML = posts.map(p => `
+                                                        tbody.innerHTML = posts.map(p => `
     <tr>
       <td>${p.id}</td>
       <td>${p.author || 'Ẩn danh'}</td>
@@ -446,50 +450,54 @@
       &#8942;
     </button>
     <ul class="dropdown-menu dropdown-menu-end">
-      <li><a class="dropdown-item" href="#" onclick="preview(${p.id})" data-bs-toggle="modal" data-bs-target="#postPreviewModal">Xem</a></li>
-      <li><a class="dropdown-item" href="#" onclick="editPost(${p.id})">Sửa</a></li>
-      <li><a class="dropdown-item text-danger" href="#" onclick="deletePost(${p.id})">Xoá</a></li>
+      <li><a class="dropdown-item" href="#" onclick="preview(${p.id})" data-bs-toggle="modal" data-bs-target="#postPreviewModal">View</a></li>
+      <li><a class="dropdown-item" href="#" onclick="handleEdit(${p.id})">Edit</a></li>
+
+      <li><a class="dropdown-item text-danger" href="#" onclick="deletePost(${p.id})">Delete</a></li>
     </ul>
   </div>
 </td>
 
     </tr>
   `).join('');
-}
+                                                    }
+                                                    // Khi ấn nút sửa trong dropdown:
+                                                    function handleEdit(postId) {
+                                                        window.location.href = `update-post.html?id=${postId}`;
+                                                    }
 
-  function preview(id) {
-    const post = (JSON.parse(localStorage.getItem('myPosts') || '[]')).find(x => x.id === id);
-    if (!post) return alert('Không tìm thấy bài viết!');
 
-    document.getElementById('previewContent').innerHTML = `
+
+                                                    function preview(id) {
+                                                        const post = (JSON.parse(localStorage.getItem('myPosts') || '[]')).find(x => x.id === id);
+                                                        if (!post) return alert('Không tìm thấy bài viết!');
+
+                                                        document.getElementById('previewContent').innerHTML = `
       <p><strong>Tiêu đề:</strong> ${post.title}</p>
       <p><strong>Mô tả:</strong> ${post.description?.trim() || '(Không có mô tả)'}</p>
 
       <p><strong>Nội dung:</strong></p>
       <div class="border rounded p-2 bg-light">${post.content || '(Không có nội dung)'}</div>
     `;
-  }
+                                                    }
 
-  function deletePost(id) {
-    if (!confirm('Bạn có chắc chắn muốn xoá bài viết này?')) return;
+                                                    function deletePost(id) {
+                                                        if (!confirm('Bạn có chắc chắn muốn xoá bài viết này?')) return;
 
-    let myPosts = JSON.parse(localStorage.getItem('myPosts') || '[]');
-    myPosts = myPosts.filter(p => p.id !== id);
-    localStorage.setItem('myPosts', JSON.stringify(myPosts));
+                                                        let myPosts = JSON.parse(localStorage.getItem('myPosts') || '[]');
+                                                        myPosts = myPosts.filter(p => p.id !== id);
+                                                        localStorage.setItem('myPosts', JSON.stringify(myPosts));
 
-    let published = JSON.parse(localStorage.getItem('published') || '[]');
-    published = published.filter(p => p.id !== id);
-    localStorage.setItem('published', JSON.stringify(published));
+                                                        let published = JSON.parse(localStorage.getItem('published') || '[]');
+                                                        published = published.filter(p => p.id !== id);
+                                                        localStorage.setItem('published', JSON.stringify(published));
 
-    renderPosts();
-  }
+                                                        renderPosts();
+                                                    }
 
-  function editPost(id) {
-    window.location.href = `edit-post.html?id=${id}`;
-  }
 
-  document.addEventListener('DOMContentLoaded', renderPosts);
-</script>
+                                                    document.addEventListener('DOMContentLoaded', renderPosts);
+                                                </script>
 
 
 

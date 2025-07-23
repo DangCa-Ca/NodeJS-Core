@@ -22,14 +22,6 @@
             letter-spacing: 1px;
             color: #9aa4b2;
         }
-        img {
-  max-width: 100%;       /* Không cho ảnh vượt quá vùng soạn thảo */
-  height: auto;          /* Giữ tỷ lệ ảnh */
-  display: block;        /* Ảnh xuống dòng riêng */
-  margin: 10px 0;        /* Tạo khoảng cách trên/dưới */
-  border-radius: 8px;    /* Bo góc ảnh cho đẹp */
-}
-
     </style>
 
 
@@ -132,93 +124,96 @@
     </div>
 
 
-   <div class="main-content bg-white">
-    <div class="page-content">
-        <div class="container-fluid" style="max-width: 800px;">
-            <h1 class="mb-4 fw-bold text-primary"> Tạo bài viết mới</h1>
+    <div class="main-content bg-white">
+        <div class="page-content">
+            <div class="container-fluid" style="max-width: 800px;">
+                <h1 class="mb-4 fw-bold text-primary"> Tạo bài viết mới</h1>
 
-            <form id="postForm" class="p-4 bg-white border border-2 rounded-4 shadow-sm">
+                <form id="postForm" class="p-4 bg-white border border-2 rounded-4 shadow-sm">
 
-                <!-- Người đăng (không chỉnh sửa) -->
-                <div class="mb-3">
-                    <label class="form-label fw-semibold text-dark">Người đăng bài</label>
-                    <input type="text" class="form-control-plaintext ps-2 fw-bold text-dark bg-light" value="Vũ Hải Đăng" readonly>
-                </div>
+                    <!-- Người đăng (không chỉnh sửa) -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold text-dark">Người đăng bài</label>
+                        <input type="text" class="form-control-plaintext ps-2 fw-bold text-dark bg-light"
+                            value="Vũ Hải Đăng" readonly>
+                    </div>
 
-                <!-- Danh mục & Ngôn ngữ -->
-                <div class="row g-3 mb-3">
-                    <div class="col-md-6">
-                       <label for="category" class="form-label fw-bold text-dark">Danh mục</label>
+                    <!-- Danh mục & Ngôn ngữ -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="category" class="form-label fw-bold text-dark">Danh mục</label>
 
-                        <select id="category" class="form-select" required>
-                            <option value="" selected disabled>-- Chọn danh mục --</option>
-                            <option>Thể thao</option>
-                            <option>Thế giới</option>
-                            <option>Đời sống</option>
-                            <option>Giao thông</option>
+                            <select id="category" class="form-select" required>
+                                <option value="" selected disabled>-- Chọn danh mục --</option>
+                                <option>Thể thao</option>
+                                <option>Thế giới</option>
+                                <option>Đời sống</option>
+                                <option>Giao thông</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="language" class="form-label fw-semibold text-dark">Ngôn ngữ</label>
+                            <select id="language" class="form-select" required>
+                                <option value="" selected disabled>-- Chọn ngôn ngữ --</option>
+                                <option>Tiếng Việt</option>
+                                <option>Tiếng Anh</option>
+                                <option>Tiếng Nhật</option>
+                                <option>Tiếng Hàn</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Tiêu đề -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label fw-semibold text-dark">Tiêu đề</label>
+                        <input id="title" type="text" class="form-control" placeholder="Nhập tiêu đề" required>
+                    </div>
+
+                    <!-- Mô tả -->
+                    <div class="mb-3">
+                        <label for="description" class="form-label fw-semibold text-dark">Mô tả</label>
+                        <input id="description" type="text" class="form-control" placeholder="Nhập mô tả ngắn" required>
+                    </div>
+
+                    <!-- Trạng thái -->
+                    <div class="mb-3">
+                        <label for="status" class="form-label fw-semibold text-dark">Trạng thái</label>
+                        <select id="trangthai" class="form-select" required>
+                            <option value="" selected disabled>-- Chọn Trạng thái --</option>
+                            <option value="1">Hoạt động</option>
+                            <option value="0">Không hoạt động</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
-                        <label for="language" class="form-label fw-semibold text-dark">Ngôn ngữ</label>
-                        <select id="language" class="form-select" required>
-                            <option value="" selected disabled>-- Chọn ngôn ngữ --</option>
-                            <option>Tiếng Việt</option>
-                            <option>Tiếng Anh</option>
-                            <option>Tiếng Nhật</option>
-                            <option>Tiếng Hàn</option>
-                        </select>
+
+                    <!-- Bộ chọn ngôn ngữ + nút dịch -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-primary btn-sm fw-semibold" id="btn-vi" disabled>🇻🇳
+                                Tiếng Việt</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold" id="btn-en"
+                                disabled>en Tiếng Anh</button>
+                        </div>
+                        <button type="button" class="btn btn-success btn-sm fw-semibold" id="btn-translate">
+                            <i class="bi bi-arrow-right-circle me-1"></i> Dịch sang tiếng Anh
+                        </button>
                     </div>
-                </div>
 
-                <!-- Tiêu đề -->
-                <div class="mb-3">
-                    <label for="title" class="form-label fw-semibold text-dark">Tiêu đề</label>
-                    <input id="title" type="text" class="form-control" placeholder="Nhập tiêu đề" required>
-                </div>
-
-                <!-- Mô tả -->
-                <div class="mb-3">
-                    <label for="description" class="form-label fw-semibold text-dark">Mô tả</label>
-                    <input id="description" type="text" class="form-control" placeholder="Nhập mô tả ngắn" required>
-                </div>
-
-                <!-- Trạng thái -->
-                <div class="mb-3">
-                    <label for="status" class="form-label fw-semibold text-dark">Trạng thái</label>
-                    <select id="trangthai" class="form-select" required>
-                        <option value="" selected disabled>-- Chọn Trạng thái --</option>
-                        <option value="1">Hoạt động</option>
-                        <option value="0">Không hoạt động</option>
-                    </select>
-                </div>
-
-                <!-- Bộ chọn ngôn ngữ + nút dịch -->
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-primary btn-sm fw-semibold" id="btn-vi" disabled>🇻🇳 Tiếng Việt</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold" id="btn-en" disabled>en Tiếng Anh</button>
+                    <!-- Nội dung -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-dark">Nội dung</label>
+                        <textarea id="contentEditor"></textarea>
                     </div>
-                    <button type="button" class="btn btn-success btn-sm fw-semibold" id="btn-translate">
-                        <i class="bi bi-arrow-right-circle me-1"></i> Dịch sang tiếng Anh
-                    </button>
-                </div>
 
-                <!-- Nội dung -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold text-dark">Nội dung</label>
-                    <textarea id="contentEditor"></textarea>
-                </div>
+                    <!-- Nút hành động -->
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="post.html" class="btn btn-outline-secondary fw-semibold">Hủy</a>
+                        <button type="submit" class="btn btn-primary fw-semibold" id="saveBtn">Tạo bài viết</button>
+                    </div>
 
-                <!-- Nút hành động -->
-                <div class="d-flex justify-content-end gap-2">
-                    <a href="post.html" class="btn btn-outline-secondary fw-semibold">Hủy</a>
-                    <button type="submit" class="btn btn-primary fw-semibold" id="saveBtn">Tạo bài viết</button>
-                </div>
-
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 
 
@@ -396,24 +391,24 @@
         setInputs(contentData[lang]);
     }
 
-   function editorSetup() {
-  tinymce.init({
-    selector: '#contentEditor',
-    height: 300,
-    plugins: 'image link lists code',
-    toolbar:
-      'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code',
-    content_style: `
+    function editorSetup() {
+        tinymce.init({
+            selector: '#contentEditor',
+            height: 600,
+            plugins: 'image link lists code',
+            toolbar:
+                'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | code',
+            content_style: `
       body { font-family:Helvetica,Arial,sans-serif; font-size:14px }
       img { max-width: 100%; height: auto; display: block; margin: 10px 0; border-radius: 8px; }
     `,
-    setup: function (editor) {
-      editor.on('init', function () {
-        setInputs(contentData['vi']); // mặc định khởi tạo tiếng Việt
-      });
+            setup: function (editor) {
+                editor.on('init', function () {
+                    setInputs(contentData['vi']); // mặc định khởi tạo tiếng Việt
+                });
+            }
+        });
     }
-  });
-}
 
 
     // Nút chuyển sang tiếng Anh
@@ -431,7 +426,7 @@
 
         const category = document.getElementById('category').value;
         const status = document.getElementById('trangthai').value;
-        
+
 
         const isValid = (data) => data.title && data.description && data.content;
 

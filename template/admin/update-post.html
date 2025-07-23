@@ -22,19 +22,8 @@
       letter-spacing: 1px;
       color: #9aa4b2;
     }
-
-    .bg-pink {
-      background-color: #eca2c7 !important;
-    }
-
-    #postDetailModal img {
-      max-width: 100%;
-      max-height: 350px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto 1rem;
-    }
   </style>
+
 
   <meta charset="utf-8" />
   <title>Dashboard | Velzon - Admin & Dashboard Template</title>
@@ -65,7 +54,6 @@
 
 <body>
 
-  <!-- Begin page -->
   <div id="layout-wrapper">
 
     <header id="page-topbar">
@@ -130,157 +118,101 @@
       </div>
     </header>
 
-    <main class="container py-5 ">
 
 
-      <div class="container py-5">
-        <!-- Danh sách danh mục -->
-        <div style="margin-left: 230px;">
-          <div class="row g-4 justify-content-start">
 
-            <!-- Category -->
-            <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
-              <div class="card text-dark h-100" style="background-color: #ff69b4;">
-                <div class="card-body text-center">
-                  <h6 class="fw-bold">Danh mục</h6>
-                  <div id="count-category">0</div>
-                </div>
-                <div class="card-footer bg-transparent text-center">
-                  <a href="categorie.html" class="text-dark text-decoration-underline small">Xem danh sách</a>
-                </div>
-              </div>
+    <div class="main-content bg-white">
+      <div class="page-content">
+        <div class="container-fluid" style="max-width: 800px;">
+          <h1 class="mb-4 fw-bold text-primary"> Sửa bài viết </h1>
+
+          <form id="postForm" class="p-4 bg-white border border-2 rounded-4 shadow-sm">
+
+            <!-- Người đăng (không chỉnh sửa) -->
+            <div class="mb-3">
+              <label class="form-label fw-semibold text-dark">Người đăng bài</label>
+              <input type="text" class="form-control-plaintext ps-2 fw-bold text-dark bg-light" value="Vũ Hải Đăng"
+                readonly>
             </div>
 
-            <!-- User -->
-            <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
-              <div class="card text-dark h-100" style="background-color: #28e07f;">
-                <div class="card-body text-center">
-                  <h6 class="fw-bold">Người dùng</h6>
-                  <div id="count-user">0</div>
-                </div>
-                <div class="card-footer bg-transparent text-center">
-                  <a href="user.html" class="text-dark text-decoration-underline small">Xem danh sách</a>
-                </div>
+            <!-- Danh mục & Ngôn ngữ -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="category" class="form-label fw-bold text-dark">Danh mục</label>
+
+                <select id="category" class="form-select" required>
+                  <option value="" selected disabled>-- Chọn danh mục --</option>
+                  <option>Thể thao</option>
+                  <option>Thế giới</option>
+                  <option>Đời sống</option>
+                  <option>Giao thông</option>
+                </select>
               </div>
+              <div class="col-md-6">
+                <label for="language" class="form-label fw-semibold text-dark">Ngôn ngữ</label>
+                <select id="language" class="form-select" required>
+                  <option value="" selected disabled>-- Chọn ngôn ngữ --</option>
+                  <option value="vi">Tiếng Việt</option>
+                  <option value="en">Tiếng Anh</option>
+                  <option value="ja">Tiếng Nhật</option>
+                  <option value="ko">Tiếng Hàn</option>
+                </select>
+              </div>
+
             </div>
 
-            <!-- Post -->
-            <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
-              <div class="card text-dark h-100" style="background-color: #ffe066;">
-                <div class="card-body text-center">
-                  <h6 class="fw-bold">Bài viết</h6>
-                  <div id="count-post">0</div>
-                </div>
-                <div class="card-footer bg-transparent text-center">
-                  <a href="myblog-html.html" class="text-dark text-decoration-underline small">Xem danh sách</a>
-                </div>
-              </div>
+            <!-- Tiêu đề -->
+            <div class="mb-3">
+              <label for="title" class="form-label fw-semibold text-dark">Tiêu đề</label>
+              <input id="title" type="text" class="form-control" placeholder="Nhập tiêu đề" required>
             </div>
 
-            <!-- Language -->
-            <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
-              <div class="card text-dark h-100" style="background-color: #ff6b6b;">
-                <div class="card-body text-center">
-                  <h6 class="fw-bold">Ngôn ngữ</h6>
-                  <div id="count-language">0</div>
-                </div>
-                <div class="card-footer bg-transparent text-center">
-                  <a href="language.html" class="text-dark text-decoration-underline small">Xem danh sách</a>
-                </div>
-              </div>
+            <!-- Mô tả -->
+            <div class="mb-3">
+              <label for="description" class="form-label fw-semibold text-dark">Mô tả</label>
+              <input id="description" type="text" class="form-control" placeholder="Nhập mô tả ngắn" required>
             </div>
 
-            <!-- Role -->
-            <div class="col-6 col-sm-4 col-md-2 flex-grow-1">
-              <div class="card text-dark h-100" style="background-color: #3bc9db;">
-                <div class="card-body text-center">
-                  <h6 class="fw-bold">Vai trò</h6>
-                  <div id="count-role">0</div>
-                </div>
-                <div class="card-footer bg-transparent text-center">
-                  <a href="role.html" class="text-dark text-decoration-underline small">Xem danh sách</a>
-                </div>
-              </div>
+            <!-- Trạng thái -->
+            <div class="mb-3">
+              <label for="status" class="form-label fw-semibold text-dark">Trạng thái</label>
+              <select id="trangthai" class="form-select" required>
+                <option value="" selected disabled>-- Chọn Trạng thái --</option>
+                <option value="1">Hoạt động</option>
+                <option value="0">Không hoạt động</option>
+              </select>
             </div>
-          </div>
 
-          <!-- Bài viết mới nhất -->
-          <div class="row mt-4">
-            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-12">
-              <div class="card shadow border-0" style="background-color: #f1f1f1;">
-                <div class="card-body" style="min-height: 450px;"> <!-- Tăng chiều dài ở đây -->
-                  <!-- Ảnh bài viết -->
-                  <img id="latest-post-image" class="img-fluid rounded mb-3 d-none" alt="Ảnh bài viết"
-                    style="max-height: 280px; object-fit: cover;" />
-                  <h5 class="card-title fw-bold" id="latest-post-title">Tiêu đề bài viết</h5>
-                  <p class="card-text" id="latest-post-preview">Nội dung ngắn gọn bài viết...</p>
-                  <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#postDetailModal">
-                    Xem chi tiết
-                  </button>
-                </div>
+            <!-- Bộ chọn ngôn ngữ + nút dịch -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary btn-sm fw-semibold" id="btn-vi" disabled>🇻🇳
+                  Tiếng Việt</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm fw-semibold" id="btn-en" disabled>en Tiếng
+                  Anh</button>
               </div>
+
             </div>
-          </div>
 
+            <!-- Nội dung -->
+            <div class="mb-4">
+              <label class="form-label fw-semibold text-dark">Nội dung</label>
+              <textarea id="contentEditor"></textarea>
+            </div>
 
+            <!-- Nút hành động -->
+            <div class="d-flex justify-content-end gap-2">
+              <a href="post.html" class="btn btn-outline-secondary fw-semibold">Hủy</a>
+              <button type="submit" class="btn btn-primary fw-semibold" id="saveBtn">Sửa bài viết</button>
+            </div>
 
-        </div>
-      </div>
-
-
-
-
-
-    </main>
-    <div class="modal fade" id="postDetailModal" tabindex="-1" aria-labelledby="postDetailModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="postDetailModalLabel">Chi tiết bài viết</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
-          </div>
-          <div class="modal-body">
-            <p><strong>Tiêu đề:</strong> <span id="modal-post-title"></span></p>
-            <p><strong>Nội dung:</strong></p>
-            <div id="modal-post-content" class="mb-3"></div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
 
 
 
-
-
-    <!-- removeNotificationModal -->
-    <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-              id="NotificationModalbtn-close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mt-2 text-center">
-              <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-              <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                <h4>Are you sure ?</h4>
-                <p class="text-muted mx-4 mb-0">Are you sure you want to remove this Notification ?</p>
-              </div>
-            </div>
-            <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-              <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn w-sm btn-danger" id="delete-notification">Yes, Delete
-                It!</button>
-            </div>
-          </div>
-
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
     <!-- ========== App Menu ========== -->
     <div class="app-menu navbar-menu" style="background-color:#1e1e2f; font-family: 'Poppins', sans-serif; ">
 
@@ -400,7 +332,7 @@
 
 </html>
 
-
+<script src="tinymce/tinymce.min.js"></script>
 
 <!-- JAVASCRIPT -->
 <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -427,65 +359,135 @@
 <script src="assets/js/app.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    const endpoints = {
-      category: '/api/v1/admin/category',
-      user: '/api/v1/admin/user',
-      post: '/api/v1/admin/post',
-      language: '/api/v1/admin/language',
-      role: '/api/v1/admin/role'
+  let currentLang = 'vi';
+  let contentData = {
+    vi: { title: '', description: '', content: '' },
+    en: { title: '', description: '', content: '' }
+  };
+
+  // Lấy editPostId
+  const urlParams = new URLSearchParams(window.location.search);
+  const editPostId = localStorage.getItem('editPostId') || urlParams.get('id');
+
+  if (!editPostId) {
+    alert('Không có ID bài viết!');
+    window.location.href = 'post.html';
+  }
+
+  const myPosts = JSON.parse(localStorage.getItem('myPosts') || '[]');
+
+  // Tìm post theo ID gốc (vi hoặc en)
+  const postVi = myPosts.find(p => p.id == editPostId && p.language === 'vi');
+  const postEn = myPosts.find(p => p.id == editPostId && p.language === 'en') ||
+    myPosts.find(p => p.origin_id == postVi?.id && p.language === 'en');
+
+  const postToEdit = postVi || postEn;
+
+  if (!postToEdit) {
+    alert('Không tìm thấy bài viết!');
+    window.location.href = 'post.html';
+  }
+
+  // Thiết lập dữ liệu theo từng ngôn ngữ
+  // 1. Lưu dữ liệu từng ngôn ngữ
+  if (postVi) {
+    contentData.vi = {
+      title: postVi.title,
+      description: postVi.description,
+      content: postVi.content
+    };
+  }
+  if (postEn) {
+    contentData.en = {
+      title: postEn.title,
+      description: postEn.description,
+      content: postEn.content
+    };
+  }
+
+  // 2. Xác định ngôn ngữ đang sửa (ưu tiên theo postToEdit.language)
+  currentLang = postToEdit.language || 'vi';
+
+  // 3. Set UI theo ngôn ngữ hiện tại
+  document.getElementById('language').value = currentLang;
+  document.getElementById('category').value = postToEdit.category || '';
+  document.getElementById('trangthai').value = postToEdit.status || '';
+
+
+  function getCurrentInputs() {
+    return {
+      title: document.getElementById('title').value.trim(),
+      description: document.getElementById('description').value.trim(),
+      content: tinymce.get('contentEditor')?.getContent()?.trim() || ''
+    };
+  }
+
+  function setInputs(data) {
+    document.getElementById('title').value = data.title || '';
+    document.getElementById('description').value = data.description || '';
+    tinymce.get('contentEditor')?.setContent(data.content || '');
+  }
+
+  function editorSetup() {
+    tinymce.init({
+      selector: '#contentEditor',
+      height: 600,
+      setup: function (editor) {
+        editor.on('init', function () {
+          setInputs(contentData[currentLang]);
+        });
+        editor.on('NodeChange', function () {
+          const imgs = editor.dom.select('img');
+          imgs.forEach(img => {
+            editor.dom.setStyle(img, 'max-width', '100%');
+            editor.dom.setStyle(img, 'height', 'auto');
+          });
+        });
+      }
+    });
+  }
+
+  // Xử lý submit
+  document.getElementById('postForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    contentData[currentLang] = getCurrentInputs();
+
+    const category = document.getElementById('category').value;
+    const status = document.getElementById('trangthai').value;
+    const createdAt = postToEdit.createdAt || new Date().toISOString();
+
+    // Tạo post mới đã sửa
+    const updatedPost = {
+      ...postToEdit,
+      title: contentData[currentLang].title,
+      description: contentData[currentLang].description,
+      content: contentData[currentLang].content,
+      category,
+      status,
+      language: currentLang,
+      createdAt
     };
 
-    for (const [key, url] of Object.entries(endpoints)) {
-      try {
-        const res = await fetch(url);
-        const json = await res.json();
-        document.getElementById(`count-${key}`).textContent = json.data?.length || 0;
-      } catch (err) {
-        console.error(`Error loading ${key}:`, err);
-      }
-    }
+    // Xóa bản cũ, thêm bản mới vào đầu danh sách
+    const updatedList = myPosts.filter(p => p.id !== postToEdit.id);
+    updatedList.unshift(updatedPost);
+
+    // Cập nhật localStorage
+    localStorage.setItem('myPosts', JSON.stringify(updatedList));
+    localStorage.setItem('post', JSON.stringify(updatedList.map(p => ({
+      id: p.id,
+      origin_id: p.origin_id,
+      title: p.title,
+      description: p.description,
+      content: p.content,
+      createdAt: p.createdAt
+    }))));
+
+    localStorage.removeItem('editPostId');
+    window.location.href = 'post.html';
   });
-</script>
-<script>
-  window.onload = function () {
-    document.getElementById("count-category").innerText = localStorage.getItem("categoryCount") || 0;
-    document.getElementById("count-post").innerText = localStorage.getItem("postCount") || 0;
-    document.getElementById("count-language").innerText = localStorage.getItem("languageCount") || 0;
-    document.getElementById("count-role").innerText = localStorage.getItem("roleCount") || 0;
-    document.getElementById("count-user").innerText = localStorage.getItem("userCount") || 0;
-  };
-</script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const posts = JSON.parse(localStorage.getItem("myPosts") || "[]");
-    if (posts.length === 0) return;
-
-    // Lấy bài viết có id lớn nhất
-    const latestPost = posts.reduce((maxPost, post) => post.id > maxPost.id ? post : maxPost, posts[0]);
-
-    // Gán tiêu đề
-    document.getElementById("latest-post-title").textContent = latestPost.title;
-
-    // Tạo nội dung ngắn (loại bỏ HTML thô)
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = latestPost.content;
-    const previewText = tempDiv.textContent || tempDiv.innerText || "";
-    document.getElementById("latest-post-preview").textContent = previewText.slice(0, 150) + "...";
-
-    // Nếu có ảnh, hiển thị ảnh đầu tiên
-    const imgTag = tempDiv.querySelector("img");
-    if (imgTag) {
-      const previewImg = document.getElementById("latest-post-image");
-      previewImg.src = imgTag.src;
-      previewImg.classList.remove("d-none");
-    }
-
-    // Gán nội dung vào modal
-    document.getElementById("modal-post-title").textContent = latestPost.title;
-    document.getElementById("modal-post-content").innerHTML = latestPost.content;
-  });
+  editorSetup();
 </script>
 
 

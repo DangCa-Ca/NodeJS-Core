@@ -29,11 +29,16 @@ module.exports = {
         type: Sequelize.TEXT('long'),
         allowNull: false
       },
-        is_origin: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-        comment: 'Đánh dấu đây là bản gốc của bài viết'
+      origin_id: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        allowNull: true,
+        comment: 'Tham chiếu đến bản gốc của bài viết',
+        references: {
+          model: 'post_translate',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
       },
       status: {
         type: Sequelize.INTEGER,
@@ -71,4 +76,3 @@ module.exports = {
     await queryInterface.dropTable('post_translate');
   }
 };
-

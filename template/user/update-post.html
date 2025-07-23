@@ -182,12 +182,6 @@
                     <!-- RIGHT GROUP -->
                     <div class="navbar-actions order-3 ml-0 ml-md-4 d-flex align-items-center">
 
-                        <!-- ✅ Draft Saved nằm bên phải logo -->
-                        <span id="draftSavedMsg"
-                            style="color: green; font-weight: 500; font-size: 0.95rem; margin-right: 16px; display: none;">
-                            Draft Saved
-                        </span>
-
                         <!-- Nút Write -->
                         <a href="create-post.html" class="d-flex align-items-center mr-3 text-dark"
                             style="text-decoration: none;">
@@ -246,7 +240,7 @@
     </header>
 
     <main class="container my-5" style="max-width:900px;">
-        <h2 class="mb-4 fw-bold">Tạo bài viết mới</h2>
+        <h2 class="mb-4 fw-bold">Sửa bài viết </h2>
 
         <form id="postForm" class="p-4 bg-light border rounded-3 shadow-sm">
 
@@ -272,11 +266,12 @@
                     <label for="language" class="form-label">Ngôn ngữ</label>
                     <select id="language" class="form-select form-select-sm" required>
                         <option value="" selected disabled>-- Chọn ngôn ngữ --</option>
-                        <option>Tiếng Việt</option>
-                        <option>Tiếng Anh</option>
-                        <option>Tiếng Nhật</option>
-                        <option>Tiếng Hàn</option>
+                        <option value="vi">Tiếng Việt</option>
+                        <option value="en">Tiếng Anh</option>
+                        <option value="ja">Tiếng Nhật</option>
+                        <option value="ko">Tiếng Hàn</option>
                     </select>
+
                 </div>
             </div>
 
@@ -309,7 +304,7 @@
                     <button type="button" class="btn btn-outline-secondary btn-sm" id="btn-en" disabled>Tiếng
                         Anh</button>
                 </div>
-                <button type="button" class="btn btn-success btn-sm" id="btn-translate">→ Dịch sang tiếng Anh</button>
+
             </div>
 
 
@@ -321,8 +316,8 @@
 
             <!-- Nút hành động -->
             <div class="d-flex justify-content-end gap-2">
-                <a href="index.html" class="btn btn-outline-secondary">Hủy</a>
-                <button type="submit" class="btn btn-primary" id="saveBtn">Tạo bài viết</button>
+                <a href="my-blog.html" class="btn btn-outline-secondary">Hủy</a>
+                <button type="submit" class="btn btn-primary" id="saveBtn">Sửa bài viết</button>
             </div>
         </form>
     </main>
@@ -351,186 +346,166 @@
 
     <script>
         let currentLang = 'vi';
-        let autoDraftId = new URLSearchParams(location.search).get('id') || Date.now().toString();
-        document.title = "Tạo bài viết";
+        let contentData = { vi: {}, en: {} };
 
+        // Lấy ID bài viết từ query
+        const postId = new URLSearchParams(location.search).get('id');
+        const myPosts = JSON.parse(localStorage.getItem('myPosts') || '[]');
+        const postToEdit = myPosts.find(p => p.id == postId);
 
-        function saveDraft() {
-            const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
-            const title = document.getElementById('title').value.trim();
-            const description = document.getElementById('description').value.trim();
-            const content = tinymce.get('contentEditor')?.getContent()?.trim() || '';
-
-            const existingIndex = drafts.findIndex(d => d.id === autoDraftId && d.lang === currentLang);
-            const existing = existingIndex >= 0 ? drafts[existingIndex] : null;
-
-            const draftData = {
-                id: autoDraftId,
-                lang: currentLang,
-                title,
-                description,
-                content,
-                createdAt: existing?.createdAt || new Date().toISOString() // ✅ giữ thời gian cũ nếu đã có
-            };
-
-            if (existingIndex >= 0) drafts[existingIndex] = draftData;
-            else drafts.push(draftData);
-
-            localStorage.setItem('drafts', JSON.stringify(drafts));
-
-            // ✅ Hiển thị "Draft Saved" trên header
-            const msgEl = document.getElementById('draftSavedMsg');
-            if (msgEl) msgEl.style.display = 'inline';
+        if (!postToEdit) {
+            alert('Bài viết không tồn tại!');
+            window.location.href = 'my-blog.html';
         }
 
+        // ✅ Lấy bài gốc và bài dịch dựa theo language và origin_id
+        let postVi = null;
+        let postEn = null;
 
+        if (postToEdit.language === 'vi') {
+            postVi = postToEdit;
+            postEn = myPosts.find(p => p.origin_id == postVi.id && p.language === 'en');
+        } else if (postToEdit.language === 'en') {
+            postEn = postToEdit;
+            postVi = myPosts.find(p => p.id == postEn.origin_id && p.language === 'vi');
+        }
 
-        // ✅ Gắn auto-save khi người dùng gõ nội dung
-        ['title', 'description'].forEach(id => {
-            document.getElementById(id).addEventListener('input', saveDraft);
+        // ✅ Gán vào contentData
+        if (postVi) {
+            contentData.vi = {
+                title: postVi.title,
+                description: postVi.description,
+                content: postVi.content,
+                category: postVi.category,
+                status: postVi.status
+            };
+        }
+
+        if (postEn) {
+            contentData.en = {
+                title: postEn.title,
+                description: postEn.description,
+                content: postEn.content,
+                category: postEn.category,
+                status: postEn.status
+            };
+        }
+
+        // ✅ Ngôn ngữ đang sửa
+        currentLang = postToEdit.language;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Gán form inputs
+            document.getElementById('language').value = currentLang;
+            document.getElementById('category').value = contentData[currentLang].category;
+            document.getElementById('status').value = contentData[currentLang].status;
+
+            if (currentLang === 'en') {
+                switchToEN();
+            } else {
+                switchToVI();
+            }
+
+            initEditor(currentLang);
         });
 
-        // ✅ Gắn auto-save cho nội dung TinyMCE
-        function editorSetup(lang) {
+        // ✅ Nút chuyển tab ngôn ngữ
+        document.getElementById('btn-vi').addEventListener('click', () => {
+            if (currentLang !== 'vi') {
+                saveCurrentInputs();
+                currentLang = 'vi';
+                switchToVI();
+                reloadEditor(currentLang);
+            }
+        });
+
+        document.getElementById('btn-en').addEventListener('click', () => {
+            if (currentLang !== 'en') {
+                saveCurrentInputs();
+                currentLang = 'en';
+                switchToEN();
+                reloadEditor(currentLang);
+            }
+        });
+
+        // ✅ Nút submit
+        document.getElementById('postForm').addEventListener('submit', e => {
+            e.preventDefault();
+            saveCurrentInputs();
+
+            let updatedPosts = myPosts.map(p => {
+                if (p.id == postVi?.id) {
+                    return { ...p, ...contentData.vi };
+                }
+                if (p.id == postEn?.id) {
+                    return { ...p, ...contentData.en };
+                }
+                return p;
+            });
+
+            localStorage.setItem('myPosts', JSON.stringify(updatedPosts));
+            alert('Cập nhật thành công!');
+            window.location.href = 'my-blog.html';
+        });
+
+        // =======================
+        // ✅ Các hàm tiện ích
+        // =======================
+
+        function saveCurrentInputs() {
+            contentData[currentLang] = {
+                title: document.getElementById('title').value.trim(),
+                description: document.getElementById('description').value.trim(),
+                content: tinymce.get('contentEditor')?.getContent()?.trim() || '',
+                category: document.getElementById('category').value,
+                status: document.getElementById('status').value
+            };
+        }
+
+        function loadInputs(lang) {
+            document.getElementById('title').value = contentData[lang]?.title || '';
+            document.getElementById('description').value = contentData[lang]?.description || '';
+            tinymce.get('contentEditor')?.setContent(contentData[lang]?.content || '');
+            document.getElementById('language').value = lang;
+            document.getElementById('category').value = contentData[lang]?.category || '';
+            document.getElementById('status').value = contentData[lang]?.status || '';
+        }
+
+        function switchToVI() {
+            document.getElementById('btn-vi').classList.replace('btn-outline-primary', 'btn-primary');
+            document.getElementById('btn-en').classList.replace('btn-primary', 'btn-outline-secondary');
+        }
+
+        function switchToEN() {
+            document.getElementById('btn-en').classList.replace('btn-outline-secondary', 'btn-primary');
+            document.getElementById('btn-vi').classList.replace('btn-primary', 'btn-outline-primary');
+        }
+
+        function reloadEditor(lang) {
+            tinymce.remove();
+            setTimeout(() => initEditor(lang), 100);
+        }
+
+        function initEditor(lang) {
             tinymce.init({
                 selector: '#contentEditor',
                 height: 600,
-                content_style: `
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 10px 0;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      font-size: 14px;
-    }
-  `,
                 setup: function (editor) {
                     editor.on('init', function () {
-                        const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
-                        const draft = drafts.find(d => d.id === autoDraftId && d.lang === currentLang);
-                        if (draft) {
-                            document.getElementById('title').value = draft.title || '';
-                            document.getElementById('description').value = draft.description || '';
-                            editor.setContent(draft.content || '');
-                        }
+                        loadInputs(lang);
                     });
-                    editor.on('Change KeyUp Paste', function () {
-                        saveDraft();
+                    editor.on('NodeChange', function () {
+                        const imgs = editor.dom.select('img');
+                        imgs.forEach(img => {
+                            editor.dom.setStyle(img, 'max-width', '100%');
+                            editor.dom.setStyle(img, 'height', 'auto');
+                        });
                     });
                 }
             });
         }
-
-        // ✅ Khi chuyển ngôn ngữ
-        document.getElementById('btn-translate').addEventListener('click', () => {
-            saveDraft();
-            currentLang = 'en';
-
-            // Chuyển giao diện
-            document.getElementById('btn-vi').classList.remove('btn-primary');
-            document.getElementById('btn-vi').classList.add('btn-outline-primary');
-            document.getElementById('btn-en').classList.remove('btn-outline-secondary');
-            document.getElementById('btn-en').classList.add('btn-primary');
-
-            document.getElementById('title').value = '';
-            document.getElementById('description').value = '';
-            if (tinymce.get('contentEditor')) {
-                tinymce.get('contentEditor').setContent('');
-            }
-
-            const languageSelect = document.getElementById('language');
-            for (let option of languageSelect.options) {
-                if (option.text === 'Tiếng Anh') {
-                    languageSelect.value = option.value;
-                    break;
-                }
-            }
-
-            tinymce.remove();
-            setTimeout(() => editorSetup('en'), 100);
-        });
-
-        // ✅ Submit
-        document.getElementById('postForm').addEventListener('submit', e => {
-            e.preventDefault();
-            saveDraft();
-
-            const categoryEl = document.getElementById('category');
-            const statusEl = document.getElementById('status');
-
-            const drafts = JSON.parse(localStorage.getItem('drafts') || '[]');
-            const viPost = drafts.find(d => d.id === autoDraftId && d.lang === 'vi');
-            const enPost = drafts.find(d => d.id === autoDraftId && d.lang === 'en');
-
-            const isValid = (p) => p && p.title && p.description && p.content;
-
-            if (!isValid(viPost)) {
-                alert('Vui lòng nhập đầy đủ thông tin tiếng Việt!');
-                return;
-            }
-
-            const createdAt = new Date().toISOString();
-            const postVi = {
-                id: Date.now(),
-                origin_id: null,
-                author: 'Vũ Hải Đăng',
-                category: categoryEl.value,
-                language: 'vi',
-                title: viPost.title,
-                description: viPost.description,
-                status: statusEl.value,
-                content: viPost.content,
-                createdAt
-            };
-
-            const postsToSave = [postVi];
-
-            if (isValid(enPost)) {
-                const postEn = {
-                    id: postVi.id + 1,
-                    origin_id: postVi.id,
-                    author: 'Vũ Hải Đăng',
-                    category: categoryEl.value,
-                    language: 'en',
-                    title: enPost.title,
-                    description: enPost.description,
-                    status: statusEl.value,
-                    content: enPost.content,
-                    createdAt
-                };
-                postsToSave.push(postEn);
-            }
-
-            const myPosts = JSON.parse(localStorage.getItem('myPosts') || '[]');
-            const published = JSON.parse(localStorage.getItem('published') || '[]');
-
-            for (let p of postsToSave) {
-                myPosts.unshift(p);
-                published.unshift({
-                    id: p.id,
-                    origin_id: p.origin_id,
-                    title: p.title,
-                    description: p.description,
-                    content: p.content,
-                    createdAt: p.createdAt
-                });
-            }
-
-            localStorage.setItem('myPosts', JSON.stringify(myPosts));
-            localStorage.setItem('published', JSON.stringify(published));
-
-            const newDrafts = drafts.filter(d => d.id !== autoDraftId);
-            localStorage.setItem('drafts', JSON.stringify(newDrafts));
-
-            window.location.href = 'published.html';
-        });
-
-        // ✅ Khởi tạo lần đầu
-        editorSetup('vi');
     </script>
+
 
 
 
